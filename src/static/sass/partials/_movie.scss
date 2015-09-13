@@ -1,11 +1,11 @@
 .movie-poster img {
-  width: 500px;
-  height: 400px;
+  width: $poster-width;
+  height: $poster-height;
 }
 
 .min-actor {
-  width: 38px;
-  height: 38px;
-  border-radius: 19px;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
   margin: 3px;
 }
