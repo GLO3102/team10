@@ -2,9 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+
     <title></title>
 </head>
 <body>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-body" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">UMovie</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-body">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="movie.html">Movies</a></li>
+                    <li><a href="#">Actors</a></li>
+                    <li><a href="#">TV Shows</a></li>
+                    <li><a href="#">Watchlists</a></li>
+                    <!--                <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Separated link</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">One more separated link</a></li>
+                                        </ul>
+                                    </li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left" id="search-form" role="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                        </div>
+                    </form>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Settings</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Log out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Movies</a></li>
+                    <li class="active">Interstellar</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<main>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="movie-poster col-xs-4">
+                <img src="static/images/movie-interstellar_2000x1500.jpg" style="width: 500px; height: 400px;">
+            </div>
+            <div class="col-xs-8">
+
+                <h1>Interstellar <small>(2014)</small></h1>
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+                    <li><a href="#preview" data-toggle="tab">Preview</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="description" class="tab-pane fade in active">
+                        <h3>Menu 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="https://geo.itunes.apple.com/us/movie/interstellar/id960891136?mt=6" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:165px;height:40px;"></a>
+                    </div>
+                    <div id="preview" class="tab-pane fade">
+                        <h3>Menu 3</h3>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </body>
 </html>
