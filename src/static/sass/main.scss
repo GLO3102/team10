@@ -1,9 +1,12 @@
 @import "compass";
 
+@import "partials/menu";
+@import "partials/bootstrap";
+
 @import "modules/variables";
 @import "modules/theme";
 
 html
 {
-  color: white;
+  background-color: white;
 }

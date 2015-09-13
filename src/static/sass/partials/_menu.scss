@@ -1,0 +1,40 @@
+#search-form
+{
+  .input-group
+  {
+    &:focus
+    {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+      border-color: #66AFE9;
+    }
+  }
+
+  .input-group-btn button
+  {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    padding-right: 0;
+    border-right: 0;
+    background: white none;
+    color: #A1A1A1;
+
+
+    &:hover
+    {
+      border-color: #CCC;
+      color: #777777;
+    }
+  }
+
+  input
+  {
+    border-left: 0;
+
+    &:focus
+    {
+      border-top-color: #CCCCCC;
+      border-bottom-color: #CCCCCC;
+      border-right-color: #CCCCCC;
+      box-shadow: none;
+    }
+  }
+}
