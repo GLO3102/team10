@@ -1,11 +1,10 @@
 @import "compass";
 
-@import "partials/menu";
-@import "partials/movie";
-@import "partials/tvshow";
-
 @import "modules/variables";
 @import "modules/theme";
+
+@import "partials/menu";
+@import "partials/movie";
 
 html
 {
