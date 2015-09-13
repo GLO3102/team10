@@ -27,9 +27,9 @@
             <div class="collapse navbar-collapse" id="navbar-body">
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="movie.html">Movies</a></li>
-                    <li><a href="#">Actors</a></li>
-                    <li><a href="#">TV Shows</a></li>
+                    <li><a href="movie.html">Movies</a></li>
+                    <li class="active"><a href="#">Actors</a></li>
+                    <li><a href="tvshow.html">TV Shows</a></li>
                     <li><a href="#">Watchlists</a></li>
                     <!--                <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -75,8 +75,8 @@
             <div class="col-xs-12">
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Movies</a></li>
-                    <li class="active">Interstellar</li>
+                    <li><a href="#">Actors</a></li>
+                    <li class="active">Matthew McConaughey</li>
                 </ol>
             </div>
         </div>
@@ -89,26 +89,56 @@
     <div class="container-fluid">
         <div class="row">
             <div class="movie-poster col-xs-4">
-                <img src="static/images/movie-interstellar_2000x1500.jpg" style="width: 500px; height: 400px;">
+                <img src="static/images/matthew_mcconaughey.jpg">
             </div>
             <div class="col-xs-8">
 
-                <h1>Interstellar <small>(2014)</small></h1>
+                <h1>Matthew McConaughey <small>Suspense</small></h1>
+                <a href="https://geo.itunes.apple.com/us/movie/interstellar/id960891136?mt=6" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:165px;height:40px;"></a>
 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
-                    <li><a href="#preview" data-toggle="tab">Preview</a></li>
+                    <li class="active"><a href="#movies" data-toggle="tab">Movies</a></li>
+                    <li><a href="#preview" data-toggle="tab">TV Shows</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div id="description" class="tab-pane fade in active">
-                        <h3>Menu 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="https://geo.itunes.apple.com/us/movie/interstellar/id960891136?mt=6" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:165px;height:40px;"></a>
+                    <div id="movies" class="tab-pane fade in active">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Parution Date</th>
+                                    <th>Details</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Interstellar</td>
+                                    <td>2014</td>
+                                    <td><button class="btn btn-default">Details</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div id="preview" class="tab-pane fade">
-                        <h3>Menu 3</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Parution Date</th>
+                                <th>Details</th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>True Detective</td>
+                                <td>2014</td>
+                                <td><button class="btn btn-default">Details</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
