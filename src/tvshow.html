@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="vendors/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="vendors/flat-ui.min.css">
 
     <link rel="stylesheet" href="static/css/main.css">
 
@@ -13,7 +13,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse navbar-embossed">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-body" aria-expanded="false">
@@ -31,7 +31,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="movie.html">Movies</a></li>
                     <li><a href="actor.html">Actors</a></li>
-                    <li class="active"><a href="#">TV Shows</a></li>
+                    <li class="active"><a href="tvshow.html">TV Shows</a></li>
                     <li><a href="#">Watchlists</a></li>
                     <!--                <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -50,17 +50,16 @@
                     <form class="navbar-form navbar-left" id="search-form" role="search">
                         <div class="form-group">
                             <div class="input-group">
+                                <input class="form-control" placeholder="Search" type="search">
                                 <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
+                                  <button type="submit" class="btn"><span class="fui-search"></span></button>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Search">
                             </div>
                         </div>
                     </form>
+
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fui-user"></span> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Settings</a></li>
                             <li role="separator" class="divider"></li>
@@ -93,7 +92,7 @@
             <div class="col-xs-12 col-md-4">
                 <img class="tvshow-poster" src="static/images/tvshow/vikings.jpg">
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-8">
 
                 <h1>Vikings <small>(2013-)</small></h1>
 
@@ -106,13 +105,13 @@
 
                 <div class="tab-content">
                     <div id="description" class="tab-pane fade in active">
-                        <h4><em>The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.</em></h4>
+                        <p class="lead">The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.</p>
                         <p><strong>Genre:</strong> Action, Drama, History</p>
                         <p><strong>First episode:</strong> 3 March 2013</p>
                         <a href="https://geo.itunes.apple.com/ca/tv-season/vikings-season-2/id924495064?mt=4" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:165px;height:40px;"></a>
                     </div>
 
-                    <div id="cast" class="tab-pane fade in">
+                    <div id="cast" class="tab-pane tab-pane-table fade in">
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -129,7 +128,7 @@
                                     Travis Fimmel
                                 </td>
                                 <td>Ragnar Lothbrok</td>
-                                <td><button class="btn btn-default">More</button></td>
+                                <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
                             </tr>
                             <tr>
                                 <td>
@@ -137,7 +136,7 @@
                                     Clive Standen
                                 </td>
                                 <td>Rollo</td>
-                                <td><button class="btn btn-default">More</button></td>
+                                <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
                             </tr>
                             <tr>
                                 <td>
@@ -145,7 +144,7 @@
                                     Katheryn Winnick
                                 </td>
                                 <td>Lagertha</td>
-                                <td><button class="btn btn-default">More</button></td>
+                                <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
                             </tr>
                             </tbody>
                         </table>
@@ -211,11 +210,7 @@
                     </div>
 
                     <div id="preview" class="tab-pane fade">
-                        <div class="row">»
-                            <div class="col-xs-12">
-                                <iframe class="tvshow-preview" width="560" height="315" src="https://www.youtube.com/embed/lTLSQx3qO9E" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        </div>
+                        <iframe class="tvshow-preview" width="560" height="315" src="https://www.youtube.com/embed/lTLSQx3qO9E" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -225,6 +220,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="vendors/flat-ui-application.js"></script>
 
 </body>
 </html>

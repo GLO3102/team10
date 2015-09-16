@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="vendors/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="vendors/flat-ui.min.css">
 
     <link rel="stylesheet" href="static/css/main.css">
 
@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse navbar-embossed">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-body" aria-expanded="false">
@@ -29,26 +29,37 @@
                 <div class="collapse navbar-collapse" id="navbar-body">
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">Home</a></li>
-                        <li class="active"><a href="#">Movies</a></li>
+                        <li class="active"><a href="movie.html">Movies</a></li>
                         <li><a href="actor.html">Actors</a></li>
                         <li><a href="tvshow.html">TV Shows</a></li>
                         <li><a href="#">Watchlists</a></li>
+                        <!--                <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Action</a></li>
+                                                <li><a href="#">Another action</a></li>
+                                                <li><a href="#">Something else here</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="#">Separated link</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="#">One more separated link</a></li>
+                                            </ul>
+                                        </li>-->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <form class="navbar-form navbar-left" id="search-form" role="search">
                             <div class="form-group">
                                 <div class="input-group">
+                                    <input class="form-control" placeholder="Search" type="search">
                                 <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
+                                  <button type="submit" class="btn"><span class="fui-search"></span></button>
                                 </span>
-                                    <input type="text" class="form-control" placeholder="Search">
                                 </div>
                             </div>
                         </form>
+
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fui-user"></span> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Settings</a></li>
                                 <li role="separator" class="divider"></li>
@@ -94,14 +105,14 @@
 
                     <div class="tab-content">
                         <div id="description" class="tab-pane fade in active">
-                            <h4><em>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</em></h4>
+                            <p class="lead">A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>
                             <p><strong>Rating:</strong> PG-13</p>
                             <p><strong>Genre:</strong> Sci-fi, adventure</p>
                             <p><strong>Release date:</strong> 7 November 2014 (USA)</p>
                             <a href="https://geo.itunes.apple.com/us/movie/interstellar/id960891136?mt=6" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:165px;height:40px;"></a>
                         </div>
 
-                        <div id="cast" class="tab-pane fade in">
+                        <div id="cast" class="tab-pane tab-pane-table fade in">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -118,7 +129,7 @@
                                         Matthew McConaughey
                                     </td>
                                     <td>Cooper</td>
-                                    <td><button class="btn btn-default">More</button></td>
+                                    <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -126,7 +137,7 @@
                                         Anne Hathawat
                                     </td>
                                     <td>Brand</td>
-                                    <td><button class="btn btn-default">More</button></td>
+                                    <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -134,14 +145,13 @@
                                         Jessica Chastain
                                     </td>
                                     <td>Murph</td>
-                                    <td><button class="btn btn-default">More</button></td>
+                                    <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
 
                         <div id="preview" class="tab-pane fade">
-                            <h3>Interstellar Trailer</h3>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/3WzHXI5HizQ" frameborder="0" allowfullscreen></iframe>                        </div>
                     </div>
                 </div>
@@ -151,6 +161,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="vendors/flat-ui-application.js"></script>
 
 </body>
 </html>

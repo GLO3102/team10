@@ -6,8 +6,19 @@
 @import "partials/menu";
 @import "partials/movie";
 @import "partials/tvshow";
+@import "partials/actor";
 
 html
 {
   background-color: white;
+}
+
+.tab-pane
+{
+  padding-top: 30px;
+}
+
+.tab-pane-table
+{
+  padding-top: 0;
 }

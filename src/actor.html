@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="vendors/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="vendors/flat-ui.min.css">
 
     <link rel="stylesheet" href="static/css/main.css">
 
@@ -12,7 +13,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse navbar-embossed">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-body" aria-expanded="false">
@@ -49,17 +50,16 @@
                     <form class="navbar-form navbar-left" id="search-form" role="search">
                         <div class="form-group">
                             <div class="input-group">
+                                <input class="form-control" placeholder="Search" type="search">
                                 <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
+                                  <button type="submit" class="btn"><span class="fui-search"></span></button>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Search">
                             </div>
                         </div>
                     </form>
+
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fui-user"></span> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Settings</a></li>
                             <li role="separator" class="divider"></li>
@@ -70,6 +70,7 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+
 
     <div class="container-fluid">
         <div class="row">
@@ -89,10 +90,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="movie-poster col-xs-4">
+            <div class="actor-poster col-lg-4">
                 <img src="static/images/matthew_mcconaughey.jpg">
             </div>
-            <div class="col-xs-8">
+            <div class="col-lg-8">
 
                 <h1>Matthew McConaughey <small>Suspense</small></h1>
                 <a href="https://geo.itunes.apple.com/us/movie/interstellar/id960891136?mt=6" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:165px;height:40px;"></a>
@@ -117,12 +118,12 @@
                                 <tr>
                                     <td>Interstellar</td>
                                     <td>2014</td>
-                                    <td><button class="btn btn-default">More</button></td>
+                                    <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div id="preview" class="tab-pane fade">
+                    <div id="preview" class="tab-pane tab-pane-table fade">
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -136,7 +137,7 @@
                             <tr>
                                 <td>True Detective</td>
                                 <td>2014</td>
-                                <td><button class="btn btn-default">Details</button></td>
+                                <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
                             </tr>
                             </tbody>
                         </table>
@@ -149,6 +150,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="vendors/flat-ui-application.js"></script>
 
 </body>
 </html>
