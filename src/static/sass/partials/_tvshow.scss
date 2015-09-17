@@ -6,21 +6,6 @@
   font-weight: bold;
 }
 
-.tvshow-preview {
-  margin: auto;
-  display: block;
-}
-
-@media screen and (max-width: $screen-xs-max){
-  .tvshow-preview {
-    width: 100%;
-  }
-}
-
-.tvshow-preview {
-  margin-bottom: 30px;
-}
-
 .episode-image {
   width: 100%;
 }
