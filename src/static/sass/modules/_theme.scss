@@ -5,6 +5,18 @@
   height:40px;
 }
 
+h1 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+body {
+  @media (min-width: $screen-md-min){
+    overflow: hidden;
+  }
+}
+
+
 .tab-pane
 {
   padding-top: 30px;
