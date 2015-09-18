@@ -19,8 +19,13 @@ video {
   background: rgba(0,0,0,0.5);
   color: white;
   padding: 2rem;
-  width: 33%;
+  width: 38%;
   margin:2rem;
   float: right;
   font-size: 1.2rem;
+  h1 {
+    color: $brand-teal;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
