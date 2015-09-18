@@ -11,69 +11,63 @@
     <title></title>
 </head>
 <body>
-
-<header>
-    <nav class="navbar navbar-inverse navbar-embossed">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-body" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">UMovie</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbar-body">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="movie.html">Movies</a></li>
-                    <li><a href="actor.html">Actors</a></li>
-                    <li><a href="tvshow.html">TV Shows</a></li>
-                    <li><a href="#">Watchlists</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <form class="navbar-form navbar-left" id="search-form" role="search">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input class="form-control" placeholder="Search" type="search">
-                                <span class="input-group-btn">
-                                  <button type="submit" class="btn"><span class="fui-search"></span></button>
-                                </span>
+    <header>
+        <nav class="navbar navbar-inverse navbar-embossed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-body" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">UMovie</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-body">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="movie.html">Movies</a></li>
+                        <li><a href="actor.html">Actors</a></li>
+                        <li><a href="tvshow.html">TV Shows</a></li>
+                        <li><a href="#">Watchlists</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <form class="navbar-form navbar-left" id="search-form" role="search">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="Search" type="search">
+                                    <span class="input-group-btn">
+                                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <span class="fui-user"></span> René Angélil<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Settings</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Log out</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                        </form>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="fui-user"></span> René Angélil<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Settings</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
-<video autoplay id="bgvid" loop controls muted>
-    <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
-    <source src="//media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" >
-</video>
+    <video autoplay id="bgvid" loop controls muted>
+        <source src="//media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" >
+    </video>
 
-<div id="background">
-    <h1>UMovie</h1>
-    <p>C'est comme Netflix dans le fond
-</div>
+    <div id="background">
+        <h1>UMovie</h1>
+        <p>C'est comme Netflix dans le fond
+    </div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="vendors/sugar.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="vendors/sugar.min.js"></script>
 </body>
 </html>

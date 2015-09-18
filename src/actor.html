@@ -12,131 +12,120 @@
     <title></title>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-inverse navbar-embossed">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-body" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">UMovie</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbar-body">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="movie.html">Movies</a></li>
-                    <li class="active"><a href="#">Actors</a></li>
-                    <li><a href="tvshow.html">TV Shows</a></li>
-                    <li><a href="#">Watchlists</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <form class="navbar-form navbar-left" id="search-form" role="search">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input class="form-control" placeholder="Search" type="search">
-                                <span class="input-group-btn">
-                                  <button type="submit" class="btn"><span class="fui-search"></span></button>
-                                </span>
+    <header>
+        <nav class="navbar navbar-inverse navbar-embossed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-body" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">UMovie</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-body">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="movie.html">Movies</a></li>
+                        <li class="active"><a href="#">Actors</a></li>
+                        <li><a href="tvshow.html">TV Shows</a></li>
+                        <li><a href="#">Watchlists</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <form class="navbar-form navbar-left" id="search-form" role="search">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="Search" type="search">
+                                    <span class="input-group-btn">
+                                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                                    </span>
+                                </div>
                             </div>
+                        </form>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fui-user"></span> René Angélil<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Settings</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Actors</a></li>
+                        <li class="active">Matthew McConaughey</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <img class="poster" src="static/images/actor/matthew_mcconaughey.jpg">
+                </div>
+                <div class="col-xs-12 col-md-8">
+                    <h1>Matthew McConaughey <small>Suspense</small></h1>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#movies" data-toggle="tab">Movies</a></li>
+                        <li><a href="#preview" data-toggle="tab">TV Shows</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="movies" class="tab-pane tab-pane-table fade in active">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Parution Date</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Interstellar</td>
+                                        <td>2014</td>
+                                        <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="https://geo.itunes.apple.com/us/movie/interstellar/id960891136?mt=6" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:165px;height:40px;"></a>
                         </div>
-                    </form>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fui-user"></span> René Angélil<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Settings</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Log out</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Actors</a></li>
-                    <li class="active">Matthew McConaughey</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
-</header>
-
-<main>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-md-4">
-                <img class="poster" src="static/images/actor/matthew_mcconaughey.jpg">
-            </div>
-            <div class="col-xs-12 col-md-8">
-
-                <h1>Matthew McConaughey <small>Suspense</small></h1>
-
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#movies" data-toggle="tab">Movies</a></li>
-                    <li><a href="#preview" data-toggle="tab">TV Shows</a></li>
-                </ul>
-
-                <div class="tab-content">
-                    <div id="movies" class="tab-pane tab-pane-table fade in active">
-                        <table class="table table-striped">
-                            <thead>
+                        <div id="preview" class="tab-pane tab-pane-table fade">
+                            <table class="table table-striped">
+                                <thead>
                                 <tr>
                                     <th>Name</th>
                                     <th>Parution Date</th>
                                     <th>Details</th>
                                 </tr>
-
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 <tr>
-                                    <td>Interstellar</td>
+                                    <td>True Detective</td>
                                     <td>2014</td>
                                     <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
                                 </tr>
-                            </tbody>
-                        </table>
-                        <a href="https://geo.itunes.apple.com/us/movie/interstellar/id960891136?mt=6" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:165px;height:40px;"></a>
-                    </div>
-                    <div id="preview" class="tab-pane tab-pane-table fade">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Parution Date</th>
-                                <th>Details</th>
-                            </tr>
-
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>True Detective</td>
-                                <td>2014</td>
-                                <td><button class="btn btn-block btn-lg btn-primary">More</button></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="vendors/flat-ui-application.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="vendors/flat-ui-application.js"></script>
 </body>
 </html>
