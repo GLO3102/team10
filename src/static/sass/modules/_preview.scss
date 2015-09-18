@@ -4,7 +4,7 @@
   margin-bottom: 30px;
 }
 
-@media screen and (max-width: $screen-xs-max){
+@media (max-width: $screen-xs-max){
   .preview {
     width: 100%;
   }
