@@ -1,13 +1,16 @@
-.img-poster-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
-  margin: 7px;
-}
-
 .itunes-button {
   display:inline-block;
   overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;
   width:110px;
   height:40px;
+}
+
+.tab-pane
+{
+  padding-top: 30px;
+}
+
+.tab-pane-table
+{
+  padding-top: 0;
 }
