@@ -7,6 +7,36 @@
   vertical-align: middle;
 }
 
-#actor-movies {
-  overflow: auto;
+@media (min-width: $screen-md-min){
+  #actor-tvshows {
+    height: 300px;
+    overflow: hidden;
+  }
+  #actor-movies:hover {
+    overflow: auto;
+  }
+  #actor-tvshows {
+    height: 300px;
+    overflow: hidden;
+  }
+  #actor-tvshows:hover {
+    overflow: auto;
+  }
+}
+
+@media (min-width: $screen-lg-min){
+  #actor-movies {
+    height: 600px;
+    overflow: hidden;
+  }
+  #actor-movies:hover {
+    overflow: auto;
+  }
+  #actor-tvshows {
+    height: 600px;
+    overflow: hidden;
+  }
+  #actor-tvshows:hover {
+    overflow: auto;
+  }
 }
