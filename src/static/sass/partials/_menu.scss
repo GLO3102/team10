@@ -6,3 +6,31 @@
 .breadcrumb {
   background-color: #e6eaed;
 }
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-md-max)
+{
+  .navbar .container-fluid
+  {
+    padding-left: 0;
+  }
+
+  #navbar-body *
+  {
+    font-size: 10px;
+  }
+
+  #navbar-body
+  {
+    padding-left: 0;
+  }
+
+  #search-form
+  {
+    padding-right: 0;
+  }
+
+  .navbar-brand
+  {
+    display: none;
+  }
+}
