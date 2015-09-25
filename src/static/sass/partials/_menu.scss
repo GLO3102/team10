@@ -29,8 +29,19 @@
     padding-right: 0;
   }
 
-  .navbar-brand
+  #navbar-home
   {
     display: none;
+  }
+
+  .navbar-element
+  {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .navbar-brand
+  {
+    margin-left: 0;
   }
 }

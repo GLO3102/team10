@@ -27,3 +27,9 @@
     margin-bottom: 0;
   }
 }
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max){
+  #home-banner {
+    margin-top: 60px;
+  }
+}
