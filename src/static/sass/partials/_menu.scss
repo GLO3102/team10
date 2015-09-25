@@ -34,10 +34,28 @@
     display: none;
   }
 
-  .navbar-element
+  #navbar-movies
   {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #navbar-actors
+  {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #navbar-tvshows
+  {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #navbar-watchlist
+  {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .navbar-brand
