@@ -11,8 +11,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="vendors/sugar.min.js"></script>
@@ -21,7 +21,10 @@
 </head>
 
 <body>
-    <header>
+
+    <header id="#header"></header>
+
+    <script type="text/template" id="header-template">
         <nav class="navbar navbar-inverse navbar-embossed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -47,7 +50,7 @@
                                 <div class="input-group">
                                     <input class="form-control" placeholder="Search" type="search">
                                     <span class="input-group-btn">
-                                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                                    <button type="submit" class="btn"><span class="fui-search"></span></button>
                                     </span>
                                 </div>
                             </div>
@@ -65,7 +68,7 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </script>
 
     <video autoplay id="home-video" loop muted>
         <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" >
@@ -75,6 +78,21 @@
         <h1>UMovie</h1>
         <h5>The streaming app you were dreaming of...</h5>
     </div>
+
+    <script src="app/views/header-view.js"></script>
+
+    <script src="app/app.js"></script>
+
+    <script src="app/models/actor.js"></script>
+    <script src="app/models/movie.js"></script>
+    <script src="app/models/tvshow.js"></script>
+    <script src="app/models/user.js"></script>
+    <script src="app/models/watchlist.js"></script>
+
+    <script src="app/collections/users.js"></script>
+    <script src="app/collections/watchlists.js"></script>
+
+
 
 </body>
 </html>

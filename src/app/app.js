@@ -8,6 +8,7 @@ var app = app || {};
 
     app.htmlEncode =  function(value) {
         return $('<div/>').text(value).html();
-    }
+    };
 
+    new app.HeaderView();
 })();
