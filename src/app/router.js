@@ -1,3 +1,15 @@
-/**
- * Created by olfal1 on 2015-10-28.
- */
+
+var app = app || {};
+
+(function() {
+
+    var Router = Backbone.Router.extend({
+        routes: {
+            // todo
+        }
+    });
+
+    app.Router = new Router();
+
+    Backbone.history.start();
+})();
