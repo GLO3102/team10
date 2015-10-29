@@ -14,4 +14,5 @@ var app = app || {};
     app.homeView = new app.HomeView({el: '#main-container'});
     app.moviesView = new app.MoviesView({el: '#main-container'});
     app.tvShowsView = new app.TvShowsView({el: '#main-container'});
+    app.actorsView = new app.ActorsView({el: '#main-container'});
 })();

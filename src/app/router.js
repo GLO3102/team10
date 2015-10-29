@@ -10,7 +10,7 @@ var app = app || {};
             "movies/960891136": "movies",
 
             "actors": "actors",
-            "actors/211294246": "actors",
+            "actors/:id": "actors_with_id",
 
             "tvshows": "tvshows",
             "tvshows/599183923": "tvshows",
@@ -30,7 +30,11 @@ var app = app || {};
     });
 
     app.Router.on("route:actors", function() {
-        app.actorsView.render();
+        app.actorsView.render("211294246");
+    });
+
+    app.Router.on("route:actors_with_id", function(id) {
+        app.actorsView.render(id);
     });
 
     app.Router.on("route:tvshows", function() {

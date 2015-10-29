@@ -8,11 +8,22 @@ var app = app || {};
 
         initialize: function () {
             _.bindAll(this, 'render');
-            this.render();
         },
 
-        render: function () {
-            this.$el.html(this.template());
+        render: function (id) {
+            var self = this;
+
+            self.model = new app.Actor({id: id});
+            self.model.fetch({complete: function()
+            {
+                self.movieCollection = new app.Movies();
+                self.movieCollection.url = "/actors/" + self.model.id + "/movies";
+
+                self.movieCollection.fetch({parseModel: false}).complete(function()
+                {
+                    self.$el.html(self.template({actor: self.model.toJSON(), movies: self.movieCollection.toJSON()}));
+                });
+            }});
         }
     });
 

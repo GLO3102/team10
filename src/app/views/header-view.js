@@ -17,7 +17,8 @@ var app = app || {};
             "click #navbar-home": "goToHome",
             "click .navbar-brand": "goToHome",
             "click #navbar-movies": "goToMovies",
-            "click #navbar-tvshows": "goToTvShows"
+            "click #navbar-tvshows": "goToTvShows",
+            "click #navbar-actors": "goToActors"
         },
 
         render: function () {
@@ -34,6 +35,10 @@ var app = app || {};
 
         goToHome: function() {
             app.Router.navigate("", {trigger: true});
+        },
+
+        goToActors: function() {
+            app.Router.navigate("actors", {trigger: true});
         }
     });
 
