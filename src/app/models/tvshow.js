@@ -1,3 +1,9 @@
-/**
- * Created by olfal1 on 2015-10-28.
- */
+var app = app || {};
+
+(function() {
+
+    app.TvShow = Backbone.Model.extend({
+        urlRoot: "/tvshows"
+    });
+
+})();
