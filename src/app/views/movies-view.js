@@ -4,7 +4,7 @@ var app = app || {};
 
     app.MoviesView = Backbone.View.extend({
 
-        model: new app.Movie({id:"265727087"}),
+        model: new app.Movie({id:"1017088138"}),
 
         template: _.template($('#movies-template').html()),
 
