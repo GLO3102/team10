@@ -13,8 +13,16 @@ var app = app || {};
             this.render();
         },
 
+        events: {
+            "click #navbar-movies": "goToMovies"
+        },
+
         render: function () {
             this.$el.html(this.template());
+        },
+
+        goToMovies: function() {
+            app.Router.navigate("movies", {trigger: true});
         }
     });
 

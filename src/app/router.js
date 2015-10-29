@@ -22,6 +22,7 @@ var app = app || {};
     app.Router = new Router();
 
     app.Router.on("route:movies", function() {
+        console.log("RENDERING MOVIES");
         app.MoviesView.render();
     });
 
