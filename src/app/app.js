@@ -10,6 +10,19 @@ var app = app || {};
         return $('<div/>').text(value).html();
     };
 
+    app.setActiveMenuButton = function(buttonID) {
+        var buttons = document.getElementById("navbar-body").getElementsByTagName("a");
+        for (var i = 0; i < buttons.length; ++i) {
+            if (buttons[i].id == buttonID) {
+                buttons[i].parentNode.classList.add("active");
+            } else {
+                if (buttons[i].parentNode.classList.contains("active")) {
+                    buttons[i].parentNode.classList.remove("active");
+                }
+            }
+        }
+    };
+
     app.headerView = new app.HeaderView();
     app.homeView = new app.HomeView({el: '#main-container'});
     app.moviesView = new app.MoviesView({el: '#main-container'});
