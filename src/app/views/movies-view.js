@@ -16,8 +16,6 @@ var app = app || {};
             var that = this;
 
             this.model.fetch().success(function() {
-                console.log(that.model.toJSON());
-
                 that.$el.html(that.template(that.model.toJSON()));
             });
         }
