@@ -7,6 +7,10 @@
   background-color: #e6eaed;
 }
 
+.navbar-nav li a {
+  cursor: pointer;
+}
+
 @media (min-width: $screen-sm-min) and (max-width: $screen-md-max)
 {
   .navbar .container-fluid
