@@ -10,8 +10,14 @@ var app = app || {};
             _.bindAll(this, 'render');
         },
 
-        render: function () {
-            this.$el.html(this.template());
+        render: function (id) {
+            var that = this;
+
+            that.model = new app.TvShow({id: id});
+
+            this.model.fetch().success(function() {
+                that.$el.html(that.template(that.model.toJSON()));
+            });
         }
     });
 

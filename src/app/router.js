@@ -13,7 +13,7 @@ var app = app || {};
             "actors/:id": "actors_with_id",
 
             "tvshows": "tvshows",
-            "tvshows/id": "tvshows_with_id",
+            "tvshows/:id": "tvshows_with_id",
 
             "watchlists": "watchlists"
         }
