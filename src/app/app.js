@@ -10,7 +10,7 @@ var app = app || {};
         return $('<div/>').text(value).html();
     };
 
-    app.setActiveMenuButton = function(buttonID) {
+    app.setActiveMenuButtonWithId = function(buttonID) {
         var buttons = document.getElementById("navbar-body").getElementsByTagName("a");
         for (var i = 0; i < buttons.length; ++i) {
             if (buttons[i].id == buttonID) {
