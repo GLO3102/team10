@@ -4,7 +4,7 @@ var app = app || {};
 
     app.TvShowsView = Backbone.View.extend({
 
-        template: _.template($('#header-template').html()),
+        template: _.template($('#tvshows-template').html()),
 
         initialize: function () {
             _.bindAll(this, 'render');
