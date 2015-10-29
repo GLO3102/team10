@@ -24,16 +24,7 @@
 
 <header id="header"></header>
 
-<main id="main-container">
-    <video autoplay id="home-video" loop muted>
-        <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" >
-    </video>
-
-    <div id="home-banner" class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-7">
-        <h1>UMovie</h1>
-        <h5>The streaming app you were dreaming of...</h5>
-    </div>
-</main>
+<main id="main-container"></main>
 
 <script type="text/template" id="header-template">
     <nav class="navbar navbar-inverse navbar-embossed">
@@ -45,11 +36,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">UMovie</a>
+                <a class="navbar-brand">UMovie</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-body">
                 <ul class="nav navbar-nav">
-                    <li id="navbar-home" class="active"><a href="index.html">Home</a></li>
+                    <li><a id="navbar-home">Home</a></li>
                     <li><a id="navbar-movies">Movies</a></li>
                     <li><a id="navbar-actors">Actors</a></li>
                     <li><a id="navbar-tvshows">TV Shows</a></li>
@@ -79,6 +70,17 @@
             </div>
         </div>
     </nav>
+</script>
+
+<script type="text/template" id="home-template">
+    <video autoplay id="home-video" loop muted>
+        <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" >
+    </video>
+
+    <div id="home-banner" class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-7">
+        <h1>UMovie</h1>
+        <h5>The streaming app you were dreaming of...</h5>
+    </div>
 </script>
 
 <script type="text/template" id="movies-template">
@@ -277,6 +279,7 @@
 <script src="app/collections/watchlists.js"></script>
 
 <script src="app/views/header-view.js"></script>
+<script src="app/views/home-view.js"></script>
 <script src="app/views/movies-view.js"></script>
 <script src="app/views/actors-view.js"></script>
 <script src="app/views/tvshows-view.js"></script>

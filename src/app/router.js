@@ -4,7 +4,7 @@ var app = app || {};
 
     var Router = Backbone.Router.extend({
         routes: {
-            "": "index",
+            "": "home",
 
             "movies": "movies",
             "movies/960891136": "movies",
@@ -20,6 +20,10 @@ var app = app || {};
     });
 
     app.Router = new Router();
+
+    app.Router.on("route:home", function() {
+        app.homeView.render();
+    });
 
     app.Router.on("route:movies", function() {
         app.moviesView.render();
