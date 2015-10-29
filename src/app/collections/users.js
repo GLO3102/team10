@@ -1,3 +1,12 @@
-/**
- * Created by olfal1 on 2015-10-28.
- */
+
+var app = app || {};
+
+(function() {
+
+    var Users = Backbone.Collection.extend({
+        url: "/users",
+        model: app.User
+    });
+
+    app.users = new Users();
+})();
