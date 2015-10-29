@@ -14,7 +14,8 @@ var app = app || {};
         },
 
         events: {
-            "click #navbar-movies": "goToMovies"
+            "click #navbar-movies": "goToMovies",
+            "click #navbar-tvshows": "goToTvShows"
         },
 
         render: function () {
@@ -23,6 +24,10 @@ var app = app || {};
 
         goToMovies: function() {
             app.Router.navigate("movies", true);
+        },
+
+        goToTvShows: function() {
+            app.Router.navigate("tvshows", true);
         }
     });
 
