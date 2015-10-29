@@ -6,8 +6,8 @@ var app = app || {};
         routes: {
             "": "index",
 
-            "/movies": "movies",
-            "/movies/960891136": "movies",
+            "movies": "movies",
+            "movies/960891136": "movies",
 
             "/actors": "actors",
             "/actors/211294246": "actors",
@@ -22,20 +22,19 @@ var app = app || {};
     app.Router = new Router();
 
     app.Router.on("route:movies", function() {
-        console.log("RENDERING MOVIES");
-        app.MoviesView.render();
+        app.moviesView.render();
     });
 
     app.Router.on("route:actors", function() {
-        app.ActorsView.render();
+        app.actorsView.render();
     });
 
     app.Router.on("route:tvshows", function() {
-        app.TvShowsView.render();
+        app.tvShowsView.render();
     });
 
     app.Router.on("route:watchlists", function() {
-        app.WatchlistsView.render();
+        app.watchlistsView.render();
     });
 
     Backbone.history.start();
