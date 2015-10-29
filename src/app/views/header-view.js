@@ -14,6 +14,8 @@ var app = app || {};
         },
 
         events: {
+            "click #navbar-home": "goToHome",
+            "click .navbar-brand": "goToHome",
             "click #navbar-movies": "goToMovies",
             "click #navbar-tvshows": "goToTvShows"
         },
@@ -23,11 +25,15 @@ var app = app || {};
         },
 
         goToMovies: function() {
-            app.Router.navigate("movies", true);
+            app.Router.navigate("movies", {trigger: true});
         },
 
         goToTvShows: function() {
-            app.Router.navigate("tvshows", true);
+            app.Router.navigate("tvshows", {trigger: true});
+        },
+
+        goToHome: function() {
+            app.Router.navigate("", {trigger: true});
         }
     });
 
