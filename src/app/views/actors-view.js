@@ -1,12 +1,11 @@
+/*global Backbone, jQuery, _ */
 var app = app || {};
 
 (function ($) {
 
-    app.HeaderView = Backbone.View.extend({
+    app.ActorsView = Backbone.View.extend({
 
-        el: '#header',
-
-        template: _.template($("#header-template").html()),
+        template: _.template($("#actors-template").html()),
 
         initialize: function () {
             _.bindAll(this, 'render');

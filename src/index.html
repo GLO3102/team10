@@ -22,7 +22,9 @@
 
 <body>
 
-    <header id="#header"></header>
+    <header id="header"></header>
+
+    <div id="container"></div>
 
     <script type="text/template" id="header-template">
         <nav class="navbar navbar-inverse navbar-embossed">
@@ -70,6 +72,115 @@
         </nav>
     </script>
 
+    <script type="text/template" id="movies-template">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <img class="poster" src="../../static/img/movie/movie-interstellar-poster_550x859.jpg">
+                </div>
+                <div class="col-xs-12 col-md-8">
+                    <h1 class="page-title">Interstellar <small>(2014)</small></h1>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+                        <li><a href="#preview" data-toggle="tab">Preview</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="description" class="tab-pane fade in active">
+                            <p class="lead">A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>
+                            <p><strong>Rating:</strong> PG-13</p>
+                            <p><strong>Genre:</strong> Sci-fi, adventure</p>
+                            <p><strong>Release date:</strong> November 5th 2014</p>
+                            <a class="itunes-button" href="https://geo.itunes.apple.com/us/movie/interstellar/id960891136?mt=6"></a>
+                        </div>
+                        <div id="preview" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <iframe class="preview" width="560" height="315" src="https://www.youtube.com/embed/3WzHXI5HizQ" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="actors-template">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <img class="poster" src="../../static/img/actor/matthew_mcconaughey.jpg">
+                </div>
+                <div class="col-xs-12 col-md-8">
+                    <h1 class="page-title">Matthew McConaughey <small>Suspense</small></h1>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#actor-movies" data-toggle="tab">Movies</a></li>
+                        <li><a href="#preview" data-toggle="tab">TV Shows</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="actor-movies" class="tab-pane tab-pane-table fade in active">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Parution Date</th>
+                                    <th>Preview</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><img class="img-poster-circle" src="http://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX214_AL_.jpg">Interstellar</td>
+                                    <td>November 5th 2014</td>
+                                    <td><a class="btn btn-block btn-lg btn-primary" href="movie.html">Preview</a></td>
+                                </tr>
+                                <tr>
+                                    <td><img class="img-poster-circle" src="http://ia.media-imdb.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_UX148_CR0,0,148,200_AL_.jpg">The Wolf of Wall Street</td>
+                                    <td>December 25th 2013</td>
+                                    <td><a class="btn btn-block btn-lg btn-primary" href="movie.html">Preview</a></td>
+                                </tr>
+                                <tr>
+                                    <td><img class="img-poster-circle" src="http://ia.media-imdb.com/images/M/MV5BMTYwMTA4MzgyNF5BMl5BanBnXkFtZTgwMjEyMjE0MDE@._V1_UX148_CR0,0,148,200_AL_.jpg">Dallas Buyers Club</td>
+                                    <td>November 22nd 2013</td>
+                                    <td><a class="btn btn-block btn-lg btn-primary" href="movie.html">Preview</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="preview" class="tab-pane tab-pane-table fade">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Parution Date</th>
+                                    <th>Preview</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><img class="img-poster-circle" src="http://ia.media-imdb.com/images/M/MV5BMTUzNTMwODI1OV5BMl5BanBnXkFtZTgwMDIzMTQ0NTE@._V1_SX214_AL_.jpg">True Detective</td>
+                                    <td>January 12th 2014</td>
+                                    <td><a class="btn btn-block btn-lg btn-primary" href="tvshow.html">Preview</a></td>
+                                </tr>
+                                <tr>
+                                    <td><img class="img-poster-circle" src="http://ia.media-imdb.com/images/M/MV5BMjAwNDU2NTM4Nl5BMl5BanBnXkFtZTcwMzg0NTc4Mw@@._V1_SX214_AL_.jpg">Eastbound & Down</td>
+                                    <td>February 15th 2009</td>
+                                    <td><a class="btn btn-block btn-lg btn-primary" href="tvshow.html">Preview</a></td>
+                                </tr>
+                                <tr>
+                                    <td><img class="img-poster-circle" src="http://ia.media-imdb.com/images/M/MV5BODI0OTc1MTAxM15BMl5BanBnXkFtZTcwNjYxNzYxMQ@@._V1_SY317_CR8,0,214,317_AL_.jpg">King of the Hill</td>
+                                    <td>January 12th 1997</td>
+                                    <td><a class="btn btn-block btn-lg btn-primary" href="tvshow.html">Preview</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a class="itunes-button" href="https://itunes.apple.com/us/artist/matthew-mcconaughey/id211294246"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
     <video autoplay id="home-video" loop muted>
         <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" >
     </video>
@@ -92,7 +203,7 @@
     <script src="app/collections/users.js"></script>
     <script src="app/collections/watchlists.js"></script>
 
-
+    <script src="app/router.js"></script>
 
 </body>
 </html>
