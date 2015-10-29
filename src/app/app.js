@@ -10,6 +10,6 @@ var app = app || {};
         return $('<div/>').text(value).html();
     };
 
-    app.headerView = new app.HeaderView({el: '#main-container'});
+    app.headerView = new app.HeaderView();
     app.moviesView = new app.MoviesView({el: '#main-container'});
 })();

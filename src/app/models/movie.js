@@ -8,7 +8,7 @@ var app = app || {};
 
         parse: function(response)
         {
-            return response.results[0];
+            return response.results[0].attributes;
         }
     });
 

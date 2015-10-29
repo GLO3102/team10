@@ -9,13 +9,13 @@ var app = app || {};
             "movies": "movies",
             "movies/960891136": "movies",
 
-            "/actors": "actors",
-            "/actors/211294246": "actors",
+            "actors": "actors",
+            "actors/211294246": "actors",
 
-            "/tvshows": "tvshows",
-            "/tvshows/599183923": "tvshows",
+            "tvshows": "tvshows",
+            "tvshows/599183923": "tvshows",
 
-            "/watchlists": "watchlists"
+            "watchlists": "watchlists"
         }
     });
 
