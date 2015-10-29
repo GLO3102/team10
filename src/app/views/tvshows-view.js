@@ -15,4 +15,5 @@ var app = app || {};
             this.$el.html(this.template());
         }
     });
+
 })(jQuery);

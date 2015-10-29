@@ -7,4 +7,5 @@ var app = app || {};
         urlRoot: "/movies"
     });
 
+    app.movie = new app.Movie();
 })();
