@@ -12,4 +12,5 @@ var app = app || {};
 
     app.headerView = new app.HeaderView();
     app.moviesView = new app.MoviesView({el: '#main-container'});
+    app.tvShowsView = new app.TvShowsView({el: '#main-container'});
 })();
