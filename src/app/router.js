@@ -22,34 +22,42 @@ var app = app || {};
     app.Router = new Router();
 
     app.Router.on("route:home", function() {
+        app.setActiveMenuButton("navbar-home");
         app.homeView.render();
     });
 
     app.Router.on("route:movies", function() {
+        app.setActiveMenuButton("navbar-movies");
         app.moviesView.render("960891136");
     });
 
     app.Router.on("route:movies_with_id", function(id) {
+        app.setActiveMenuButton("navbar-movies");
         app.moviesView.render(id);
     });
 
     app.Router.on("route:actors", function() {
+        app.setActiveMenuButton("navbar-actors");
         app.actorsView.render("211294246");
     });
 
     app.Router.on("route:actors_with_id", function(id) {
+        app.setActiveMenuButton("navbar-actors");
         app.actorsView.render(id);
     });
 
     app.Router.on("route:tvshows", function() {
+        app.setActiveMenuButton("navbar-tvshows");
         app.tvShowsView.render("599183923");
     });
 
     app.Router.on("route:tvshows_with_id", function(id) {
+        app.setActiveMenuButton("navbar-tvshows");
         app.tvShowsView.render(id);
     });
 
     app.Router.on("route:watchlists", function() {
+        app.setActiveMenuButton("navbar-watchlists");
         app.watchlistsView.render();
     });
 
