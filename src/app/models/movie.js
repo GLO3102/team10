@@ -8,8 +8,11 @@ var app = app || {};
 
         parse: function(response, options)
         {
-            if(!options.parseModel) return response;
-            return response.results[0];
+            if(options.parseModel === false) {
+                return response;
+            } else {
+                return response.results[0];
+            }
         }
     });
 
