@@ -18,11 +18,16 @@ var app = app || {};
             "click .navbar-brand": "goToHome",
             "click #navbar-movies": "goToMovies",
             "click #navbar-tvshows": "goToTvShows",
+            "click #navbar-watchlists": "goToWatchlists",
             "click #navbar-actors": "goToActors"
         },
 
         render: function () {
             this.$el.html(this.template());
+        },
+
+        goToHome: function() {
+            app.Router.navigate("", {trigger: true});
         },
 
         goToMovies: function() {
@@ -32,13 +37,13 @@ var app = app || {};
         goToTvShows: function() {
             app.Router.navigate("tvshows", {trigger: true});
         },
-
-        goToHome: function() {
-            app.Router.navigate("", {trigger: true});
-        },
-
+        
         goToActors: function() {
             app.Router.navigate("actors", {trigger: true});
+        },
+            
+        goToWatchlists: function() {
+            app.Router.navigate("watchlists", {trigger: true});
         }
     });
 

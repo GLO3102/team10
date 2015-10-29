@@ -15,4 +15,5 @@ var app = app || {};
     app.moviesView = new app.MoviesView({el: '#main-container'});
     app.tvShowsView = new app.TvShowsView({el: '#main-container'});
     app.actorsView = new app.ActorsView({el: '#main-container'});
+    app.watchlistsView = new app.WatchlistsView({el: '#main-container'});
 })();
