@@ -7,13 +7,13 @@ var app = app || {};
             "": "home",
 
             "movies": "movies",
-            "movies/960891136": "movies",
+            "movies/:id": "movies_with_id",
 
             "actors": "actors",
             "actors/:id": "actors_with_id",
 
             "tvshows": "tvshows",
-            "tvshows/599183923": "tvshows",
+            "tvshows/id": "tvshows_with_id",
 
             "watchlists": "watchlists"
         }
@@ -26,7 +26,11 @@ var app = app || {};
     });
 
     app.Router.on("route:movies", function() {
-        app.moviesView.render();
+        app.moviesView.render("960891136");
+    });
+
+    app.Router.on("route:movies_with_id", function(id) {
+        app.moviesView.render(id);
     });
 
     app.Router.on("route:actors", function() {
@@ -38,7 +42,11 @@ var app = app || {};
     });
 
     app.Router.on("route:tvshows", function() {
-        app.tvShowsView.render();
+        app.tvShowsView.render("599183923");
+    });
+
+    app.Router.on("route:tvshows_with_id", function(id) {
+        app.tvShowsView.render(id);
     });
 
     app.Router.on("route:watchlists", function() {
