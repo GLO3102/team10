@@ -14,8 +14,7 @@ var app = app || {};
             var self = this;
 
             self.model = new app.Actor({id: id});
-            self.model.fetch({complete: function()
-            {
+            self.model.fetch().success(function() {
                 self.movieCollection = new app.Movies();
                 self.movieCollection.url = "/actors/" + self.model.id + "/movies";
 
@@ -23,7 +22,7 @@ var app = app || {};
                 {
                     self.$el.html(self.template({actor: self.model.toJSON(), movies: self.movieCollection.toJSON()}));
                 });
-            }});
+            });
         }
     });
 

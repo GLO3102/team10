@@ -4,16 +4,16 @@ var app = app || {};
 
     app.MoviesView = Backbone.View.extend({
 
-        model: new app.Movie({id:"265727087"}),
-
         template: _.template($('#movies-template').html()),
 
         initialize: function () {
             _.bindAll(this, 'render');
         },
 
-        render: function () {
+        render: function (id) {
             var that = this;
+
+            that.model = new app.Movie({id: id});
 
             this.model.fetch().success(function() {
                 var date = new moment(that.model.attributes.releaseDate);
