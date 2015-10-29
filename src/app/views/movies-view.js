@@ -4,15 +4,17 @@ var app = app || {};
 
     app.MoviesView = Backbone.View.extend({
 
-        template: _.template($('#header-template').html()),
+        model: app.movie,
+
+        template: _.template($('#movies-template').html()),
 
         initialize: function () {
             _.bindAll(this, 'render');
-            this.render();
         },
 
         render: function () {
-            this.$el.html(this.template());
+            console.log("test");
+            //this.$el.html(this.template());
         }
     });
 
