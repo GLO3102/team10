@@ -22,7 +22,7 @@ var app = app || {};
         },
 
         goToMovies: function() {
-            app.Router.navigate("movies", {trigger: true});
+            app.Router.navigate("movies", true);
         }
     });
 
