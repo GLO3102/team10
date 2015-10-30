@@ -12,6 +12,7 @@ var app = app || {};
 
         render: function (id) {
             var self = this;
+            self.$el.html(self.template({actor: {}, movies: {}}));
 
             self.model = new app.Actor({id: id});
 
