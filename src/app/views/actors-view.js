@@ -14,7 +14,10 @@ var app = app || {};
             var self = this;
 
             self.model = new app.Actor({id: id});
+
             self.model.fetch().success(function() {
+                self.$el.html(self.template({actor: self.model.toJSON(), movies: {}}));
+
                 self.movieCollection = new app.Movies();
                 self.movieCollection.url = "/actors/" + self.model.id + "/movies";
 
