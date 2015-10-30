@@ -22,6 +22,25 @@ var app = app || {};
                 that.model.attributes.artworkUrl100 = that.model.attributes.artworkUrl100.replace("100x100", "800x800");
 
                 that.$el.html(that.template(that.model.toJSON()));
+
+                var searchOnYoutube = function() {
+                    var movieTitle = that.model.attributes.trackName;
+                    var request = gapi.client.youtube.search.list({
+                        q: movieTitle + "trailer",
+                        maxResults: 1,
+                        part: 'snippet',
+                        type: 'video'
+                    });
+                    request.execute(function(response) {
+                        var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
+
+                        $('#preview-container').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
+
+                    });
+                };
+
+                gapi.client.setApiKey('AIzaSyB9-JmSKNRx3j6Rtenbxoc0aqw3-I0z8Tk');
+                gapi.client.load('youtube', 'v3', searchOnYoutube)
             });
         }
     });
