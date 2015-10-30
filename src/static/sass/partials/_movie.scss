@@ -1,0 +1,12 @@
+.movie-container {
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 50px;
+}
+
+.movie-container img {
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  border: 1px solid $brand-blue;
+}

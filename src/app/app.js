@@ -25,8 +25,13 @@ var app = app || {};
 
     app.headerView = new app.HeaderView();
     app.homeView = new app.HomeView({el: '#main-container'});
+
     app.moviesView = new app.MoviesView({el: '#main-container'});
+    app.browseMoviesView = new app.BrowseMoviesView({el: '#main-container'});
+
     app.tvShowsView = new app.TvShowsView({el: '#main-container'});
+
     app.actorsView = new app.ActorsView({el: '#main-container'});
+
     app.watchlistsView = new app.WatchlistsView({el: '#main-container'});
 })();

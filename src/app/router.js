@@ -28,7 +28,7 @@ var app = app || {};
 
     app.Router.on("route:movies", function() {
         app.setActiveMenuButtonWithId("navbar-movies");
-        app.moviesView.render("960891136");
+        app.browseMoviesView.render();
     });
 
     app.Router.on("route:movies_with_id", function(id) {
@@ -38,7 +38,7 @@ var app = app || {};
 
     app.Router.on("route:actors", function() {
         app.setActiveMenuButtonWithId("navbar-actors");
-        app.actorsView.render("211294246");
+        app.actorsView.render("211294246"); // todo : changer pour browseActorsView.render
     });
 
     app.Router.on("route:actors_with_id", function(id) {
@@ -48,7 +48,7 @@ var app = app || {};
 
     app.Router.on("route:tvshows", function() {
         app.setActiveMenuButtonWithId("navbar-tvshows");
-        app.tvShowsView.render("599183923");
+        app.tvShowsView.render("599183923"); // todo : changer pour browseActorsView.render
     });
 
     app.Router.on("route:tvshows_with_id", function(id) {

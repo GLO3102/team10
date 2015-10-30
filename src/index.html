@@ -84,6 +84,39 @@
     </div>
 </script>
 
+<script type="text/template" id="browse-movies-template">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div id="movie1" class="movie-container col-xs-12 col-md-4">
+                <h3>Interstellar</h3>
+                <img src="http://is3.mzstatic.com/image/thumb/Video5/v4/94/0b/4e/940b4e58-6628-dfb4-2565-5521c11dcdd4/pr_source.lsr/600x600bb-85.jpg">
+            </div>
+            <div id="movie2" class="movie-container col-xs-12 col-md-4">
+                <h3>The Imitation Game</h3>
+                <img src="http://is3.mzstatic.com/image/thumb/Video49/v4/25/52/af/2552af96-a9bd-7459-7edf-3d8b0138a4f0/pr_source.lsr/600x600bb-85.jpg">
+            </div>
+            <div id="movie3" class="movie-container col-xs-12 col-md-4">
+                <h3>The hobbit</h3>
+                <img src="http://is3.mzstatic.com/image/thumb/Video6/v4/71/5e/32/715e321f-e15e-9fac-2f47-40956433383f/mza_7740628517986330538.jpg/600x600bb-85.jpg">
+            </div>
+            <div id="movie4" class="movie-container col-xs-12 col-md-4">
+                <h3>The Dark Knight</h3>
+                <img src="http://is1.mzstatic.com/image/thumb/Video2/v4/7a/e2/d1/7ae2d102-fbbd-2d2c-b90f-80c8c576900b/mza_3252474936813779300.jpg/600x600bb-85.jpg">
+            </div>
+            <div id="movie5" class="movie-container col-xs-12 col-md-4">
+                <h3>Pulp Fiction</h3>
+                <img src="http://is5.mzstatic.com/image/thumb/Video1/v4/3f/06/4b/3f064b52-e3d4-7207-39d0-14c8fbf03cd4/pr_source.lsr/600x600bb-85.jpg">
+            </div>
+            <div id="movie6" class="movie-container col-xs-12 col-md-4">
+                <h3>Kung Pow</h3>
+                <img src="http://is4.mzstatic.com/image/thumb/Music/a5/a3/76/mzi.jdfnviva.jpg/600x600bb-85.jpg">
+            </div>
+        </div>
+
+    </div>
+</script>
+
 <script type="text/template" id="movies-template">
     <div id='<%= id %>' class="container-fluid">
         <div class="row">
@@ -127,7 +160,6 @@
                     <h1 class="page-title"><%- actor.artistName %> <small><%- actor.primaryGenreName %></small></h1>
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#actor-movies" data-toggle="tab">Movies</a></li>
-                        <!--<li><a href="#preview" data-toggle="tab">TV Shows</a></li>-->
                     </ul>
                     <div class="tab-content">
                         <div id="actor-movies" class="tab-pane tab-pane-table fade in active">
@@ -150,34 +182,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--<div id="preview" class="tab-pane tab-pane-table fade">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Parution Date</th>
-                                    <th>Preview</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td><img class="img-poster-circle" src="http://ia.media-imdb.com/images/M/MV5BMTUzNTMwODI1OV5BMl5BanBnXkFtZTgwMDIzMTQ0NTE@._V1_SX214_AL_.jpg">True Detective</td>
-                                    <td>January 12th 2014</td>
-                                    <td><a class="btn btn-block btn-lg btn-primary" href="tvshow.html">Preview</a></td>
-                                </tr>
-                                <tr>
-                                    <td><img class="img-poster-circle" src="http://ia.media-imdb.com/images/M/MV5BMjAwNDU2NTM4Nl5BMl5BanBnXkFtZTcwMzg0NTc4Mw@@._V1_SX214_AL_.jpg">Eastbound & Down</td>
-                                    <td>February 15th 2009</td>
-                                    <td><a class="btn btn-block btn-lg btn-primary" href="tvshow.html">Preview</a></td>
-                                </tr>
-                                <tr>
-                                    <td><img class="img-poster-circle" src="http://ia.media-imdb.com/images/M/MV5BODI0OTc1MTAxM15BMl5BanBnXkFtZTcwNjYxNzYxMQ@@._V1_SY317_CR8,0,214,317_AL_.jpg">King of the Hill</td>
-                                    <td>January 12th 1997</td>
-                                    <td><a class="btn btn-block btn-lg btn-primary" href="tvshow.html">Preview</a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>-->
+
                         <a class="itunes-button" href="https://itunes.apple.com/us/artist/matthew-mcconaughey/id211294246"></a>
                     </div>
                 </div>
@@ -304,9 +309,14 @@
 
 <script src="app/views/header-view.js"></script>
 <script src="app/views/home-view.js"></script>
+
+<script src="app/views/browse-movies-view.js"></script>
 <script src="app/views/movies-view.js"></script>
+
 <script src="app/views/actors-view.js"></script>
+
 <script src="app/views/tvshows-view.js"></script>
+
 <script src="app/views/watchlists-view.js"></script>
 
 <script src="app/app.js"></script>
