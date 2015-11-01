@@ -38,7 +38,7 @@ var app = app || {};
 
     app.Router.on("route:actors", function() {
         app.setActiveMenuButtonWithId("navbar-actors");
-        app.actorsView.render("211294246"); // todo : changer pour browseActorsView.render
+        app.browseActorsView.render();
     });
 
     app.Router.on("route:actors_with_id", function(id) {
@@ -48,7 +48,7 @@ var app = app || {};
 
     app.Router.on("route:tvshows", function() {
         app.setActiveMenuButtonWithId("navbar-tvshows");
-        app.tvShowsView.render("599183923"); // todo : changer pour browseActorsView.render
+        app.browseTvShowsView.render();
     });
 
     app.Router.on("route:tvshows_with_id", function(id) {
