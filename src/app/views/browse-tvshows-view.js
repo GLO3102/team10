@@ -28,15 +28,15 @@ var app = app || {};
         },
 
         goToTvShow4: function() {
-            app.Router.navigate("tvshows/992391218", {trigger: true});
+            app.Router.navigate("tvshows/1041468345", {trigger: true});
         },
 
         goToTvShow5: function() {
-            app.Router.navigate("tvshows/970700866", {trigger: true});
+            app.Router.navigate("tvshows/1027608805", {trigger: true});
         },
 
         goToTvShow6: function() {
-            app.Router.navigate("tvshows/1005148837", {trigger: true});
+            app.Router.navigate("tvshows/1027617029", {trigger: true});
         },
 
         initialize: function () {
