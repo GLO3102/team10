@@ -18,6 +18,7 @@ var app = app || {};
             this.model.fetch().success(function() {
                 var date = new moment(that.model.attributes.releaseDate);
 
+                that.model.attributes.artworkUrl100 = that.model.attributes.artworkUrl100.replace("100x100", "600x600");
                 that.model.attributes.releaseDate = date.format("YYYY");
 
                 that.$el.html(that.template(that.model.toJSON()));
