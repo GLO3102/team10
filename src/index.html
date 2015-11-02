@@ -283,7 +283,7 @@
                             <tbody>
                             <% _.each(episodes, function(episode){ %>
                             <tr>
-                                <td><img class="img-poster-circle" src="<%- episode.artworkUrl100 %>"><%- episode.trackName %></td>
+                                <td><img class="img-poster-circle" src="<%- episode.artworkUrl100 %>"><%- episode.trackNumber %> - <%- episode.trackName %></td>
                             </tr>
                             <% }); %>
                             </tbody>
@@ -331,6 +331,7 @@
     </div><!-- /.modal -->
 </script>
 
+<script src="app/models/episode.js"></script>
 <script src="app/models/actor.js"></script>
 <script src="app/models/movie.js"></script>
 <script src="app/models/tvshow.js"></script>
