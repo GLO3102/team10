@@ -23,6 +23,16 @@ var app = app || {};
 
                 that.$el.html(that.template(that.model.toJSON()));
 
+                var timer = setInterval(checkGoogleLoaded, 10);
+
+                function checkGoogleLoaded() {
+                    if (app.googleAPILoaded) {
+                        clearTimeout(timer);
+                        gapi.client.setApiKey('AIzaSyB9-JmSKNRx3j6Rtenbxoc0aqw3-I0z8Tk');
+                        gapi.client.load('youtube', 'v3', searchOnYoutube)
+                    }
+                }
+
                 var searchOnYoutube = function() {
                     var movieTitle = that.model.attributes.trackName;
                     var request = gapi.client.youtube.search.list({
@@ -38,9 +48,6 @@ var app = app || {};
 
                     });
                 };
-
-                gapi.client.setApiKey('AIzaSyB9-JmSKNRx3j6Rtenbxoc0aqw3-I0z8Tk');
-                gapi.client.load('youtube', 'v3', searchOnYoutube)
             });
         }
     });

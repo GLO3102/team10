@@ -5,6 +5,7 @@ $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
 var app = app || {};
 
 (function() {
+    app.googleAPILoaded = false;
 
     app.htmlEncode =  function(value) {
         return $('<div/>').text(value).html();
@@ -37,3 +38,7 @@ var app = app || {};
 
     app.watchlistsView = new app.WatchlistsView({el: '#main-container'});
 })();
+
+googleApiClientReady = function() {
+    app.googleAPILoaded = true;
+};
