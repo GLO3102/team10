@@ -34,13 +34,7 @@ var app = app || {};
                 }
 
                 var searchOnYoutube = function() {
-                    var movieTitle = that.model.attributes.trackName;
-                    var request = gapi.client.youtube.search.list({
-                        q: movieTitle + "trailer",
-                        maxResults: 1,
-                        part: 'snippet',
-                        type: 'video'
-                    });
+                    var request = app.getYoutubeRequestFromMovieTitle(that.model.attributes.trackName);
                     request.execute(function(response) {
                         var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
 

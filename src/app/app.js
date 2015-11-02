@@ -24,6 +24,15 @@ var app = app || {};
         }
     };
 
+    app.getYoutubeRequestFromMovieTitle = function(movieTitle) {
+        return gapi.client.youtube.search.list({
+            q: movieTitle + "trailer",
+            maxResults: 1,
+            part: 'snippet',
+            type: 'video'
+        });
+    };
+
     app.headerView = new app.HeaderView();
     app.homeView = new app.HomeView({el: '#main-container'});
 

@@ -44,18 +44,10 @@ var app = app || {};
                 }
 
                 var searchOnYoutube = function() {
-                    var movieTitle = self.model.attributes.collectionName;
-                    var request = gapi.client.youtube.search.list({
-                        q: movieTitle + "trailer",
-                        maxResults: 1,
-                        part: 'snippet',
-                        type: 'video'
-                    });
+                    var request = app.getYoutubeRequestFromMovieTitle(self.model.attributes.collectionName);
                     request.execute(function(response) {
                         var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
-
                         $('#preview-container').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
-
                     });
                 };
             });
