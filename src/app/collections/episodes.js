@@ -2,10 +2,14 @@ var app = app || {};
 
 (function() {
 
-    var Episodes = Backbone.Collection.extend({
+    app.Episodes = Backbone.Collection.extend({
         url: "/episodes",
-        model: app.Episode
+        model: app.Episode,
+        parse: function(response)
+        {
+            return response.results;
+        }
     });
 
-    app.episodes = new Episodes();
+    app.episodes = new app.Episodes();
 })();

@@ -230,24 +230,24 @@
                 <img src="http://is2.mzstatic.com/image/pf/us/r30/Video2/v4/8e/5d/67/8e5d6720-1da6-b8fa-d10e-262e2d68a482/mzl.lhhvljhw.500x600-85.jpg">
             </div>
             <div id="TvShow2" class="item-container col-xs-12 col-md-4">
-                <h3>The glorious king</h3>
-                <img src="http://is1.mzstatic.com/image/thumb/Music/d6/f3/5d/mzi.kmrchsrh.jpg/500x600bb-85.jpg">
+                <h3>Scandal</h3>
+                <img src="http://a2.mzstatic.com/us/r30/Music6/v4/89/16/c4/8916c454-0c23-97cd-ebd0-7837f55c86fb/cover170x170.jpeg">
             </div>
             <div id="TvShow3" class="item-container col-xs-12 col-md-4">
-                <h3>Hillbilly Gospel</h3>
-                <img src="http://is2.mzstatic.com/image/thumb/Music/88/ef/c4/mzi.hmgilgyz.tif/500x600bb-85.jpg">
+                <h3>Heroes Reborn</h3>
+                <img src="http://a1.mzstatic.com/us/r30/Music6/v4/0b/f3/b5/0bf3b54b-bc79-c780-694d-67ff39a003bb/cover170x170.jpeg">
             </div>
             <div id="TvShow4" class="item-container col-xs-12 col-md-4">
-                <h3>Aquarius</h3>
-                <img src="http://is4.mzstatic.com/image/thumb/Video49/v4/43/6b/16/436b16f9-1990-adea-3113-c98f9254ffce/pr_source.jpg/500x600-85.jpg">
+                <h3>Scandal</h3>
+                <img src="http://a2.mzstatic.com/us/r30/Music6/v4/89/16/c4/8916c454-0c23-97cd-ebd0-7837f55c86fb/cover170x170.jpeg">
             </div>
             <div id="TvShow5" class="item-container col-xs-12 col-md-4">
-                <h3>Red Road</h3>
-                <img src="http://is5.mzstatic.com/image/thumb/Video49/v4/a4/91/72/a4917250-cf72-aba6-6f75-13ecf2b92b44/pr_source.lsr/500x600-85.jpg">
+                <h3>Scandal</h3>
+                <img src="http://a2.mzstatic.com/us/r30/Music6/v4/89/16/c4/8916c454-0c23-97cd-ebd0-7837f55c86fb/cover170x170.jpeg">
             </div>
             <div id="TvShow6" class="item-container col-xs-12 col-md-4">
-                <h3>Powers</h3>
-                <img src="http://is4.mzstatic.com/image/thumb/Video49/v4/a2/eb/34/a2eb3499-7ecd-ba1f-203f-a53013706fc1/pr_source.lsr/500x600-85.jpg">
+                <h3>Scandal</h3>
+                <img src="http://a2.mzstatic.com/us/r30/Music6/v4/89/16/c4/8916c454-0c23-97cd-ebd0-7837f55c86fb/cover170x170.jpeg">
             </div>
         </div>
     </div>
@@ -257,10 +257,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-md-4">
-                <img class="poster" src="../../static/img/tvshow/vikings.jpg">
+                <img class="poster" src="<%= artworkUrl100 %>">
             </div>
             <div class="col-xs-12 col-md-8">
-                <h1 class="page-title">Vikings <small>(2013&nbsp;-&nbsp;)</small></h1>
+                <h1 class="page-title"><%= collectionName %> <small>(<%= releaseDate %>)</small></h1>
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
                     <li><a href="#episodes" data-toggle="tab">Episodes</a></li>
@@ -268,10 +268,10 @@
                 </ul>
                 <div class="tab-content">
                     <div id="description" class="tab-pane fade in active">
-                        <p class="lead">The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.</p>
-                        <p><strong>Genre:</strong> Action, Drama, History</p>
-                        <p><strong>First episode:</strong> 3 March 2013</p>
-                        <a class="itunes-button" href="https://geo.itunes.apple.com/ca/tv-season/vikings-season-2/id924495064?mt=4"></a>
+                        <p class="lead"><%= longDescription %></p>
+                        <p><strong>Genre:</strong> <%= primaryGenreName %></p>
+                        <p><strong>First episode:</strong> <%= releaseDate %></p>
+                        <a class="itunes-button" href="<%= collectionViewUrl %>"></a>
                     </div>
                     <div id="episodes" class="tab-pane fade">
                         <div class="row">

@@ -16,9 +16,14 @@ var app = app || {};
             that.model = new app.TvShow({id: id});
 
             this.model.fetch().success(function() {
+                var date = new moment(that.model.attributes.releaseDate);
+
+                that.model.attributes.releaseDate = date.format("YYYY");
+
                 that.$el.html(that.template(that.model.toJSON()));
             });
         }
     });
+
 
 })(jQuery);
