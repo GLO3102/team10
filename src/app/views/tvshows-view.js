@@ -29,6 +29,8 @@ var app = app || {};
 
                 self.episodeCollection.fetch({parseModel: false}).complete(function() {
                     self.$el.html(self.template({tvshow: self.model.toJSON(), episodes: self.episodeCollection.toJSON()}));
+                    var firstEpisodeDate = new moment(self.episodeCollection.first().attributes.releaseDate);
+                    $('#first-episode').text(firstEpisodeDate.format("MMM Do YYYY"));
                 });
 
                 var timer = setInterval(checkGoogleLoaded, 10);

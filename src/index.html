@@ -270,7 +270,7 @@
                     <div id="description" class="tab-pane fade in active">
                         <p class="lead"><%= tvshow.longDescription %></p>
                         <p><strong>Genre:</strong> <%= tvshow.primaryGenreName %></p>
-                        <p><strong>First episode:</strong> <%= tvshow.releaseDate %></p>
+                        <p><strong>First episode:</strong> <span id="first-episode"></span></p>
                         <a class="itunes-button" href="<%= tvshow.collectionViewUrl %>"></a>
                     </div>
                     <div id="episodes" class="tab-pane fade">
