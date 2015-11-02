@@ -257,10 +257,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-md-4">
-                <img class="poster" src="<%= artworkUrl100 %>">
+                <img class="poster" src="<%= tvshow.artworkUrl100 %>">
             </div>
             <div class="col-xs-12 col-md-8">
-                <h1 class="page-title"><%= collectionName %> <small>(<%= releaseDate %>)</small></h1>
+                <h1 class="page-title"><%= tvshow.collectionName %> <small>(<%= tvshow.releaseDate %>)</small></h1>
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
                     <li><a href="#episodes" data-toggle="tab">Episodes</a></li>
@@ -268,54 +268,26 @@
                 </ul>
                 <div class="tab-content">
                     <div id="description" class="tab-pane fade in active">
-                        <p class="lead"><%= longDescription %></p>
-                        <p><strong>Genre:</strong> <%= primaryGenreName %></p>
-                        <p><strong>First episode:</strong> <%= releaseDate %></p>
-                        <a class="itunes-button" href="<%= collectionViewUrl %>"></a>
+                        <p class="lead"><%= tvshow.longDescription %></p>
+                        <p><strong>Genre:</strong> <%= tvshow.primaryGenreName %></p>
+                        <p><strong>First episode:</strong> <%= tvshow.releaseDate %></p>
+                        <a class="itunes-button" href="<%= tvshow.collectionViewUrl %>"></a>
                     </div>
                     <div id="episodes" class="tab-pane fade">
-                        <div class="row">
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BNzA0MjM3NjQ2Nl5BMl5BanBnXkFtZTgwNzU1MDA0NDE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep1: Mercenary</div>
-                            </div>
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BODc5MzkzODAxMl5BMl5BanBnXkFtZTgwMzU2NDM2NDE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep2: The Wanderer</div>
-                            </div>
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BMTY5NDU5OTYzM15BMl5BanBnXkFtZTgwNjI4MjE3NDE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep3: Warrior's Fate</div>
-                            </div>
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BMTQ2MjMzNjIzMF5BMl5BanBnXkFtZTgwOTE2MDc2NDE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep4: Scarred</div>
-                            </div>
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BMTY0NTYzNDc2MF5BMl5BanBnXkFtZTgwNDA3NTc4NDE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep5: The Usurper</div>
-                            </div>
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BNjU0NDI1NTM4Ml5BMl5BanBnXkFtZTgwNDQwMzYwNTE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep6: Born Again</div>
-                            </div>
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BMTQ3MDQ3MTg1Ml5BMl5BanBnXkFtZTgwMjA3MDUxNTE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep7: Paris</div>
-                            </div>
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BMTcxMTg5ODE0NV5BMl5BanBnXkFtZTgwNzI0MDYyNTE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep8: To the Gates!</div>
-                            </div>
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BNjkyMzA2NzQ0NF5BMl5BanBnXkFtZTgwNzYxNTYzNTE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep9: Breaking Point</div>
-                            </div>
-                            <div class="episode-container col-xs-12 col-md-4">
-                                <img class="episode-image" src="http://ia.media-imdb.com/images/M/MV5BMTk5OTQyMDA0M15BMl5BanBnXkFtZTgwMDg4MzU0NTE@._V1_UX200_CR0,0,200,112_AL_.jpg">
-                                <div class="episode-name">S3, Ep10: The Dead</div>
-                            </div>
-                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% _.each(episodes, function(episode){ %>
+                            <tr>
+                                <td><img class="img-poster-circle" src="<%- episode.artworkUrl100 %>"><%- episode.trackName %></td>
+                            </tr>
+                            <% }); %>
+                            </tbody>
+                        </table>
                     </div>
                     <div id="preview" class="tab-pane fade">
                         <div class="row">
@@ -365,6 +337,7 @@
 <script src="app/models/user.js"></script>
 <script src="app/models/watchlist.js"></script>
 
+<script src="app/collections/episodes.js"></script>
 <script src="app/collections/movies.js"></script>
 <script src="app/collections/users.js"></script>
 <script src="app/collections/watchlists.js"></script>

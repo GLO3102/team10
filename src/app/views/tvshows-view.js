@@ -11,17 +11,25 @@ var app = app || {};
         },
 
         render: function (id) {
-            var that = this;
+            var self = this;
+            self.$el.html(self.template({tvshow: {}, episodes: {}}));
 
-            that.model = new app.TvShow({id: id});
+            self.model = new app.TvShow({id: id});
 
-            this.model.fetch().success(function() {
-                var date = new moment(that.model.attributes.releaseDate);
+            self.model.fetch().success(function() {
+                var date = new moment(self.model.attributes.releaseDate);
 
-                that.model.attributes.artworkUrl100 = that.model.attributes.artworkUrl100.replace("100x100", "600x600");
-                that.model.attributes.releaseDate = date.format("YYYY");
+                self.model.attributes.artworkUrl100 = self.model.attributes.artworkUrl100.replace("100x100", "600x600");
+                self.model.attributes.releaseDate = date.format("YYYY");
 
-                that.$el.html(that.template(that.model.toJSON()));
+                self.$el.html(self.template({tvshow: self.model.toJSON(), episodes: {}}));
+
+                self.episodeCollection = new app.Episodes();
+                self.episodeCollection.url = "/tvshows/season/" + self.model.id + "/episodes";
+
+                self.episodeCollection.fetch({parseModel: false}).complete(function() {
+                    self.$el.html(self.template({tvshow: self.model.toJSON(), episodes: self.episodeCollection.toJSON()}));
+                });
             });
         }
     });
