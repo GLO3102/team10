@@ -33,7 +33,7 @@ var app = app || {};
                     $('#first-episode').text(firstEpisodeDate.format("MMM Do YYYY"));
                 });
 
-                var timer = setInterval(checkGoogleLoaded, 10);
+                var timer = setInterval(checkGoogleLoaded, 300);
 
                 function checkGoogleLoaded() {
                     if (app.googleAPILoaded) {

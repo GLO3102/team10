@@ -23,7 +23,7 @@ var app = app || {};
 
                 that.$el.html(that.template(that.model.toJSON()));
 
-                var timer = setInterval(checkGoogleLoaded, 10);
+                var timer = setInterval(checkGoogleLoaded, 300);
 
                 function checkGoogleLoaded() {
                     if (app.googleAPILoaded) {
@@ -37,9 +37,7 @@ var app = app || {};
                     var request = app.getYoutubeRequestFromMovieTitle(that.model.attributes.trackName);
                     request.execute(function(response) {
                         var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
-
                         $('#preview-container').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
-
                     });
                 };
             });
