@@ -1,0 +1,27 @@
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+  vertical-align: middle;
+}
+
+@media (min-width: $screen-md-min) {
+
+  .movies-table {
+    display: block;
+    padding-right: 10px;
+    height: 400px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .movies-table tbody td, thead th {
+    width: 25%;
+  }
+
+  .movies-table:hover {
+    overflow: scroll;
+  }
+
+  .main-column {
+    width: 69%;
+  }
+
+}
