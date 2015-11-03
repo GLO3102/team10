@@ -23,13 +23,18 @@ var app = app || {};
                 self.movieCollection.url = "/actors/" + self.model.id + "/movies";
 
                 self.movieCollection.fetch({parseModel: false}).complete(function() {
-                    for(var i = 0; i < self.movieCollection.length; i++) {
-                        var date = new moment(self.movieCollection.models[i].attributes.releaseDate);
-
-                        self.movieCollection.models[i].attributes.releaseDate = date.format("MMM Do YYYY");
-                    }
+                    self.movieCollection = formatMoviesDate(self.movieCollection);
 
                     self.$el.html(self.template({actor: self.model.toJSON(), movies: self.movieCollection.toJSON()}));
+
+                    function formatMoviesDate(movieCollection) {
+                        for(var i = 0; i < movieCollection.length; i++) {
+                            var date = new moment(movieCollection.models[i].attributes.releaseDate);
+
+                            movieCollection.models[i].attributes.releaseDate = date.format("MMM Do YYYY");
+                        }
+                        return movieCollection
+                    }
                 });
             });
         }
