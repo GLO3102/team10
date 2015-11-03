@@ -23,6 +23,12 @@ var app = app || {};
                 self.movieCollection.url = "/actors/" + self.model.id + "/movies";
 
                 self.movieCollection.fetch({parseModel: false}).complete(function() {
+                    for(var i = 0; i < self.movieCollection.length; i++) {
+                        var date = new moment(self.movieCollection.models[i].attributes.releaseDate);
+
+                        self.movieCollection.models[i].attributes.releaseDate = date.format("MMM Do YYYY");
+                    }
+
                     self.$el.html(self.template({actor: self.model.toJSON(), movies: self.movieCollection.toJSON()}));
                 });
             });
