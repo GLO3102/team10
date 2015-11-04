@@ -205,7 +205,7 @@
                                 <tbody>
                                 <% _.each(movies, function(movie){ %>
                                     <tr>
-                                        <td><img class="img-poster-circle" src="<%- movie.artworkUrl100 %>"><%- movie.trackName %></td>
+                                        <td><img class="img-poster-circle" src="<%- movie.artworkUrl100 %>"><a href="#movies/<%- movie.trackId %>"><%- movie.trackName %></a></td>
                                         <td><%- movie.releaseDate %></td>
                                         <td><a class="btn btn-block btn-lg btn-primary" id="previewButton" data-trackName="<%- movie.trackName %>" data-toggle="modal" data-target="#previewModal">Preview</a></td>
                                     </tr>

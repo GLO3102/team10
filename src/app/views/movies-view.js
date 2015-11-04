@@ -19,7 +19,7 @@ var app = app || {};
                 var date = new moment(that.model.attributes.releaseDate);
 
                 that.model.attributes.releaseDate = date.format("MMM Do YYYY");
-                that.model.attributes.artworkUrl100 = that.model.attributes.artworkUrl100.replace("100x100", "800x800");
+                that.model.attributes.artworkUrl100 = that.model.attributes.artworkUrl100.replace("100x100", "600x600");
 
                 that.$el.html(that.template(that.model.toJSON()));
 

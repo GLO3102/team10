@@ -1,11 +1,17 @@
 Document Design
-Team 10
-How to :1. Open index.html in WebStorm
-2. For each tab (movies/actors/tvshows) 6 samples are provided dynamically. If you want a specific sample, you can change the ID in the URL.
 
-Members :Olivier Falardeau, OLFAL1, 111 041 153 
+Team 10
+
+How to :
+1. Open index.html in WebStorm
+2. For each tab (movies/actors/tvshows) 6 samples are provided dynamically. If you want a specific sample, you can change the ID in the URL, or choose a movie in an actor's movie list.
+
+
+Members :
+Olivier Falardeau, OLFAL1, 111 041 153 
 Simon Frenette : SIFRE15, 111 104 101 
 Dominic Fillion : DOFIL10, 111 069 661 
 Farouk Falah : FAFAL4, 111 051 633 
 Mathieu Larue : MALAR464, 111 098 142
-Notes : main.css is “compiled” by Compass from main.scss
+
+Notes : main.css is “compiled” by Compass from main.scss
