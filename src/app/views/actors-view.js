@@ -10,6 +10,11 @@ var app = app || {};
             _.bindAll(this, 'render');
         },
 
+        events: {
+            "click #previewButton": "showPreview",
+            "click .closePreview": "closePreview"
+        },
+
         render: function (id) {
             var self = this;
             self.$el.html(self.template({actor: {}, movies: {}}));
@@ -37,6 +42,31 @@ var app = app || {};
                     }
                 });
             });
+        },
+
+        showPreview: function(event) {
+            var timer = setInterval(checkGoogleLoaded, 100);
+
+            function checkGoogleLoaded() {
+                if (app.googleAPILoaded) {
+                    clearTimeout(timer);
+                    gapi.client.setApiKey('AIzaSyB9-JmSKNRx3j6Rtenbxoc0aqw3-I0z8Tk');
+                    gapi.client.load('youtube', 'v3', searchOnYoutube)
+                }
+            }
+
+            function searchOnYoutube() {
+                var movieTitle = $(event.currentTarget).data('trackname');
+                var request = app.getYoutubeRequestFromMovieTitle(movieTitle);
+                request.execute(function(response) {
+                    var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
+                    $('#preview-modal-container').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
+                });
+            }
+        },
+
+        closePreview: function() {
+            $('#preview-modal-container').empty();
         }
     });
 
