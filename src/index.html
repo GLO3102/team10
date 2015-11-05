@@ -7,7 +7,9 @@
 
     <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/flat-ui.min.css">
+    <link rel="stylesheet" href="static/fonts/octicons/octicons.css">
     <link rel="stylesheet" href="static/css/main.css">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -329,29 +331,108 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Create a new watchlist</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#watchlist-create-modal">
+                    Create a new watchlist
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="watchlist-list">
             </div>
         </div>
     </div>
 
     <!-- Create Watchlist Dialog -->
-    <div class="modal fade">
+    <div id="watchlist-create-modal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">New Watchlist</h4>
+                    <h4 class="modal-title">New watchlist</h4>
                 </div>
                 <div class="modal-body">
-
+                    <div class="form-group">
+                        <label for="watchlist-create-name">Your watchlist name:</label>
+                        <input type="text" class="form-control" id="watchlist-create-name" placeholder="Name"/>
+                    </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="watchlist-create-button">Create</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="watchlist-template">
+    <div class="col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h6>
+                    <%- watchlist.name %>
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#watchlist-modify-name-modal">
+                            <i class="octicon octicon-pencil"></i>
+                        </button>
+                        <button class="btn-remove-watchlist btn btn-danger btn-sm"><i class="octicon octicon-trashcan"></i></button>
+                    </div>
+                </h6>
+            </div>
+            <table class="table">
+                <tfoot>
+                    <tr>
+                        <td colspan="100%">
+                            <div class="form-group">
+                                <label>Add a movie</label>
+                                <input type="text" class="form-control movie-id" placeholder="Enter the movie's ID">
+                            </div>
+                            <button class="btn-add-movie btn btn-primary btn-block"><i class="octicon octicon-plus"></i></button>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody class="watchlist-movie-list">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="watchlist-modify-name-modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Change watchlist name</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="watchlist-create-name">Your watchlist new name:</label>
+                        <input type="text" class="form-control" id="watchlist-change-name" placeholder="Name"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="watchlist-save-new-name-button btn btn-primary">Change</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="watchlist-movie-template">
+    <td>
+        <img class="img-poster-circle-small" src="<%- movie.artworkUrl100 %>">
+    </td>
+    <td>
+        <%- movie.trackName %>
+    </td>
+    <td>
+        <button class="btn-remove-movie btn btn-default btn-sm pull-right">
+            <i class="octicon octicon-x"></i>
+        </button>
+    </td>
 </script>
 
 <script src="app/models/episode.js"></script>
@@ -378,6 +459,8 @@
 <script src="app/views/browse-tvshows-view.js"></script>
 <script src="app/views/tvshows-view.js"></script>
 
+<script src="app/views/watchlist-movie-view.js"></script>
+<script src="app/views/watchlist-view.js"></script>
 <script src="app/views/watchlists-view.js"></script>
 
 <script src="app/app.js"></script>
