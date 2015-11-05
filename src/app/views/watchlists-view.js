@@ -26,15 +26,15 @@ var app = app || {};
 
                 _.each(self.watchlists.models, function(watchlist, index) {
 
+                    var watchlistView = new app.WatchlistView({model: watchlist});
+                    watchlistView.on('watchlistRemoved', self.render, self);
+                    currentRow.append(watchlistView.render().el);
+
                     if((index + 1) % 3 == 0)
                     {
                         $watchlistList.append(currentRow);
                         currentRow = $('<div>').addClass('row');
                     }
-
-                    var watchlistView = new app.WatchlistView({model: watchlist});
-                    watchlistView.on('watchlistRemoved', self.render, self);
-                    currentRow.append(watchlistView.render().el);
                 });
 
                 $watchlistList.append(currentRow);
