@@ -136,7 +136,7 @@
                 <div class="tab-content">
                     <div id="description" class="tab-pane fade in active">
                         <p class="lead"><%= movie.longDescription %></p>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-movie-to-watchlist-modal">Add to watchlists</button>
+                        <button id="add-movie-to-watchlists" class="btn btn-primary" data-toggle="modal" data-target="#add-movie-to-watchlist-modal">Add to watchlists</button>
                         <p><strong>Rating:</strong> <%= movie.contentAdvisoryRating %></p>
                         <p><strong>Genre:</strong> <%= movie.primaryGenreName %></p>
                         <p><strong>Release date:</strong> <%= movie.releaseDate %></p>
@@ -379,7 +379,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="watchlist-create-name">Your watchlist name:</label>
+                        <label for="watchlist-create-name">Your watchlist's name:</label>
                         <input type="text" class="form-control" id="watchlist-create-name" placeholder="Name"/>
                     </div>
                 </div>
@@ -452,7 +452,7 @@
         <img class="img-poster-circle-small" src="<%- movie.artworkUrl100 %>">
     </td>
     <td>
-        <%- movie.trackName %>
+        <a href="#movies/<%- movie.trackId %>"><%- movie.trackName %></a>
     </td>
     <td>
         <button class="btn-remove-movie btn btn-default btn-sm pull-right">
