@@ -28,7 +28,7 @@ var app = app || {};
         },
 
         goToActor4: function() {
-            app.Router.navigate("actors/204872280", {trigger: true});
+            app.Router.navigate("actors/263060824", {trigger: true});
         },
 
         goToActor5: function() {
