@@ -22,6 +22,8 @@ var app = app || {};
             self.model = new app.Actor({id: id});
 
             self.model.fetch().success(function() {
+                console.log(self.model.attributes);
+
                 self.setImageURL(self.model);
 
                 self.$el.html(self.template({actor: self.model.toJSON(), movies: {}}));

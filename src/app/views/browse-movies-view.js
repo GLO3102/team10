@@ -20,15 +20,15 @@ var app = app || {};
         },
 
         goToMovie2: function() {
-            app.Router.navigate("movies/951103573", {trigger: true});
+            app.Router.navigate("movies/284741617", {trigger: true});
         },
 
         goToMovie3: function() {
-            app.Router.navigate("movies/767757443", {trigger: true});
+            app.Router.navigate("movies/598661920", {trigger: true});
         },
 
         goToMovie4: function() {
-            app.Router.navigate("movies/764632601", {trigger: true});
+            app.Router.navigate("movies/567661493", {trigger: true});
         },
 
         goToMovie5: function() {
