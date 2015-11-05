@@ -5,6 +5,8 @@ $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
 var app = app || {};
 
 (function() {
+    google.load('search', '1');
+
     app.googleAPILoaded = false;
 
     app.htmlEncode =  function(value) {
@@ -31,6 +33,25 @@ var app = app || {};
             part: 'snippet',
             type: 'video'
         });
+    };
+
+    var imageSearch;
+    var actorModel;
+
+    app.getGoogleImageURLFromActorName = function(model) {
+        actorModel = model;
+
+        var actorName = model.attributes.artistName;
+
+        imageSearch = new google.search.ImageSearch();
+
+        imageSearch.setSearchCompleteCallback(this, searchComplete, null);
+
+        imageSearch.execute(actorName);
+    };
+
+    var searchComplete = function() {
+        actorModel.attributes.imageURL = imageSearch.results[0].url;
     };
 
     app.headerView = new app.HeaderView();

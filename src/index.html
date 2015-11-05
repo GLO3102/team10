@@ -18,6 +18,8 @@
     <script src="http://sugarjs.com/release/current/sugar.min.js"></script>
     <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
 
+    <script src="https://www.google.com/jsapi"></script>
+
     <title>UMovie</title>
 </head>
 
@@ -185,7 +187,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-md-4">
-                    <img class="poster" src="static/img/actor/matthew_mcconaughey.jpg">
+                    <img class="poster" src="<%- actor.imageURL %>">
                 </div>
                 <div class="col-xs-12 col-md-8">
                     <h1 class="page-title"><%- actor.artistName %> <small><%- actor.primaryGenreName %></small></h1>
