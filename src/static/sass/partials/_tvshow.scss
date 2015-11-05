@@ -9,3 +9,9 @@
 .episode-image {
   width: 100%;
 }
+
+@media (max-width: $screen-md-max) {
+  .img-poster-circle {
+    display: none;
+  }
+}

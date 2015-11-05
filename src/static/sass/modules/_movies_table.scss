@@ -6,7 +6,7 @@
 
   .movies-table {
     display: block;
-    padding-right: 10px;
+    padding-right: 18px;
     height: 400px;
     overflow: hidden;
     width: 100%;
@@ -17,7 +17,7 @@
   }
 
   .movies-table:hover {
-    overflow: scroll;
+    overflow-y: scroll;
   }
 
   .main-column {
