@@ -10,6 +10,7 @@ var app = app || {};
 
         events: {
             "click .btn-remove-watchlist": "removeWatchlist",
+            "click .btn-open-watchlist-modify-name-modal": "openWatchlistModifyNameModal",
             "click .watchlist-save-new-name-button": "changeWatchlistName",
             "click .btn-add-movie": "addMovie"
         },
@@ -58,13 +59,20 @@ var app = app || {};
             });
         },
 
+        openWatchlistModifyNameModal: function()
+        {
+            var $modal = this.$('.watchlist-modify-name-modal');
+            $modal.modal("show");
+        },
+
         changeWatchlistName: function()
         {
             var self = this;
 
-            self.model.save({name: $('#watchlist-change-name').val()});
+            self.model.isNew = function(){return false;};
+            self.model.save({name: self.$('.watchlist-change-name').val()});
 
-            var $modal = $('#watchlist-modify-name-modal');
+            var $modal = this.$('.watchlist-modify-name-modal');
             $modal.one('hidden.bs.modal', function()
             {
                 self.render();

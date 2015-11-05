@@ -10,10 +10,15 @@ var app = app || {};
             _.bindAll(this, 'render');
         },
 
+        events: {
+            "click #btn-add-to-watchlists": "addToWatchlists"
+        },
+
         render: function (id) {
             var that = this;
 
             that.model = new app.Movie({id: id});
+            that.watchlists = new app.Watchlists();
 
             this.model.fetch().success(function() {
                 var date = new moment(that.model.attributes.releaseDate);
@@ -21,7 +26,11 @@ var app = app || {};
                 that.model.attributes.releaseDate = date.format("MMM Do YYYY");
                 that.model.attributes.artworkUrl100 = that.model.attributes.artworkUrl100.replace("100x100", "600x600");
 
-                that.$el.html(that.template(that.model.toJSON()));
+                that.$el.html(that.template({movie: that.model.toJSON(), watchlists: {}}));
+
+                that.watchlists.fetch().complete(function() {
+                    that.$el.html(that.template({movie: that.model.toJSON(), watchlists: that.watchlists.toJSON()}));
+                });
 
                 var timer = setInterval(checkGoogleLoaded, 300);
 
@@ -41,6 +50,26 @@ var app = app || {};
                     });
                 };
             });
+        },
+
+        addToWatchlists: function()
+        {
+            var self = this;
+
+            var $modal = self.$('#add-movie-to-watchlist-modal');
+            var checkboxes = $modal.find('input[type="checkbox"]');
+            self.model.isNew = function(){return true;};
+
+            checkboxes.each(function(index, checkbox)
+            {
+                if($(checkbox).is(':checked'))
+                {
+                    var watchlistId = $(checkbox).attr("data-watchlist-id");
+                    self.model.save({}, {url: "/watchlists/" + watchlistId + "/movies"})
+                }
+            });
+
+            $modal.modal('hide');
         }
     });
 
