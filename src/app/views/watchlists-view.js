@@ -47,12 +47,19 @@ var app = app || {};
             var newWatchlist = new app.Watchlist({name: $('#watchlist-create-name').val(), owner: "team10"});
             newWatchlist.save();
 
-            var $modal = $('#watchlist-create-modal');
-            $modal.one('hidden.bs.modal', function()
+            if(newWatchlist.validationError)
             {
-                self.render();
-            });
-            $modal.modal('hide');
+                alert(newWatchlist.validationError);
+            }
+            else
+            {
+                var $modal = $('#watchlist-create-modal');
+                $modal.one('hidden.bs.modal', function()
+                {
+                    self.render();
+                });
+                $modal.modal('hide');
+            }
         }
     });
 

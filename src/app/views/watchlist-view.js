@@ -71,13 +71,19 @@ var app = app || {};
 
             self.model.isNew = function(){return false;};
             self.model.save({name: self.$('.watchlist-change-name').val()});
-
-            var $modal = this.$('.watchlist-modify-name-modal');
-            $modal.one('hidden.bs.modal', function()
+            if(self.model.validationError)
             {
-                self.render();
-            });
-            $modal.modal('hide');
+                alert(self.model.validationError);
+            }
+            else
+            {
+                var $modal = this.$('.watchlist-modify-name-modal');
+                $modal.one('hidden.bs.modal', function()
+                {
+                    self.render();
+                });
+                $modal.modal('hide');
+            }
         },
 
         addMovie: function()
