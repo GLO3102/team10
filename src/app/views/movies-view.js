@@ -60,16 +60,39 @@ var app = app || {};
             var checkboxes = $modal.find('input[type="checkbox"]');
             self.model.isNew = function(){return true;};
 
+            var isValid = true;
+
             checkboxes.each(function(index, checkbox)
             {
                 if($(checkbox).is(':checked'))
                 {
                     var watchlistId = $(checkbox).attr("data-watchlist-id");
-                    self.model.save({}, {url: "/watchlists/" + watchlistId + "/movies"})
+                    var watchlist = _.find(self.watchlists.models, function(watchlist)
+                    {
+                       return watchlist.id === watchlistId;
+                    });
+
+                    var movieIds = [];
+                    movieIds.push(self.model.attributes.trackId);
+                    _.each(watchlist.attributes.movies, function(movie)
+                    {
+                        movieIds.push(movie.trackId);
+                    });
+
+                    if(_.uniq(movieIds).length !== movieIds.length)
+                    {
+                        alert("The watchlist " + watchlist.attributes.name + " already contains this movie.");
+                        isValid = false;
+                        return false;
+                    }
+                    else
+                    {
+                        self.model.save({}, {url: "/watchlists/" + watchlistId + "/movies"});
+                    }
                 }
             });
 
-            $modal.modal('hide');
+            if(isValid) $modal.modal('hide');
         }
     });
 

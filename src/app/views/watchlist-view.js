@@ -94,11 +94,25 @@ var app = app || {};
             var movieModel = new app.Movie({id: movieId});
             movieModel.fetch().complete(function()
             {
-                movieModel.isNew = function(){return true;};
-                movieModel.save({}, {url: "/watchlists/" + self.model.id + "/movies"}).complete(function()
+                var movieIds = [];
+                movieIds.push(movieModel.attributes.trackId);
+                _.each(self.model.attributes.movies, function(movie)
                 {
-                    self.render();
+                    movieIds.push(movie.trackId);
                 });
+
+                if(_.uniq(movieIds).length !== movieIds.length)
+                {
+                    alert("A watchlist can't have the same movie twice.");
+                }
+                else
+                {
+                    movieModel.isNew = function(){return true;};
+                    movieModel.save({}, {url: "/watchlists/" + self.model.id + "/movies"}).complete(function()
+                    {
+                        self.render();
+                    });
+                }
             });
         }
     });
