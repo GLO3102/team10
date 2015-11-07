@@ -88,6 +88,7 @@ var app = app || {};
                     else
                     {
                         self.model.save({}, {url: "/watchlists/" + watchlistId + "/movies"});
+                        watchlist.fetch();
                     }
                 }
             });
