@@ -11,6 +11,14 @@ var app = app || {};
             {
                 return "A watchlist must have a name.";
             }
+        },
+
+        containsMovie: function(movieModel)
+        {
+            return _.some(this.attributes.movies, function(movie)
+            {
+                return movie.trackId === movieModel.attributes.trackId;
+            });
         }
     });
 

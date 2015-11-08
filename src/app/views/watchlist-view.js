@@ -92,16 +92,10 @@ var app = app || {};
 
             var movieId = self.$('.movie-id').val();
             var movieModel = new app.Movie({id: movieId});
+
             movieModel.fetch().complete(function()
             {
-                var movieIds = [];
-                movieIds.push(movieModel.attributes.trackId);
-                _.each(self.model.attributes.movies, function(movie)
-                {
-                    movieIds.push(movie.trackId);
-                });
-
-                if(_.uniq(movieIds).length !== movieIds.length)
+                if(self.model.containsMovie(movieModel))
                 {
                     alert("A watchlist can't have the same movie twice.");
                 }

@@ -72,14 +72,7 @@ var app = app || {};
                        return watchlist.id === watchlistId;
                     });
 
-                    var movieIds = [];
-                    movieIds.push(self.model.attributes.trackId);
-                    _.each(watchlist.attributes.movies, function(movie)
-                    {
-                        movieIds.push(movie.trackId);
-                    });
-
-                    if(_.uniq(movieIds).length !== movieIds.length)
+                    if(watchlist.containsMovie(self.model))
                     {
                         alert("The watchlist " + watchlist.attributes.name + " already contains this movie.");
                         isValid = false;
@@ -87,8 +80,10 @@ var app = app || {};
                     }
                     else
                     {
-                        self.model.save({}, {url: "/watchlists/" + watchlistId + "/movies"});
-                        watchlist.fetch();
+                        self.model.save({}, {url: "/watchlists/" + watchlistId + "/movies"}).complete(function()
+                        {
+                            watchlist.fetch();
+                        });
                     }
                 }
             });
