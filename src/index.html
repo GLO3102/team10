@@ -466,8 +466,8 @@
         <form class="form-signin">
             <h2 class="form-signin-heading">Login</h2>
 
-            <label for="input-username" class="sr-only">Email</label>
-            <input id="input-username" class="form-control" placeholder="Email address" required autofocus>
+            <label for="input-email" class="sr-only">Email</label>
+            <input id="input-email" class="form-control" placeholder="Email address" required autofocus>
 
             <label for="input-password" class="sr-only">Password</label>
             <input type="password" id="input-password" class="form-control" placeholder="Password" required>
@@ -478,6 +478,29 @@
         </form>
 
         <p>New to UMovie? Click <a href="https://www.google.ca/webhp?hl=fr">here</a> to subscribe.</p>
+    </div>
+</script>
+
+<script type="text/template" id="subscribe-template">
+    <div class="container col-xs-12 col-md-6 col-md-offset-3">
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Subscribe</h2>
+
+            <label for="input-name" class="sr-only">Name</label>
+            <input id="input-name" class="form-control" placeholder="Name" required autofocus>
+
+            <label for="input-email" class="sr-only">Email</label>
+            <input id="input-email" class="form-control" placeholder="Email address" required autofocus>
+
+            <label for="input-password" class="sr-only">Password</label>
+            <input type="password" id="input-password" class="form-control" placeholder="Password" required>
+
+            <p id="error-message"></p>
+
+            <button id="subscribe-confirm" class="btn btn-lg btn-primary btn-block" type="button">Subscribe</button>
+        </form>
+
+        <p>Already have an account? Click <a href="https://www.google.ca/webhp?hl=fr">here</a> to login.</p>
     </div>
 </script>
 
@@ -496,6 +519,7 @@
 <script src="app/views/header-view.js"></script>
 <script src="app/views/home-view.js"></script>
 <script src="app/views/login-view.js"></script>
+<script src="app/views/subscribe-view.js"></script>
 
 <script src="app/views/browse-movies-view.js"></script>
 <script src="app/views/movies-view.js"></script>

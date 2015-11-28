@@ -6,6 +6,7 @@ var app = app || {};
         routes: {
             "": "home",
             "login": "login",
+            "subscribe": "subscribe",
 
             "movies": "movies",
             "movies/:id": "movies_with_id",
@@ -30,6 +31,11 @@ var app = app || {};
     app.Router.on("route:login", function() {
         app.setActiveMenuButtonWithId("navbar-home");
         app.loginView.render();
+    });
+
+    app.Router.on("route:subscribe", function() {
+        app.setActiveMenuButtonWithId("navbar-home");
+        app.subscribeView.render();
     });
 
     app.Router.on("route:movies", function() {

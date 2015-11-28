@@ -57,6 +57,7 @@ var app = app || {};
     app.headerView = new app.HeaderView();
     app.homeView = new app.HomeView({el: '#main-container'});
     app.loginView = new app.LoginView();
+    app.subscribeView = new app.SubscribeView();
 
     app.moviesView = new app.MoviesView({el: '#main-container'});
     app.browseMoviesView = new app.BrowseMoviesView({el: '#main-container'});

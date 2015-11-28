@@ -2,11 +2,11 @@ var app = app || {};
 
 (function ($) {
 
-    app.LoginView = Backbone.View.extend({
+    app.SubscribeView = Backbone.View.extend({
 
         el: '#main-container',
 
-        template: _.template($("#login-template").html()),
+        template: _.template($("#subscribe-template").html()),
 
         initialize: function () {
             _.bindAll(this, 'render');
