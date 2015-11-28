@@ -39,39 +39,70 @@ var app = app || {};
     });
 
     app.Router.on("route:movies", function() {
-        app.setActiveMenuButtonWithId("navbar-movies");
-        app.browseMoviesView.render();
+        if(app.isAuthenticated()) {
+            app.setActiveMenuButtonWithId("navbar-movies");
+            app.browseMoviesView.render();
+        } else {
+            app.Router.navigate("login", {trigger: true});
+        }
     });
 
     app.Router.on("route:movies_with_id", function(id) {
-        app.setActiveMenuButtonWithId("navbar-movies");
-        app.moviesView.render(id);
+        if(app.isAuthenticated()) {
+            app.setActiveMenuButtonWithId("navbar-movies");
+            app.moviesView.render(id);
+        } else {
+            app.Router.navigate("login", {trigger: true});
+        }
     });
 
     app.Router.on("route:actors", function() {
-        app.setActiveMenuButtonWithId("navbar-actors");
-        app.browseActorsView.render();
+        if(app.isAuthenticated()) {
+            app.setActiveMenuButtonWithId("navbar-actors");
+            app.browseActorsView.render();
+        } else {
+            app.Router.navigate("login", {trigger: true});
+        }
     });
 
     app.Router.on("route:actors_with_id", function(id) {
-        app.setActiveMenuButtonWithId("navbar-actors");
-        app.actorsView.render(id);
+        if(app.isAuthenticated()) {
+            app.setActiveMenuButtonWithId("navbar-actors");
+            app.actorsView.render(id);
+        } else {
+            app.Router.navigate("login", {trigger: true});
+        }
+
     });
 
     app.Router.on("route:tvshows", function() {
-        app.setActiveMenuButtonWithId("navbar-tvshows");
-        app.browseTvShowsView.render();
+        if(app.isAuthenticated()) {
+            app.setActiveMenuButtonWithId("navbar-tvshows");
+            app.browseTvShowsView.render();
+        } else {
+            app.Router.navigate("login", {trigger: true});
+        }
     });
 
     app.Router.on("route:tvshows_with_id", function(id) {
-        app.setActiveMenuButtonWithId("navbar-tvshows");
-        app.tvShowsView.render(id);
+        if(app.isAuthenticated()) {
+            app.setActiveMenuButtonWithId("navbar-tvshows");
+            app.tvShowsView.render(id);
+        } else {
+            app.Router.navigate("login", {trigger: true});
+        }
     });
 
     app.Router.on("route:watchlists", function() {
-        app.setActiveMenuButtonWithId("navbar-watchlists");
-        app.watchlistsView.render();
+        if(app.isAuthenticated()) {
+            app.setActiveMenuButtonWithId("navbar-watchlists");
+            app.watchlistsView.render();
+        } else {
+            app.Router.navigate("login", {trigger: true});
+        }
     });
+
+
 
     Backbone.history.start();
 })();

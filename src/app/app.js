@@ -50,6 +50,16 @@ var app = app || {};
         imageSearch.execute(actorName);
     };
 
+    app.isAuthenticated = function() {
+        var token = $.cookie('session');
+
+        if (token) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     var searchComplete = function() {
         actorModel.attributes.imageURL = imageSearch.results[0].url;
     };
