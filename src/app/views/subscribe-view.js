@@ -28,10 +28,26 @@ var app = app || {};
 
             var userModel = new app.User({name: userName, email: userEmail, password: userPassword});
 
-            userModel.save({url: "/signup", contentType: "application/x-www-form-urlencoded"}, {
+            userModel.save({contentType: "application/x-www-form-urlencoded"}, {
                 success: function(model, response) {
-                    console.log(response);
-                    console.log("yes")
+                    setTimeout(function() {
+                        $.ajax({
+                            url: "/login",
+                            type: 'POST',
+                            contentType: "application/x-www-form-urlencoded",
+                            data: {email: userEmail, password: userPassword}
+                        }).done(function(data) {
+                            console.log("il est connecté");
+                            $.cookie("session", data['token']);
+                            app.Router.navigate("", {trigger: true});
+
+                        }).fail(function(jqXHR, status) {
+                            console.log("il n'est pas connecté");
+                        })
+                    }, 1000);
+                    
+                    //userModel.login();
+                    //app.Router.navigate("", {trigger: true});
                 },
 
                 error: function(model, response) {
