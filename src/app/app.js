@@ -1,5 +1,5 @@
 $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-    options.url = "https://umovie.herokuapp.com/unsecure" + options.url;
+    options.url = "https://umovie.herokuapp.com" + options.url;
 });
 
 var app = app || {};
