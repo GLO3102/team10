@@ -461,6 +461,26 @@
     </td>
 </script>
 
+<script type="text/template" id="login-template">
+    <div class="container col-xs-12 col-md-6 col-md-offset-3">
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Login</h2>
+
+            <label for="input-username" class="sr-only">Email</label>
+            <input id="input-username" class="form-control" placeholder="Email address" required autofocus>
+
+            <label for="input-password" class="sr-only">Password</label>
+            <input type="password" id="input-password" class="form-control" placeholder="Password" required>
+
+            <p id="error-message"></p>
+
+            <button id="login-confirm" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
+        </form>
+
+        <p>New to UMovie? Click <a href="https://www.google.ca/webhp?hl=fr">here</a> to subscribe.</p>
+    </div>
+</script>
+
 <script src="app/models/episode.js"></script>
 <script src="app/models/actor.js"></script>
 <script src="app/models/movie.js"></script>
@@ -475,6 +495,7 @@
 
 <script src="app/views/header-view.js"></script>
 <script src="app/views/home-view.js"></script>
+<script src="app/views/login-view.js"></script>
 
 <script src="app/views/browse-movies-view.js"></script>
 <script src="app/views/movies-view.js"></script>

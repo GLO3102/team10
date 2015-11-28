@@ -5,6 +5,7 @@ var app = app || {};
     var Router = Backbone.Router.extend({
         routes: {
             "": "home",
+            "login": "login",
 
             "movies": "movies",
             "movies/:id": "movies_with_id",
@@ -24,6 +25,11 @@ var app = app || {};
     app.Router.on("route:home", function() {
         app.setActiveMenuButtonWithId("navbar-home");
         app.homeView.render();
+    });
+
+    app.Router.on("route:login", function() {
+        app.setActiveMenuButtonWithId("navbar-home");
+        app.loginView.render();
     });
 
     app.Router.on("route:movies", function() {
