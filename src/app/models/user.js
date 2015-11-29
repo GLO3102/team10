@@ -26,7 +26,7 @@ var app = app || {};
                 data: {email: userEmail, password: userPassword}
             }).done(function(data) {
                 console.log("il est connecté");
-                $.cookie("session", data['token']);
+                $.cookie("session", data.token);
                 callback();
 
             }).fail(function(jqXHR, status) {
@@ -41,7 +41,7 @@ var app = app || {};
                 type : 'GET'
             }).done(function(response) {
                 console.log("logout successful");
-                $.removeCookie('session', { path: '/' });
+                $.removeCookie('session');
                 that.clear();
                 that.initialize();
             }).fail(function(jqXHR, status) {
