@@ -73,6 +73,8 @@ var app = app || {};
         actorModel.attributes.imageURL = imageSearch.results[0].url;
     };
 
+    app.headerView = new app.HeaderView();
+
     function createUserFromToken() {
         $.ajax({
             url : '/tokenInfo',
@@ -80,12 +82,12 @@ var app = app || {};
         }).done(function(data) {
             app.currentUser = new app.User({name: data.name, email: data.email, id: data.id});
             console.log(app.currentUser.attributes.name + " is connected");
+            app.headerView.render(app.currentUser);
         }).fail(function(jqXHR, status) {
             console.log("error while logging out", status);
         });
     }
 
-    app.headerView = new app.HeaderView();
     app.homeView = new app.HomeView({el: '#main-container'});
     app.loginView = new app.LoginView();
     app.subscribeView = new app.SubscribeView();
@@ -100,7 +102,7 @@ var app = app || {};
     app.actorsView = new app.ActorsView({el: '#main-container'});
 
     app.watchlistsView = new app.WatchlistsView({el: '#main-container'});
-})();
+})();;
 
 googleApiClientReady = function() {
     app.googleAPILoaded = true;

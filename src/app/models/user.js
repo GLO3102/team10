@@ -28,7 +28,7 @@ var app = app || {};
                 console.log("il est connecté");
                 $.cookie("session", data.token);
                 callback(data);
-
+                app.homeView.render();
             }).fail(function(jqXHR, status) {
                 console.log("il n'est pas connecté");
             })
@@ -44,6 +44,8 @@ var app = app || {};
                 $.removeCookie('session');
                 that.clear();
                 that.initialize();
+                app.headerView.render();
+                app.loginView.render();
             }).fail(function(jqXHR, status) {
                 console.log("error while logging out", status);
             });

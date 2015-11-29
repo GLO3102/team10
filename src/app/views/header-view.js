@@ -25,8 +25,14 @@ var app = app || {};
             "click #logout": "logoutUser"
         },
 
-        render: function () {
-            this.$el.html(this.template());
+        render: function (currentUser) {
+            var that = this;
+
+            if (currentUser) {
+                that.$el.html(that.template({user: currentUser.attributes}));
+            } else {
+                that.$el.html(that.template({user: "noUser"}));
+            }
         },
 
         goToHome: function() {

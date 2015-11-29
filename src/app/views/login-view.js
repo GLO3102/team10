@@ -31,6 +31,7 @@ var app = app || {};
                 userModel.name = data.name;
                 userModel.id = data.id;
                 app.currentUser = userModel;
+                app.headerView.render(userModel);
                 app.Router.navigate("", {trigger: true});
             })
         },
