@@ -34,7 +34,17 @@ var app = app || {};
         },
 
         logout: function() {
+            var that = this;
+            $.ajax({
+                url : this.url + '/logout',
+                type : 'GET'
+            }).done(function(response){
+                $.removeCookie('session', { path: '/' });
+                that.clear();
+                that.initialize();
 
+                app.Router.navigate("", {trigger: true});
+            });
         }
     });
 

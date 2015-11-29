@@ -19,7 +19,9 @@ var app = app || {};
             "click #navbar-movies": "goToMovies",
             "click #navbar-tvshows": "goToTvShows",
             "click #navbar-watchlists": "goToWatchlists",
-            "click #navbar-actors": "goToActors"
+            "click #navbar-actors": "goToActors",
+
+            "click #logout": "logoutUser"
         },
 
         render: function () {
@@ -44,6 +46,10 @@ var app = app || {};
             
         goToWatchlists: function() {
             app.Router.navigate("watchlists", {trigger: true});
+        },
+
+        logoutUser: function() {
+
         }
     });
 
