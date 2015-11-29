@@ -29,14 +29,13 @@ var app = app || {};
             var userModel = new app.User({name: userName, email: userEmail, password: userPassword});
 
             userModel.save({contentType: "application/x-www-form-urlencoded"}, {
-                success: function(model, response) {
-                    var userCopy = userModel;
-
+                success: function(model) {
+                    console.log(model);
                     setTimeout(function() {
-                        userCopy.login(function() {
+                        model.login(function() {
                             app.Router.navigate("", {trigger: true});
                         });
-                    }, 300);
+                    }, 400);
                 },
 
                 error: function(model, response) {

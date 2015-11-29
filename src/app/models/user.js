@@ -27,7 +27,7 @@ var app = app || {};
             }).done(function(data) {
                 console.log("il est connecté");
                 $.cookie("session", data.token);
-                callback();
+                callback(data);
 
             }).fail(function(jqXHR, status) {
                 console.log("il n'est pas connecté");

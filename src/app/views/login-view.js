@@ -27,7 +27,9 @@ var app = app || {};
 
             var userModel = new app.User({name: userEmail, email: userEmail, password: userPassword});
 
-            userModel.login(function() {
+            userModel.login(function(data) {
+                userModel.name = data.name;
+                userModel.id = data.id;
                 app.currentUser = userModel;
                 app.Router.navigate("", {trigger: true});
             })

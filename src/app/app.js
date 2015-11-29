@@ -9,6 +9,7 @@ $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
 var app = app || {};
 
 (function() {
+
     google.load('search', '1');
 
     app.googleAPILoaded = false;
@@ -64,9 +65,25 @@ var app = app || {};
         }
     };
 
+    if(app.isAuthenticated()) {
+        createUserFromToken();
+    }
+
     var searchComplete = function() {
         actorModel.attributes.imageURL = imageSearch.results[0].url;
     };
+
+    function createUserFromToken() {
+        $.ajax({
+            url : '/tokenInfo',
+            type : 'GET'
+        }).done(function(data) {
+            app.currentUser = new app.User({name: data.name, email: data.email, id: data.id});
+            console.log(app.currentUser.attributes.name + " is connected");
+        }).fail(function(jqXHR, status) {
+            console.log("error while logging out", status);
+        });
+    }
 
     app.headerView = new app.HeaderView();
     app.homeView = new app.HomeView({el: '#main-container'});
