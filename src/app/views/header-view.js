@@ -31,7 +31,7 @@ var app = app || {};
             if (currentUser) {
                 that.$el.html(that.template({user: currentUser.attributes}));
             } else {
-                that.$el.html(that.template({user: "noUser"}));
+                that.$el.html(that.template({user: ""}));
             }
         },
 
