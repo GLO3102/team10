@@ -15,7 +15,7 @@ var app = app || {};
             return Backbone.sync.apply(this, arguments);
         },
 
-        login: function() {
+        login: function(callback) {
             var userEmail = this.attributes['name'];
             var userPassword = this.attributes['password'];
 
@@ -27,6 +27,7 @@ var app = app || {};
             }).done(function(data) {
                 console.log("il est connecté");
                 $.cookie("session", data['token']);
+                callback();
 
             }).fail(function(jqXHR, status) {
                 console.log("il n'est pas connecté");
@@ -36,14 +37,15 @@ var app = app || {};
         logout: function() {
             var that = this;
             $.ajax({
-                url : this.url + '/logout',
+                url : '/logout',
                 type : 'GET'
-            }).done(function(response){
+            }).done(function(response) {
+                console.log("logout successful");
                 $.removeCookie('session', { path: '/' });
                 that.clear();
                 that.initialize();
-
-                app.Router.navigate("", {trigger: true});
+            }).fail(function(jqXHR, status) {
+                console.log("error while logging out", status);
             });
         }
     });

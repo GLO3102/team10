@@ -21,6 +21,7 @@ var app = app || {};
             "click #navbar-watchlists": "goToWatchlists",
             "click #navbar-actors": "goToActors",
 
+            "click #profile": "goToProfile",
             "click #logout": "logoutUser"
         },
 
@@ -49,6 +50,11 @@ var app = app || {};
         },
 
         logoutUser: function() {
+            app.currentUser.logout();
+            app.Router.navigate("login", {trigger: true});
+        },
+
+        goToProfile: function() {
 
         }
     });

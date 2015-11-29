@@ -9,7 +9,8 @@ var app = app || {};
         template: _.template($("#subscribe-template").html()),
 
         events: {
-            "click #btn-subscribe-confirm": "subscribeUser"
+            "click #btn-subscribe-confirm": "subscribeUser",
+            "click #link-login": "goToLogin"
         },
 
         initialize: function () {
@@ -20,8 +21,7 @@ var app = app || {};
             this.$el.html(this.template());
         },
 
-        subscribeUser: function()
-        {
+        subscribeUser: function() {
             var userName = $("#input-name").val();
             var userEmail = $("#input-email").val();
             var userPassword = $("#input-password").val();
@@ -30,30 +30,23 @@ var app = app || {};
 
             userModel.save({contentType: "application/x-www-form-urlencoded"}, {
                 success: function(model, response) {
-                    setTimeout(function() {
-                        $.ajax({
-                            url: "/login",
-                            type: 'POST',
-                            contentType: "application/x-www-form-urlencoded",
-                            data: {email: userEmail, password: userPassword}
-                        }).done(function(data) {
-                            console.log("il est connecté");
-                            $.cookie("session", data['token']);
-                            app.Router.navigate("", {trigger: true});
+                    var userCopy = userModel;
 
-                        }).fail(function(jqXHR, status) {
-                            console.log("il n'est pas connecté");
-                        })
-                    }, 1000);
-                    
-                    //userModel.login();
-                    //app.Router.navigate("", {trigger: true});
+                    setTimeout(function() {
+                        userCopy.login(function() {
+                            app.Router.navigate("", {trigger: true});
+                        });
+                    }, 300);
                 },
 
                 error: function(model, response) {
-                    console.log("no");
+                    console.log("could not subscribe", response);
                 }
             });
+        },
+
+        goToLogin: function() {
+            app.Router.navigate("login", {trigger: true});
         }
     });
 

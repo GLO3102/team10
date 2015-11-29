@@ -1,5 +1,9 @@
 $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     options.url = "https://umovie.herokuapp.com" + options.url;
+    if ( !options.beforeSend) {
+        options.beforeSend = function (xhr) {
+            xhr.setRequestHeader('Authorization', $.cookie("session"));        }
+    }
 });
 
 var app = app || {};
