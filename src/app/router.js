@@ -29,8 +29,12 @@ var app = app || {};
     });
 
     app.Router.on("route:login", function() {
-        app.setActiveMenuButtonWithId("navbar-home");
-        app.loginView.render();
+        if(app.isAuthenticated()) {
+            app.Router.navigate("", {trigger: true});
+        } else {
+            app.setActiveMenuButtonWithId("navbar-home");
+            app.loginView.render();
+        }
     });
 
     app.Router.on("route:subscribe", function() {
