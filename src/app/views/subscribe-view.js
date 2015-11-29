@@ -30,10 +30,10 @@ var app = app || {};
 
             userModel.save({contentType: "application/x-www-form-urlencoded"}, {
                 success: function(model) {
-                    console.log(model);
                     setTimeout(function() {
                         model.login(function() {
                             app.Router.navigate("", {trigger: true});
+                            app.headerView.render(model);
                         });
                     }, 400);
                 },

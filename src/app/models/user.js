@@ -16,7 +16,7 @@ var app = app || {};
         },
 
         login: function(callback) {
-            var userEmail = this.attributes['name'];
+            var userEmail = this.attributes['email'];
             var userPassword = this.attributes['password'];
 
             $.ajax({
@@ -25,10 +25,9 @@ var app = app || {};
                 contentType: "application/x-www-form-urlencoded",
                 data: {email: userEmail, password: userPassword}
             }).done(function(data) {
-                console.log("il est connecté");
                 $.cookie("session", data.token);
                 callback(data);
-                app.homeView.render();
+                app.Router.navigate("", {trigger: true});
             }).fail(function(jqXHR, status) {
                 console.log("il n'est pas connecté");
             })
@@ -40,7 +39,6 @@ var app = app || {};
                 url : '/logout',
                 type : 'GET'
             }).done(function(response) {
-                console.log("logout successful");
                 $.removeCookie('session');
                 that.clear();
                 that.initialize();

@@ -81,7 +81,6 @@ var app = app || {};
             type : 'GET'
         }).done(function(data) {
             app.currentUser = new app.User({name: data.name, email: data.email, id: data.id});
-            console.log(app.currentUser.attributes.name + " is connected");
             app.headerView.render(app.currentUser);
         }).fail(function(jqXHR, status) {
             console.log("error while logging out", status);
