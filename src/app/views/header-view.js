@@ -56,8 +56,10 @@ var app = app || {};
         },
 
         logoutUser: function() {
-            app.currentUser.logout();
-            app.Router.navigate("login", {trigger: true});
+            app.currentUser.logout(function() {
+                app.headerView.render();
+                app.Router.navigate("login", {trigger: true});
+            });
         },
 
         goToProfile: function() {

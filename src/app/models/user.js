@@ -34,7 +34,7 @@ var app = app || {};
             })
         },
 
-        logout: function() {
+        logout: function(callback) {
             var that = this;
             $.ajax({
                 url : '/logout',
@@ -44,8 +44,7 @@ var app = app || {};
                 $.removeCookie('session');
                 that.clear();
                 that.initialize();
-                app.headerView.render();
-                app.loginView.render();
+                callback();
             }).fail(function(jqXHR, status) {
                 console.log("error while logging out", status);
             });
