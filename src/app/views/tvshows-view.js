@@ -69,13 +69,15 @@ var app = app || {};
                 }
             }
 
-            $('#modal-tvshow-title').text(episode.collectionName);
-            $('#modal-tvshow-epidode-title').text(episode.trackName);
 
             episode.artworkUrl100 = episode.artworkUrl100.replace("100x100", "600x600");
+            episode.trackTimeMin = Math.round(episode.trackTimeMillis / 60000);
 
+            $('#modal-tvshow-title').text(episode.collectionName);
+            $('#modal-tvshow-epidode-title').text(episode.trackName);
+            $('#modal-tvshow-epidode-time').text(episode.trackTimeMin + ' min');
+            document.getElementById('tvShowEpisodeModalBody').innerHTML = episode.shortDescription;
             document.getElementById('tvShowEpisodeModalContent').style.backgroundImage = 'url(' + episode.artworkUrl100 + ')';
-
 
             var timer = setInterval(checkGoogleLoaded, 100);
 
@@ -92,7 +94,7 @@ var app = app || {};
                 var request = app.getYoutubeRequestFromTitle(episodeTitle);
                 request.execute(function(response) {
                     var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
-                    $('#tvShowEpisodeModalBody').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
+                    document.getElementById('tvShowEpisodeModalBody').innerHTML += "<br><br><iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>";
                 });
             }
 
