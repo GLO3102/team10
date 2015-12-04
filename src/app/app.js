@@ -101,7 +101,7 @@ var app = app || {};
     app.actorsView = new app.ActorsView({el: '#main-container'});
 
     app.watchlistsView = new app.WatchlistsView({el: '#main-container'});
-})();;
+})();
 
 googleApiClientReady = function() {
     app.googleAPILoaded = true;

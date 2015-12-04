@@ -15,6 +15,9 @@ var app = app || {};
 
         initialize: function () {
             _.bindAll(this, 'render');
+            $("#login-form").submit(function(e){
+                e.preventDefault();
+            });
         },
 
         render: function () {
@@ -22,18 +25,20 @@ var app = app || {};
         },
 
         login: function() {
-            var userEmail = $("#input-email").val();
-            var userPassword = $("#input-password").val();
+            $('#login-form').parsley().on('form:success', function() {
+                var userEmail = $("#input-email").val();
+                var userPassword = $("#input-password").val();
 
-            var userModel = new app.User({name: userEmail, email: userEmail, password: userPassword});
+                var userModel = new app.User({name: userEmail, email: userEmail, password: userPassword});
 
-            userModel.login(function(data) {
-                userModel.name = data.name;
-                userModel.id = data.id;
-                app.currentUser = userModel;
-                app.headerView.render(userModel);
-                app.Router.navigate("", {trigger: true});
-            })
+                userModel.login(function(data) {
+                    userModel.name = data.name;
+                    userModel.id = data.id;
+                    app.currentUser = userModel;
+                    app.headerView.render(userModel);
+                    app.Router.navigate("", {trigger: true});
+                })
+            });
         },
 
         goToSubscription: function() {
