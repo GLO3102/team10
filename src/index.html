@@ -7,9 +7,9 @@
 
     <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/flat-ui.min.css">
+    <link rel="stylesheet" href="vendors/parsley.css">
     <link rel="stylesheet" href="static/fonts/octicons/octicons.css">
     <link rel="stylesheet" href="static/css/main.css">
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -20,6 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://sugarjs.com/release/current/sugar.min.js"></script>
     <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script src="vendors/parsley.min.js"></script>
 
     <script src="https://www.google.com/jsapi"></script>
 
@@ -470,44 +471,44 @@
 
 <script type="text/template" id="login-template">
     <div class="container col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-        <form class="form-signin">
+        <form id="login-form" class="form-signin" data-parsley-validate="">
             <h2 class="form-signin-heading">Login</h2>
 
             <label for="input-email" class="sr-only">Email</label>
-            <input id="input-email" class="form-control" placeholder="Email address" required autofocus>
+            <input id="input-email" type="email" class="form-control user-input" placeholder="Email address" required="" autofocus>
 
             <label for="input-password" class="sr-only">Password</label>
-            <input type="password" id="input-password" class="form-control" placeholder="Password" required>
+            <input type="password" id="input-password" class="form-control user-input" placeholder="Password" required="">
 
             <p id="error-message"></p>
 
-            <button id="btn-login-confirm" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
+            <button id="btn-login-confirm" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         </form>
 
-        <p>New to UMovie? Click <a href="index.html#subscribe">here</a> to subscribe.</p>
+        <p>New to UMovie? Click <a id="subscribe-link" class="link">here</a> to subscribe.</p>
     </div>
 </script>
 
 <script type="text/template" id="subscribe-template">
     <div class="container col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-        <form class="form-signin">
+        <form id="subscribe-form" class="form-signin" data-parsley-validate="">
             <h2 class="form-signin-heading">Subscribe</h2>
 
             <label for="input-name" class="sr-only">Name</label>
-            <input id="input-name" class="form-control" placeholder="Name" required autofocus>
+            <input id="input-name" class="form-control user-input" placeholder="Name" required="" autofocus>
 
             <label for="input-email" class="sr-only">Email</label>
-            <input id="input-email" class="form-control" placeholder="Email address" required autofocus>
+            <input type="email" id="input-email" class="form-control user-input" placeholder="Email address" required="" autofocus>
 
             <label for="input-password" class="sr-only">Password</label>
-            <input type="password" id="input-password" class="form-control" placeholder="Password" required>
+            <input type="password" id="input-password" class="form-control user-input" placeholder="Password" required="">
 
             <p id="error-message"></p>
 
-            <button id="btn-subscribe-confirm" class="btn btn-lg btn-primary btn-block" type="button">Subscribe</button>
+            <button id="btn-subscribe-confirm" class="btn btn-lg btn-primary btn-block" type="submit">Subscribe</button>
         </form>
 
-        <p>Already have an account? Click <a href="index.html#login">here</a> to login.</p>
+        <p>Already have an account? Click <a id="link-login" class="link">here</a> to login.</p>
     </div>
 </script>
 
