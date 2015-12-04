@@ -101,7 +101,7 @@ var app = app || {};
         },
 
         closePreview: function() {
-            $('#preview-modal-container').empty();
+            $('#tvShowEpisodeModalBody').empty();
         }
 
     });
