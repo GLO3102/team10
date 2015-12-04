@@ -336,12 +336,14 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>Information</th>
                             </tr>
                             </thead>
                             <tbody>
                             <% _.each(episodes, function(episode){ %>
                             <tr>
                                 <td><img class="img-poster-circle" src="<%- episode.artworkUrl100 %>"><%- episode.trackNumber %> - <%- episode.trackName %></td>
+                                <td><a class="btn btn-block btn-lg btn-primary previewButton" data-trackId="<%- episode.trackId %>" data-toggle="modal" data-target="#tvShowEpisodeModal">Info</a></td>
                             </tr>
                             <% }); %>
                             </tbody>
@@ -359,6 +361,28 @@
         </div>
     </div>
 </script>
+
+<!-- Modal -->
+<div id="tvShowEpisodeModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" id="tvShowEpisodeModalContent">
+            <div class="modal-header" id="tvShowEpisodeModalHeader">
+                <button type="button" class="close closePreview" data-dismiss="modal">&times;</button>
+                <h3 id="modal-tvshow-title"></h3>
+                <h4 id="modal-tvshow-epidode-title"></h4>
+            </div>
+            <div class="modal-body" id="tvShowEpisodeModalBody">
+                <!-- insert youtube preview here -->
+            </div>
+            <div class="modal-footer" id="tvShowEpisodeModalFooter">
+                <button type="button" class="btn btn-block btn-lg btn-primary closePreview" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <script type="text/template" id="watchlists-template">
     <div id="watchlists-container" class="container-fluid">

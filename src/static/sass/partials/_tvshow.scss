@@ -15,3 +15,12 @@
     display: none;
   }
 }
+
+#tvShowEpisodeModalHeader, #tvShowEpisodeModalBody, #tvShowEpisodeModalFooter {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+}
+
+#tvShowEpisodeModalBody {
+  background-size: cover;
+}

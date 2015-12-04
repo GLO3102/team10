@@ -31,9 +31,9 @@ var app = app || {};
         }
     };
 
-    app.getYoutubeRequestFromMovieTitle = function(movieTitle) {
+    app.getYoutubeRequestFromTitle = function(title) {
         return gapi.client.youtube.search.list({
-            q: movieTitle + "trailer",
+            q: title + " trailer",
             maxResults: 1,
             part: 'snippet',
             type: 'video'

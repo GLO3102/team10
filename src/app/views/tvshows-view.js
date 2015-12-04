@@ -10,6 +10,11 @@ var app = app || {};
             _.bindAll(this, 'render');
         },
 
+        events: {
+            "click .previewButton": "showPreview",
+            "click .closePreview": "closePreview"
+        },
+
         render: function (id) {
             var self = this;
             self.$el.html(self.template({tvshow: {}, episodes: {}}));
@@ -44,14 +49,59 @@ var app = app || {};
                 }
 
                 var searchOnYoutube = function() {
-                    var request = app.getYoutubeRequestFromMovieTitle(self.model.attributes.collectionName);
+                    var request = app.getYoutubeRequestFromTitle(self.model.attributes.collectionName);
                     request.execute(function(response) {
                         var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
                         $('#preview-container').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
                     });
                 };
             });
+        },
+
+        showPreview: function(event) {
+            var trackId = $(event.currentTarget).data('trackid');
+            var episode = {};
+
+            for (var i = 0; i < this.episodeCollection.models.length; ++i) {
+                if (this.episodeCollection.models[i].attributes.trackId == trackId) {
+                    episode = this.episodeCollection.models[i].attributes;
+                    break;
+                }
+            }
+
+            $('#modal-tvshow-title').text(episode.collectionName);
+            $('#modal-tvshow-epidode-title').text(episode.trackName);
+
+            episode.artworkUrl100 = episode.artworkUrl100.replace("100x100", "600x600");
+
+            document.getElementById('tvShowEpisodeModalContent').style.backgroundImage = 'url(' + episode.artworkUrl100 + ')';
+
+
+            var timer = setInterval(checkGoogleLoaded, 100);
+
+            function checkGoogleLoaded() {
+                if (app.googleAPILoaded) {
+                    clearTimeout(timer);
+                    gapi.client.setApiKey('AIzaSyB9-JmSKNRx3j6Rtenbxoc0aqw3-I0z8Tk');
+                    gapi.client.load('youtube', 'v3', searchOnYoutube)
+                }
+            }
+
+            function searchOnYoutube() {
+                var episodeTitle = episode.collectionName + ' ' + episode.trackName;
+                var request = app.getYoutubeRequestFromTitle(episodeTitle);
+                request.execute(function(response) {
+                    var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
+                    $('#tvShowEpisodeModalBody').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
+                });
+            }
+
+        },
+
+        closePreview: function() {
+            $('#preview-modal-container').empty();
         }
+
     });
 
 

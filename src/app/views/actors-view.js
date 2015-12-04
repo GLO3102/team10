@@ -50,7 +50,7 @@ var app = app || {};
 
             function searchOnYoutube() {
                 var movieTitle = $(event.currentTarget).data('trackname');
-                var request = app.getYoutubeRequestFromMovieTitle(movieTitle);
+                var request = app.getYoutubeRequestFromTitle(movieTitle);
                 request.execute(function(response) {
                     var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
                     $('#preview-modal-container').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");

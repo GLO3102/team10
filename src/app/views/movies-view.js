@@ -43,7 +43,7 @@ var app = app || {};
                 }
 
                 var searchOnYoutube = function() {
-                    var request = app.getYoutubeRequestFromMovieTitle(that.model.attributes.trackName);
+                    var request = app.getYoutubeRequestFromTitle(that.model.attributes.trackName);
                     request.execute(function(response) {
                         var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
                         $('#preview-container').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
