@@ -76,7 +76,7 @@ var app = app || {};
             $('#modal-tvshow-title').text(episode.collectionName);
             $('#modal-tvshow-epidode-title').text(episode.trackName);
             $('#modal-tvshow-epidode-time').text(episode.trackTimeMin + ' min');
-            document.getElementById('tvShowEpisodeModalBody').innerHTML = episode.shortDescription;
+            document.getElementById('tvShowEpisodeModalBody').innerHTML = episode.longDescription;
             document.getElementById('tvShowEpisodeModalContent').style.backgroundImage = 'url(' + episode.artworkUrl100 + ')';
 
             var timer = setInterval(checkGoogleLoaded, 100);
