@@ -58,13 +58,7 @@ var app = app || {};
         return !!token;
     };
 
-    if(app.isAuthenticated()) { //on app load, if token is still saved, create user associated with it
-        createUserFromToken();
-    }
-
-    app.headerView = new app.HeaderView();
-
-    function createUserFromToken() {
+    app.createUserFromToken = function() {
         $.ajax({
             url : '/tokenInfo',
             type : 'GET'
@@ -74,7 +68,13 @@ var app = app || {};
         }).fail(function(jqXHR, status) {
             console.log("error while logging out", status);
         });
+    };
+
+    if(app.isAuthenticated()) { //on app load, if token is still saved, create user associated with it
+        app.createUserFromToken();
     }
+
+    app.headerView = new app.HeaderView();
 
     app.homeView = new app.HomeView({el: '#main-container'});
     app.loginView = new app.LoginView();
