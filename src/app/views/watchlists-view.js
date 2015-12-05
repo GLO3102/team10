@@ -24,20 +24,36 @@ var app = app || {};
 
                 var currentRow = $('<div>').addClass('row');
 
-                _.each(self.watchlists.models, function(watchlist, index) {
+                var userWatchlists = [];
 
-                    var watchlistView = new app.WatchlistView({model: watchlist});
-                    watchlistView.on('watchlistRemoved', self.render, self);
-                    currentRow.append(watchlistView.render().el);
-
-                    if((index + 1) % 3 == 0)
-                    {
-                        $watchlistList.append(currentRow);
-                        currentRow = $('<div>').addClass('row');
+                self.watchlists.models.forEach(function(watchlist) {
+                    if (watchlist.attributes.owner) {
+                        if (watchlist.attributes.owner.id === app.currentUser.id) {
+                            userWatchlists.push(watchlist);
+                        }
                     }
                 });
 
-                $watchlistList.append(currentRow);
+                if (userWatchlists.length == 0) {
+                    var noWatchlistMessage = $('<h4>').text("You currently have no watchlist").addClass("text-center");
+                    currentRow.append(noWatchlistMessage);
+                    $watchlistList.append(currentRow);
+                } else {
+                    _.each(userWatchlists, function(watchlist, index) {
+
+                        var watchlistView = new app.WatchlistView({model: watchlist});
+                        watchlistView.on('watchlistRemoved', self.render, self);
+                        currentRow.append(watchlistView.render().el);
+
+                        if((index + 1) % 3 == 0)
+                        {
+                            $watchlistList.append(currentRow);
+                            currentRow = $('<div>').addClass('row');
+                        }
+                    });
+
+                    $watchlistList.append(currentRow);
+                }
             });
         },
 

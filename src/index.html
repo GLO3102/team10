@@ -566,11 +566,12 @@
                     <h4>No friend currently followed</h4>
                 <% } else { %>
                 <h4>Following</h4>
-                <table class="table table-striped movies-table">
+                <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Information</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -578,6 +579,7 @@
                         <tr>
                             <td><%= following.name %></td>
                             <td><%= following.email %></td>
+                            <td><a class="btn btn-block btn-lg btn-primary user-button" id="<%= following.email %>">More info</a></td>
                         </tr>
                         <% }); %>
                         </tbody>
@@ -587,8 +589,8 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <% if (!watchlists) { %>
-                    <h4>No current watchlist</h4>
+                <% if (watchlists.length == 0) { %>
+                    <h4>No watchlist created by this user</h4>
                 <% } else { %>
                     <h4>Watchlists</h4>
                     <table class="table table-striped movies-table">

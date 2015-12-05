@@ -22,7 +22,6 @@ var app = app || {};
         login: function(callback) {
             var userEmail = this.attributes['email'];
             var userPassword = this.attributes['password'];
-
             $.ajax({
                 url: "/login",
                 type: 'POST',
@@ -31,7 +30,6 @@ var app = app || {};
             }).done(function(data) {
                 $.cookie("session", data.token);
                 callback(data);
-                app.Router.navigate("", {trigger: true});
             }).fail(function(jqXHR, error) {
                 callback(jqXHR, error);
             })

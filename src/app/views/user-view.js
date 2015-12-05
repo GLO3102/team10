@@ -11,7 +11,8 @@ var app = app || {};
         },
 
         events: {
-            "click .watchlist-button": "openWatchlist"
+            "click .watchlist-button": "openWatchlist",
+            "click .user-button": "openUserPage"
         },
 
         render: function (id) {
@@ -62,6 +63,25 @@ var app = app || {};
 
                     document.getElementById('watchlist-modal-body').innerHTML += html;*/
                 }
+            });
+        },
+
+        openUserPage: function(e) {
+            var userEmail = e.currentTarget.id;
+
+            $.ajax({
+                url: "/users",
+                type: 'GET',
+                contentType: "application/json"
+            }).done(function(data) {
+                data.forEach(function(user) {
+                    if (user.email === userEmail) {
+                        app.Router.navigate("user/" + user.id, {trigger: true});
+                    }
+                })
+
+            }).fail(function(jqXHR, status) {
+                console.log(status);
             });
         }
     });
