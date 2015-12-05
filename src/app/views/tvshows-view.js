@@ -97,7 +97,6 @@ var app = app || {};
                 }
             }
 
-
             episode.artworkUrl100 = episode.artworkUrl100.replace("100x100", "600x600");
             episode.trackTimeMin = Math.round(episode.trackTimeMillis / 60000);
 

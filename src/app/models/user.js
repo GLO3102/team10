@@ -5,12 +5,16 @@ var app = app || {};
 
     app.User = Backbone.Model.extend({
         methodToURL: {
-            'create': '/signup'
+            'create': '/signup',
+            'read': '/users/'
         },
 
         sync: function(method, model, options) {
             options = options || {};
             options.url = model.methodToURL[method.toLowerCase()];
+            if (method === 'read') {
+                options.url += this.id;
+            }
 
             return Backbone.sync.apply(this, arguments);
         },
@@ -28,8 +32,8 @@ var app = app || {};
                 $.cookie("session", data.token);
                 callback(data);
                 app.Router.navigate("", {trigger: true});
-            }).fail(function(jqXHR, status) {
-                console.log("il n'est pas connecté");
+            }).fail(function(jqXHR, error) {
+                callback(jqXHR, error);
             })
         },
 
