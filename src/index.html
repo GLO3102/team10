@@ -21,7 +21,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://sugarjs.com/release/current/sugar.min.js"></script>
     <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
-
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
     <script src="https://www.google.com/jsapi"></script>
 
     <title>UMovie</title>
@@ -336,7 +336,7 @@
                     <div id="episodes" class="tab-pane fade">
                         <div class="form-group" id="search-episodes-container">
                             <div class="input-group">
-                                <input class="form-control" id="search-episodes-input" placeholder="Search" type="search">
+                                <input class="form-control" id="search-episodes-input" placeholder="Search..." type="search">
                             <span class="input-group-btn">
                                 <button type="submit" class="btn"><span class="fui-search"></span></button>
                             </span>
@@ -554,7 +554,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <h1><%= user.name %> <small>(<%= user.email %>)</small></h1>
+                <span>
+                    <img class="user-page-gravatar-img" src="<%= user.gravatar %>">
+                    <h1><%= user.name %> <small>(<%= user.email %>)</small></h1>
+                </span>
             </div>
         </div>
         <div class="row">

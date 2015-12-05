@@ -58,7 +58,7 @@ var app = app || {};
         return !!token;
     };
 
-    if(app.isAuthenticated()) {
+    if(app.isAuthenticated()) { //on app load, if token is still saved, create user associated with it
         createUserFromToken();
     }
 

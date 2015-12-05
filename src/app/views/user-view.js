@@ -21,6 +21,9 @@ var app = app || {};
             that.watchlists = new app.Watchlists();
 
             this.model.fetch().success(function() {
+                var hashedEmail = CryptoJS.MD5(that.model.attributes.email);
+                that.model.attributes.gravatar = "http://www.gravatar.com/avatar/" + hashedEmail + "?d=identicon";
+
                 that.$el.html(that.template({user: that.model.toJSON(), watchlists: {}}));
 
                 that.watchlists.fetch().complete(function() {
