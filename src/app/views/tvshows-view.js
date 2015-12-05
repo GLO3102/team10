@@ -44,7 +44,8 @@ var app = app || {};
         events: {
             "click .previewButton": "showPreview",
             "click .closePreview": "closePreview",
-            "keydown #search-episodes-input": "searchEpisodes"
+            "keydown #search-episodes-input": "searchEpisodes",
+            "blur #search-episodes-input": "checkClearSearch"
         },
 
         render: function (id) {
@@ -145,6 +146,14 @@ var app = app || {};
 
                 this.episodes.render(this.id, newCollection);
             } else {
+                this.episodes.render(this.id);
+            }
+        },
+
+        checkClearSearch: function() {
+            var q = $('#search-episodes-input').val().toLowerCase();
+
+            if (q.length == 0) {
                 this.episodes.render(this.id);
             }
         }
