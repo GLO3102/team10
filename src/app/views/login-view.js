@@ -32,15 +32,15 @@ var app = app || {};
                         var userEmail = $("#input-email").val();
                         var userPassword = $("#input-password").val();
 
-                        var userModel = new app.User({name: userEmail, email: userEmail, password: userPassword});
+                        var userModel = new app.User({email: userEmail, password: userPassword});
 
                         userModel.login(function(data, error) {
                             if(!error) {
                                 app.Router.navigate("", {trigger: true});
-                                userModel.name = data.name;
-                                userModel.id = data.id;
+                                userModel.attributes.name = data.name;
+                                userModel.attributes.id = data.id;
                                 app.currentUser = userModel;
-                                app.headerView.render(userModel);
+                                app.headerView.render();
                             } else {
                                 if(data.status === 401) {
                                     $('#error-message').text("Bad credentials").fadeOut(4000, function() {

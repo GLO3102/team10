@@ -25,11 +25,11 @@ var app = app || {};
             "click #logout": "logoutUser"
         },
 
-        render: function (currentUser) {
+        render: function () {
             var that = this;
 
-            if (currentUser) {
-                that.$el.html(that.template({user: currentUser.attributes}));
+            if (app.currentUser) {
+                that.$el.html(that.template({user: app.currentUser.attributes}));
             } else {
                 that.$el.html(that.template({user: ""}));
             }
@@ -63,7 +63,7 @@ var app = app || {};
         },
 
         goToProfile: function() {
-            app.Router.navigate("user/" + app.currentUser.id,  {trigger: true})
+            app.Router.navigate("user/" + app.currentUser.attributes.id,  {trigger: true})
         }
     });
 
