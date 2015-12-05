@@ -40,17 +40,16 @@ var app = app || {};
         });
     };
 
-    var imageSearch;
-    var actorModel;
+    app.getGoogleImageURLFromActorName = function(actorModel) {
+        var actorName = actorModel.attributes.artistName;
 
-    app.getGoogleImageURLFromActorName = function(model) {
-        actorModel = model;
+        var imageSearch = new google.search.ImageSearch();
 
-        var actorName = model.attributes.artistName;
+        console.log(imageSearch);
 
-        imageSearch = new google.search.ImageSearch();
-
-        imageSearch.setSearchCompleteCallback(this, searchComplete, null);
+        imageSearch.setSearchCompleteCallback(this, function() {
+            actorModel.attributes.imageURL = imageSearch.results[0].url;
+        }, null);
 
         imageSearch.execute(actorName);
     };
@@ -58,20 +57,12 @@ var app = app || {};
     app.isAuthenticated = function() {
         var token = $.cookie('session');
 
-        if (token) {
-            return true;
-        } else {
-            return false;
-        }
+        return !!token;
     };
 
     if(app.isAuthenticated()) {
         createUserFromToken();
     }
-
-    var searchComplete = function() {
-        actorModel.attributes.imageURL = imageSearch.results[0].url;
-    };
 
     app.headerView = new app.HeaderView();
 
@@ -101,6 +92,7 @@ var app = app || {};
     app.actorsView = new app.ActorsView({el: '#main-container'});
 
     app.watchlistsView = new app.WatchlistsView({el: '#main-container'});
+    app.userView = new app.UserView({el: '#main-container'})
 })();
 
 googleApiClientReady = function() {

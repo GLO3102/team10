@@ -5,12 +5,16 @@ var app = app || {};
 
     app.User = Backbone.Model.extend({
         methodToURL: {
-            'create': '/signup'
+            'create': '/signup',
+            'read': '/users/'
         },
 
         sync: function(method, model, options) {
             options = options || {};
             options.url = model.methodToURL[method.toLowerCase()];
+            if (method === 'read') {
+                options.url += this.id;
+            }
 
             return Backbone.sync.apply(this, arguments);
         },

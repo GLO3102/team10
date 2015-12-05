@@ -63,7 +63,7 @@ var app = app || {};
         },
 
         goToProfile: function() {
-
+            app.Router.navigate("user/" + app.currentUser.id,  {trigger: true})
         }
     });
 

@@ -17,7 +17,9 @@ var app = app || {};
             "tvshows": "tvshows",
             "tvshows/:id": "tvshows_with_id",
 
-            "watchlists": "watchlists"
+            "watchlists": "watchlists",
+
+            "user/:id": "user_with_id"
         }
     });
 
@@ -110,7 +112,14 @@ var app = app || {};
         }
     });
 
-
+    app.Router.on("route:user_with_id", function(id) {
+        if(app.isAuthenticated()) {
+            app.setActiveMenuButtonWithId("navbar-watchlists");
+            app.userView.render(id);
+        } else {
+            app.Router.navigate("login", {trigger: true});
+        }
+    });
 
     Backbone.history.start();
 })();
