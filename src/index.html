@@ -549,7 +549,7 @@
                 <% if (user.following.length == 0) { %>
                     <h4>No friend currently followed</h4>
                 <% } else { %>
-                <h4>Currently following</h4>
+                <h4>Following</h4>
                 <table class="table table-striped movies-table">
                         <thead>
                         <tr>
@@ -569,7 +569,47 @@
                 <% } %>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <% if (!watchlists) { %>
+                    <h4>No current watchlist</h4>
+                <% } else { %>
+                    <h4>Watchlists</h4>
+                    <table class="table table-striped movies-table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Information</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(watchlists, function(watchlist){ %>
+                        <tr>
+                            <td><%= watchlist.name %></td>
+                            <td><a class="btn btn-block btn-lg btn-primary watchlist-button" id="<%- watchlist.id %>" data-trackId="<%- watchlist.id %>" data-toggle="modal" data-target="#watchlist-modal">See movies</a></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                <% } %>
+            </div>
+        </div>
     </div>
+
+    <div id="watchlist-modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="panel-heading clearfix">
+                        <h6 id="watchlist-title"></h6>
+                    </div>
+                </div>
+                <div id="watchlist-modal-body" class="modal-body">
+                    <h4 id="watchlist-movies"></h4>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </script>
 
 <script src="app/models/episode.js"></script>
