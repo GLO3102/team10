@@ -40,7 +40,7 @@ var app = app || {};
                                 userModel.attributes.name = data.name;
                                 userModel.attributes.id = data.id;
                                 app.currentUser = userModel;
-                                app.headerView.render();
+                                app.headerView.render(userModel);
                             } else {
                                 if(data.status === 401) {
                                     $('#error-message').text("Bad credentials").fadeOut(4000, function() {

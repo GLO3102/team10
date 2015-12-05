@@ -25,11 +25,11 @@ var app = app || {};
             "click #logout": "logoutUser"
         },
 
-        render: function () {
+        render: function (currentUser) {
             var that = this;
 
-            if (app.currentUser) {
-                that.$el.html(that.template({user: app.currentUser.attributes}));
+            if (currentUser) {
+                that.$el.html(that.template({user: currentUser.attributes}));
             } else {
                 that.$el.html(that.template({user: ""}));
             }
