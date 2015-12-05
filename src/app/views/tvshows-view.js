@@ -151,7 +151,7 @@ var app = app || {};
         },
 
         checkClearSearch: function() {
-            var q = $('#search-episodes-input').val().toLowerCase();
+            var q = $('#search-episodes-input').val();
 
             if (q.length == 0) {
                 this.episodes.render(this.id);
