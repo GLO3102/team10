@@ -2,22 +2,56 @@ var app = app || {};
 
 (function ($) {
 
+    var episodesView = Backbone.View.extend({
+        template: _.template($('#tvshow-episodes-template').html()),
+
+        initialize: function () {
+            _.bindAll(this, 'render');
+        },
+
+        render: function (id, searchEpisodes) {
+            var that = this;
+
+            if (typeof searchEpisodes === 'undefined') {
+                this.episodeCollection = new app.Episodes();
+                this.episodeCollection.url = "/tvshows/season/" + id + "/episodes";
+
+                this.episodeCollection.fetch({parseModel: false}).complete(function() {
+                    $('#episodes-container').html(that.template({episodes: that.episodeCollection.toJSON()}));
+                    var firstEpisodeDate = new moment(that.episodeCollection.first().attributes.releaseDate);
+                    $('#first-episode').text(firstEpisodeDate.format("MMM Do YYYY"));
+                });
+            } else {
+                $('#episodes-container').html(that.template({episodes: searchEpisodes.toJSON()}));
+            }
+        },
+
+        getEpisodeCollection: function() {
+            return this.episodeCollection;
+        }
+    });
+
     app.TvShowsView = Backbone.View.extend({
 
         template: _.template($('#tvshows-template').html()),
 
         initialize: function () {
             _.bindAll(this, 'render');
+
+            this.episodes = new episodesView();
         },
 
         events: {
             "click .previewButton": "showPreview",
-            "click .closePreview": "closePreview"
+            "click .closePreview": "closePreview",
+            "keydown #search-episodes-input": "searchEpisodes"
         },
 
         render: function (id) {
             var self = this;
-            self.$el.html(self.template({tvshow: {}, episodes: {}}));
+            self.id = id;
+
+            self.$el.html(self.template({tvshow: {}}));
 
             self.model = new app.TvShow({id: id});
 
@@ -27,16 +61,10 @@ var app = app || {};
                 self.model.attributes.artworkUrl100 = self.model.attributes.artworkUrl100.replace("100x100", "600x600");
                 self.model.attributes.releaseDate = date.format("YYYY");
 
-                self.$el.html(self.template({tvshow: self.model.toJSON(), episodes: {}}));
+                self.$el.html(self.template({tvshow: self.model.toJSON()}));
 
-                self.episodeCollection = new app.Episodes();
-                self.episodeCollection.url = "/tvshows/season/" + self.model.id + "/episodes";
+                self.episodes.render(self.id);
 
-                self.episodeCollection.fetch({parseModel: false}).complete(function() {
-                    self.$el.html(self.template({tvshow: self.model.toJSON(), episodes: self.episodeCollection.toJSON()}));
-                    var firstEpisodeDate = new moment(self.episodeCollection.first().attributes.releaseDate);
-                    $('#first-episode').text(firstEpisodeDate.format("MMM Do YYYY"));
-                });
 
                 var timer = setInterval(checkGoogleLoaded, 300);
 
@@ -102,6 +130,24 @@ var app = app || {};
 
         closePreview: function() {
             $('#tvShowEpisodeModalBody').empty();
+        },
+
+        searchEpisodes: function() {
+            var q = $('#search-episodes-input').val().toLowerCase();
+
+            if (q.length > 0) {
+                var newCollection = new app.Episodes();
+                newCollection.models = this.episodes.getEpisodeCollection().models.slice();
+                for (var i = newCollection.models.length - 1; i >= 0 ; --i) {
+                    if (newCollection.models[i].attributes.trackName.toLowerCase().indexOf(q) == -1 && newCollection.models[i].attributes.longDescription.toLowerCase().indexOf(q) == -1) {
+                        newCollection.models.splice(i, 1);
+                    }
+                }
+
+                this.episodes.render(this.id, newCollection);
+            } else {
+                this.episodes.render(this.id);
+            }
         }
 
     });

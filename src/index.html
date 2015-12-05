@@ -332,7 +332,17 @@
                         <p><strong>First episode:</strong> <span id="first-episode"></span></p>
                         <a class="itunes-button" href="<%= tvshow.collectionViewUrl %>"></a>
                     </div>
+
                     <div id="episodes" class="tab-pane fade">
+                        <div class="form-group" id="search-episodes-container">
+                            <div class="input-group">
+                                <input class="form-control" id="search-episodes-input" placeholder="Search" type="search">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn" id="search-episodes-button"><span class="fui-search"></span></button>
+                            </span>
+                            </div>
+                        </div>
+
                         <table class="table table-striped movies-table">
                             <thead>
                             <tr>
@@ -340,14 +350,7 @@
                                 <th>Information</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <% _.each(episodes, function(episode){ %>
-                            <tr>
-                                <td><img class="img-poster-circle" src="<%- episode.artworkUrl100 %>"><%- episode.trackNumber %> - <%- episode.trackName %></td>
-                                <td><a class="btn btn-block btn-lg btn-primary previewButton" data-trackId="<%- episode.trackId %>" data-toggle="modal" data-target="#tvShowEpisodeModal">Info</a></td>
-                            </tr>
-                            <% }); %>
-                            </tbody>
+                            <tbody id="episodes-container"></tbody>
                         </table>
                     </div>
                     <div id="preview" class="tab-pane fade">
@@ -384,6 +387,16 @@
 
         </div>
     </div>
+</script>
+
+
+<script type="text/template" id="tvshow-episodes-template">
+    <% _.each(episodes, function(episode){ %>
+    <tr>
+        <td><img class="img-poster-circle" src="<%- episode.artworkUrl100 %>"><%- episode.trackNumber %> - <%- episode.trackName %></td>
+        <td><a class="btn btn-block btn-lg btn-primary previewButton" data-trackId="<%- episode.trackId %>" data-toggle="modal" data-target="#tvShowEpisodeModal">Info</a></td>
+    </tr>
+    <% }); %>
 </script>
 
 <script type="text/template" id="watchlists-template">
