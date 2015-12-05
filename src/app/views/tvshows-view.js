@@ -91,14 +91,16 @@ var app = app || {};
             var trackId = $(event.currentTarget).data('trackid');
             var episode = {};
 
-            for (var i = 0; i < this.episodeCollection.models.length; ++i) {
-                if (this.episodeCollection.models[i].attributes.trackId == trackId) {
-                    episode = this.episodeCollection.models[i].attributes;
+            var episodeCollection = this.episodes.getEpisodeCollection();
+
+            for (var i = 0; i < episodeCollection.models.length; ++i) {
+                if (episodeCollection.models[i].attributes.trackId == trackId) {
+                    episode = episodeCollection.models[i].attributes;
                     break;
                 }
             }
 
-            episode.artworkUrl100 = episode.artworkUrl100.replace("100x100", "600x600");
+            episode.artworkUrl100 = episode.artworkUrl100.replace("100x100", "700x700");
             episode.trackTimeMin = Math.round(episode.trackTimeMillis / 60000);
 
             $('#modal-tvshow-title').text(episode.collectionName);
