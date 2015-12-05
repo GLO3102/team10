@@ -15,9 +15,6 @@ var app = app || {};
 
         initialize: function () {
             _.bindAll(this, 'render');
-            $("#login-form").submit(function(e){
-                return false;
-            });
         },
 
         render: function () {
@@ -25,34 +22,39 @@ var app = app || {};
         },
 
         login: function() {
-            var htmlForm = $('#login-form');
+            $("#login-form").submit(function(e){
+                var htmlForm = $('#login-form');
 
-            if(htmlForm.length > 0) {
-                var form = htmlForm.parsley();
+                if(htmlForm.length > 0) {
+                    var form = htmlForm.parsley();
 
-                if(form.isValid()) {
-                    var userEmail = $("#input-email").val();
-                    var userPassword = $("#input-password").val();
+                    if(form.isValid()) {
+                        var userEmail = $("#input-email").val();
+                        var userPassword = $("#input-password").val();
 
-                    var userModel = new app.User({name: userEmail, email: userEmail, password: userPassword});
+                        var userModel = new app.User({name: userEmail, email: userEmail, password: userPassword});
 
-                    userModel.login(function(data, error) {
-                        if(!error) {
-                            userModel.name = data.name;
-                            userModel.id = data.id;
-                            app.currentUser = userModel;
-                            app.headerView.render(userModel);
-                            app.Router.navigate("", {trigger: true});
-                        } else {
-                            if(data.status === 401) {
-                                $('#error-message').text("Bad credentials").fadeOut(4000, function() {
-                                    $('#error-message').text('').show();
-                                });
+                        userModel.login(function(data, error) {
+                            if(!error) {
+                                app.Router.navigate("", {trigger: true});
+                                userModel.name = data.name;
+                                userModel.id = data.id;
+                                app.currentUser = userModel;
+                                app.headerView.render(userModel);
+                            } else {
+                                if(data.status === 401) {
+                                    $('#error-message').text("Bad credentials").fadeOut(4000, function() {
+                                        $('#error-message').text('').show();
+                                    });
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
                 }
-            }
+                return false; // prevents default POST on submit
+            });
+
+
         },
 
         goToSubscription: function() {
