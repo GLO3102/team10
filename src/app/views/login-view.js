@@ -53,8 +53,6 @@ var app = app || {};
                 }
                 return false; // prevents default POST on submit
             });
-
-
         },
 
         goToSubscription: function() {
