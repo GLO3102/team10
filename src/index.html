@@ -499,13 +499,13 @@
         <form id="login-form" class="form-signin">
             <h2 class="form-signin-heading">Login</h2>
 
+            <p id="error-message"></p>
+
             <label for="input-email" class="sr-only">Email</label>
             <input id="input-email" type="email" class="form-control user-input" placeholder="Email address" data-parsley-trigger="change" required="" autofocus>
 
             <label for="input-password" class="sr-only">Password</label>
             <input type="password" id="input-password" class="form-control user-input" placeholder="Password" data-parsley-trigger="change" required="">
-
-            <p id="error-message"></p>
 
             <button id="btn-login-confirm" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         </form>
@@ -519,6 +519,8 @@
         <form id="subscribe-form" class="form-signin">
             <h2 class="form-signin-heading">Subscribe</h2>
 
+            <p id="error-message"></p>
+
             <label for="input-name" class="sr-only">Name</label>
             <input id="input-name" class="form-control user-input" placeholder="Name" data-parsley-trigger="change" required="" autofocus>
 
@@ -527,8 +529,6 @@
 
             <label for="input-password" class="sr-only">Password</label>
             <input type="password" id="input-password" class="form-control user-input" placeholder="Password" data-parsley-trigger="change" required="">
-
-            <p id="error-message"></p>
 
             <button id="btn-subscribe-confirm" class="btn btn-lg btn-primary btn-block" type="submit">Subscribe</button>
         </form>

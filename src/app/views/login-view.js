@@ -36,12 +36,20 @@ var app = app || {};
 
                     var userModel = new app.User({name: userEmail, email: userEmail, password: userPassword});
 
-                    userModel.login(function(data) {
-                        userModel.name = data.name;
-                        userModel.id = data.id;
-                        app.currentUser = userModel;
-                        app.headerView.render(userModel);
-                        app.Router.navigate("", {trigger: true});
+                    userModel.login(function(data, error) {
+                        if(!error) {
+                            userModel.name = data.name;
+                            userModel.id = data.id;
+                            app.currentUser = userModel;
+                            app.headerView.render(userModel);
+                            app.Router.navigate("", {trigger: true});
+                        } else {
+                            if(data.status === 401) {
+                                $('#error-message').text("Bad credentials").fadeOut(4000, function() {
+                                    $('#error-message').text('').show();
+                                });
+                            }
+                        }
                     })
                 }
             }

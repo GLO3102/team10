@@ -41,7 +41,7 @@ var app = app || {};
                     userModel.save({contentType: "application/x-www-form-urlencoded"}, {
                         success: function (model) {
                             setTimeout(function () {
-                                $("#btn-subscribe-confirm").prop('disabled', true);
+                                $("#btn-subscribe-confirm").prop('disabled', false);
                                 model.login(function () {
                                     app.currentUser = userModel;
                                     app.Router.navigate("", {trigger: true});
@@ -51,8 +51,12 @@ var app = app || {};
                         },
 
                         error: function (model, response) {
-                            $("#btn-subscribe-confirm").prop('disabled', true);
-                            console.log("could not subscribe", response);
+                            $("#btn-subscribe-confirm").prop('disabled', false);
+                            if(response.status === 500) {
+                                $('#error-message').text("Email address already taken").fadeOut(4000, function() {
+                                    $('#error-message').text('').show();
+                                });
+                            }
                         }
                     });
                 }

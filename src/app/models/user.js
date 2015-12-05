@@ -32,8 +32,8 @@ var app = app || {};
                 $.cookie("session", data.token);
                 callback(data);
                 app.Router.navigate("", {trigger: true});
-            }).fail(function(jqXHR, status) {
-                console.log("il n'est pas connecté");
+            }).fail(function(jqXHR, error) {
+                callback(jqXHR, error);
             })
         },
 
