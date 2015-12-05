@@ -15,6 +15,8 @@ var app = app || {};
 
             that.model = new app.User({id: id});
 
+            console.log($.cookie("session"));
+
             this.model.fetch().success(function() {
                 that.$el.html(that.template({user: that.model.toJSON()}));
             });

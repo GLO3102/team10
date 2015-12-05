@@ -45,8 +45,6 @@ var app = app || {};
 
         var imageSearch = new google.search.ImageSearch();
 
-        console.log(imageSearch);
-
         imageSearch.setSearchCompleteCallback(this, function() {
             actorModel.attributes.imageURL = imageSearch.results[0].url;
         }, null);

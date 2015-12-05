@@ -541,7 +541,32 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <h1><%= user.name %></h1>
+                <h1><%= user.name %> <small>(<%= user.email %>)</small></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <% if (user.following.length == 0) { %>
+                    <h4>No friend currently followed</h4>
+                <% } else { %>
+                <h4>Currently following</h4>
+                <table class="table table-striped movies-table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(user.following, function(following){ %>
+                        <tr>
+                            <td><%= following.name %></td>
+                            <td><%= following.email %></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                <% } %>
             </div>
         </div>
     </div>
