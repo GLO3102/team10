@@ -38,8 +38,6 @@ var app = app || {};
                         }
                     });
 
-                    console.log(userWatchlists);
-
                     that.$el.html(that.template({user: that.model.toJSON(), watchlists: userWatchlists}));
                 });
             });

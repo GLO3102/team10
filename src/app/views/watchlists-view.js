@@ -24,7 +24,17 @@ var app = app || {};
 
                 var currentRow = $('<div>').addClass('row');
 
-                _.each(self.watchlists.models, function(watchlist, index) {
+                var userWatchlists = [];
+
+                self.watchlists.models.forEach(function(watchlist) {
+                    if (watchlist.attributes.owner) {
+                        if (watchlist.attributes.owner.id === app.currentUser.id) {
+                            userWatchlists.push(watchlist);
+                        }
+                    }
+                });
+
+                _.each(userWatchlists, function(watchlist, index) {
 
                     var watchlistView = new app.WatchlistView({model: watchlist});
                     watchlistView.on('watchlistRemoved', self.render, self);
