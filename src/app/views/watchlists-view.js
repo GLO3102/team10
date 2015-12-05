@@ -34,20 +34,26 @@ var app = app || {};
                     }
                 });
 
-                _.each(userWatchlists, function(watchlist, index) {
+                if (userWatchlists.length == 0) {
+                    var noWatchlistMessage = $('<h4>').text("You currently have no watchlist").addClass("text-center");
+                    currentRow.append(noWatchlistMessage);
+                    $watchlistList.append(currentRow);
+                } else {
+                    _.each(userWatchlists, function(watchlist, index) {
 
-                    var watchlistView = new app.WatchlistView({model: watchlist});
-                    watchlistView.on('watchlistRemoved', self.render, self);
-                    currentRow.append(watchlistView.render().el);
+                        var watchlistView = new app.WatchlistView({model: watchlist});
+                        watchlistView.on('watchlistRemoved', self.render, self);
+                        currentRow.append(watchlistView.render().el);
 
-                    if((index + 1) % 3 == 0)
-                    {
-                        $watchlistList.append(currentRow);
-                        currentRow = $('<div>').addClass('row');
-                    }
-                });
+                        if((index + 1) % 3 == 0)
+                        {
+                            $watchlistList.append(currentRow);
+                            currentRow = $('<div>').addClass('row');
+                        }
+                    });
 
-                $watchlistList.append(currentRow);
+                    $watchlistList.append(currentRow);
+                }
             });
         },
 
