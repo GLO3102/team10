@@ -44,6 +44,7 @@ var app = app || {};
                                 $("#btn-subscribe-confirm").prop('disabled', false);
                                 model.login(function () {
                                     app.currentUser = userModel;
+
                                     app.Router.navigate("", {trigger: true});
                                     app.headerView.render(model);
                                 });

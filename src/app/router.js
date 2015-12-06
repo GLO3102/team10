@@ -34,7 +34,7 @@ var app = app || {};
         if(app.isAuthenticated()) {
             app.Router.navigate("", {trigger: true});
         } else {
-            app.setActiveMenuButtonWithId("navbar-home");
+            app.setActiveMenuButtonWithId("navbar-login");
             app.loginView.render();
         }
     });
@@ -43,7 +43,7 @@ var app = app || {};
         if(app.isAuthenticated()) {
             app.Router.navigate("", {trigger: true});
         } else {
-            app.setActiveMenuButtonWithId("navbar-home");
+            app.setActiveMenuButtonWithId("navbar-login");
             app.subscribeView.render();
         }
     });
@@ -114,7 +114,7 @@ var app = app || {};
 
     app.Router.on("route:user_with_id", function(id) {
         if(app.isAuthenticated()) {
-            app.setActiveMenuButtonWithId("navbar-watchlists");
+            app.setActiveMenuButtonWithId();
             app.userView.render(id);
         } else {
             app.Router.navigate("login", {trigger: true});

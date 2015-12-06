@@ -29,6 +29,7 @@ var app = app || {};
             var that = this;
 
             if (currentUser) {
+                app.currentUser.attributes.gravatar = app.getGravatarFromEmail(app.currentUser.attributes.email);
                 that.$el.html(that.template({user: currentUser.attributes}));
             } else {
                 that.$el.html(that.template({user: ""}));
@@ -63,7 +64,7 @@ var app = app || {};
         },
 
         goToProfile: function() {
-            app.Router.navigate("user/" + app.currentUser.id,  {trigger: true})
+            app.Router.navigate("user/" + app.currentUser.attributes.id,  {trigger: true})
         }
     });
 

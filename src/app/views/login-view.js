@@ -22,7 +22,7 @@ var app = app || {};
         },
 
         login: function() {
-            $("#login-form").submit(function(e){
+            $("#login-form").submit(function(e) {
                 var htmlForm = $('#login-form');
 
                 if(htmlForm.length > 0) {
@@ -32,14 +32,15 @@ var app = app || {};
                         var userEmail = $("#input-email").val();
                         var userPassword = $("#input-password").val();
 
-                        var userModel = new app.User({name: userEmail, email: userEmail, password: userPassword});
+                        var userModel = new app.User({email: userEmail, password: userPassword});
 
                         userModel.login(function(data, error) {
                             if(!error) {
-                                app.Router.navigate("", {trigger: true});
-                                userModel.name = data.name;
-                                userModel.id = data.id;
+                                userModel.attributes.name = data.name;
+                                userModel.attributes.id = data.id;
                                 app.currentUser = userModel;
+
+                                app.Router.navigate("", {trigger: true});
                                 app.headerView.render(userModel);
                             } else {
                                 if(data.status === 401) {
@@ -53,8 +54,6 @@ var app = app || {};
                 }
                 return false; // prevents default POST on submit
             });
-
-
         },
 
         goToSubscription: function() {
