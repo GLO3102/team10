@@ -140,7 +140,7 @@ var app = app || {};
                 var newCollection = new app.Episodes();
                 newCollection.models = this.episodes.getEpisodeCollection().models.slice();
                 for (var i = newCollection.models.length - 1; i >= 0 ; --i) {
-                    if (newCollection.models[i].attributes.trackName.toLowerCase().indexOf(q) == -1 && newCollection.models[i].attributes.longDescription.toLowerCase().indexOf(q) == -1) {
+                    if (newCollection.models[i].attributes.trackName.toLowerCase().indexOf(q) == -1) {
                         newCollection.models.splice(i, 1);
                     }
                 }
