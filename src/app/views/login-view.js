@@ -22,7 +22,7 @@ var app = app || {};
         },
 
         login: function() {
-            $("#login-form").submit(function(e){
+            $("#login-form").submit(function(e) {
                 var htmlForm = $('#login-form');
 
                 if(htmlForm.length > 0) {
@@ -36,10 +36,12 @@ var app = app || {};
 
                         userModel.login(function(data, error) {
                             if(!error) {
-                                app.Router.navigate("", {trigger: true});
                                 userModel.attributes.name = data.name;
                                 userModel.attributes.id = data.id;
                                 app.currentUser = userModel;
+                                app.currentUser.attributes.gravatar = app.getGravatarFromEmail(app.currentUser.attributes.email);
+
+                                app.Router.navigate("", {trigger: true});
                                 app.headerView.render(userModel);
                             } else {
                                 if(data.status === 401) {

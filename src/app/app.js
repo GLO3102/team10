@@ -58,12 +58,19 @@ var app = app || {};
         return !!token;
     };
 
+    app.getGravatarFromEmail = function(email) {
+        var hashedEmail = CryptoJS.MD5(email);
+        return "http://www.gravatar.com/avatar/" + hashedEmail + "?d=identicon";
+    };
+
     app.createUserFromToken = function() {
         $.ajax({
             url : '/tokenInfo',
             type : 'GET'
         }).done(function(data) {
             app.currentUser = new app.User({name: data.name, email: data.email, id: data.id});
+            app.currentUser.attributes.gravatar = app.getGravatarFromEmail(data.email);
+
             app.headerView.render(app.currentUser);
         }).fail(function(jqXHR, status) {
             console.log("error while logging out", status);

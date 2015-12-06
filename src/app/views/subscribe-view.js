@@ -44,6 +44,9 @@ var app = app || {};
                                 $("#btn-subscribe-confirm").prop('disabled', false);
                                 model.login(function () {
                                     app.currentUser = userModel;
+                                    app.currentUser.attributes.gravatar = app.getGravatarFromEmail(app.currentUser.attributes.email);
+
+
                                     app.Router.navigate("", {trigger: true});
                                     app.headerView.render(model);
                                 });
