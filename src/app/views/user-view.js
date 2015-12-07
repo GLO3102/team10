@@ -44,26 +44,11 @@ var app = app || {};
         },
 
         openWatchlist: function(e) {
-            var that = this;
+            var watchlistView = new app.UserWatchlistView();
 
             var watchlistId = e.currentTarget.id;
-            that.watchlist = new app.Watchlist({id: watchlistId});
 
-            that.watchlist.fetch().complete(function() {
-                $("#watchlist-title").text(that.watchlist.attributes.name);
-
-                if (that.watchlist.attributes.movies.length === 0) {
-                    $("#watchlist-movies").text("There are no movies in this watchlist");
-                } else {
-                    $("#watchlist-movies").text("Movies");
-
-                    /*var html = "<table class='table table-striped movies-table'><thead><tr><th>Name</th><th>Information</th></tr></thead><tbody><tr><td>Bingo</td><td>Allo</td></tr></tbody></table>";
-
-                    console.log(html);
-
-                    document.getElementById('watchlist-modal-body').innerHTML += html;*/
-                }
-            });
+            watchlistView.render(watchlistId);
         },
 
         openUserPage: function(e) {

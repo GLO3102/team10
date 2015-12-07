@@ -612,20 +612,36 @@
         </div>
     </div>
 
-    <div id="watchlist-modal" class="modal fade">
-        <div class="modal-dialog">
+    <div id="watchlist-modal" class="modal fade"></div>
+</script>
+
+<script type="text/template" id="user-watchlist-template">
+     <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="panel-heading clearfix">
-                        <h6 id="watchlist-title"></h6>
+                        <h6 id="watchlist-title"><%- watchlist.name %></h6>
                     </div>
                 </div>
                 <div id="watchlist-modal-body" class="modal-body">
-                    <h4 id="watchlist-movies"></h4>
+                    <% if (watchlist.movies.length == 0) { %>
+                        <h4>No movies in this watchlist</h4>
+                    <% } else { %>
+                        <h5>Movies</h5>
+                        <table class="table table-striped">
+                            <tbody>
+                            <% _.each(watchlist.movies, function(movie){ %>
+                            <tr>
+                                <td><img class="img-poster-circle-small" src="<%- movie.artworkUrl100 %>"></td>
+                                <td><%= movie.trackName %></td>
+                            </tr>
+                            <% }); %>
+                            </tbody>
+                        </table>
+                    <% } %>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div>
+        </div>
 </script>
 
 <script src="app/models/episode.js"></script>
@@ -659,6 +675,7 @@
 <script src="app/views/watchlists-view.js"></script>
 
 <script src="app/views/user-view.js"></script>
+<script src="app/views/user-watchlist-view.js"></script>
 
 <script src="app/app.js"></script>
 
