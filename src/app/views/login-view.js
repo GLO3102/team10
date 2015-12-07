@@ -18,6 +18,7 @@ var app = app || {};
         },
 
         render: function () {
+            app.headerView.render("");
             this.$el.html(this.template());
         },
 

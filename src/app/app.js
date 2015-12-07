@@ -31,6 +31,10 @@ var app = app || {};
         }
     };
 
+    app.setActiveLoginMenuButton = function() {
+        $("#navbar-login-button").addClass("active");
+    };
+
     app.getYoutubeRequestFromTitle = function(title) {
         return gapi.client.youtube.search.list({
             q: title + " trailer",

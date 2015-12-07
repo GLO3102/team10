@@ -32,16 +32,16 @@ var app = app || {};
 
     app.Router.on("route:login", function() {
         if(app.isAuthenticated()) {
-            app.Router.navigate("", {trigger: true});
+            app.Router.navigate("", {trigger: true}); // cant login twice
         } else {
-            app.setActiveMenuButtonWithId("navbar-login");
             app.loginView.render();
+            app.setActiveMenuButtonWithId("navbar-login");
         }
     });
 
     app.Router.on("route:subscribe", function() {
         if(app.isAuthenticated()) {
-            app.Router.navigate("", {trigger: true});
+            app.Router.navigate("", {trigger: true}); // cant subscribe twice
         } else {
             app.setActiveMenuButtonWithId("navbar-login");
             app.subscribeView.render();
