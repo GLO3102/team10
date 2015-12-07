@@ -38,9 +38,7 @@ var app = app || {};
                             }
                         }
                     });
-
-                    console.log(userWatchlists);
-
+                    
                     that.$el.html(that.template({movie: that.model.toJSON(), watchlists: userWatchlists}));
                 });
 
