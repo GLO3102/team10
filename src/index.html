@@ -554,7 +554,14 @@
             <div class="col-xs-12">
                 <span>
                     <img class="user-page-gravatar-img" src="<%= user.gravatar %>">
-                    <h1><%= user.name %> <small>(<%= user.email %>)</small></h1>
+                    <h1><%= user.name %> </h1>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span>
+                    <h3 id="user-email"><small>(<%= user.email %>)</small></h3>
                 </span>
             </div>
         </div>
@@ -569,7 +576,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Information</th>
+                            <th>Info</th>
                         </tr>
                         </thead>
                         <tbody>

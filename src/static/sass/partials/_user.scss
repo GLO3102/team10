@@ -1,0 +1,10 @@
+#user-email {
+  margin-top: 0;
+}
+
+@media (max-width: $screen-xs-max) {
+  .user-button {
+    padding-right: 10px !important;
+    padding-left: 10px;
+  }
+}
