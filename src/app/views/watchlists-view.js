@@ -28,7 +28,7 @@ var app = app || {};
 
                 self.watchlists.models.forEach(function(watchlist) {
                     if (watchlist.attributes.owner) {
-                        if (watchlist.attributes.owner.id === app.currentUser.id) {
+                        if (watchlist.attributes.owner.id === app.currentUser.attributes.id) {
                             userWatchlists.push(watchlist);
                         }
                     }
