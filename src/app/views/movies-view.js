@@ -29,7 +29,19 @@ var app = app || {};
                 that.$el.html(that.template({movie: that.model.toJSON(), watchlists: {}}));
 
                 that.watchlists.fetch().complete(function() {
-                    that.$el.html(that.template({movie: that.model.toJSON(), watchlists: that.watchlists.toJSON()}));
+                    var userWatchlists = [];
+
+                    that.watchlists.toJSON().forEach(function(watchlist) {
+                        if (watchlist.owner) {
+                            if (watchlist.owner.id === app.currentUser.attributes.id) {
+                                userWatchlists.push(watchlist);
+                            }
+                        }
+                    });
+
+                    console.log(userWatchlists);
+
+                    that.$el.html(that.template({movie: that.model.toJSON(), watchlists: userWatchlists}));
                 });
 
                 var timer = setInterval(checkGoogleLoaded, 300);
