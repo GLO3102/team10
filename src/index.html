@@ -767,7 +767,7 @@
                     <tbody>
                     <% _.each(users, function(user){ %>
                     <tr>
-                        <td><%= user.name %></td>
+                        <td><a href="#user/<%- user.id %>"><%= user.name %></a></td>
                         <td><%= user.email %></td>
                         <td><button class="btn btn-default">Follow</button></td>
                     </tr>

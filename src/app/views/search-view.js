@@ -33,8 +33,6 @@ var app = app || {};
             data.category = !!data.category ? data.category : 'all';
             data.searchText = !!data.searchText ? data.searchText : '';
 
-            console.log(data);
-
             this.$el.html(this.template(data));
         },
 
