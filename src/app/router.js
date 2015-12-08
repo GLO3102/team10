@@ -18,7 +18,7 @@ var app = app || {};
             "tvshows/:id": "tvshows_with_id",
 
             "watchlists": "watchlists",
-
+            "search": "search",
             "user/:id": "user_with_id"
         }
     });
@@ -107,6 +107,15 @@ var app = app || {};
         if(app.isAuthenticated()) {
             app.setActiveMenuButtonWithId("navbar-watchlists");
             app.watchlistsView.render();
+        } else {
+            app.Router.navigate("login", {trigger: true});
+        }
+    });
+
+    app.Router.on("route:search", function() {
+        if(app.isAuthenticated()) {
+            app.setActiveMenuButtonWithId("navbar-search");
+            app.searchView.render();
         } else {
             app.Router.navigate("login", {trigger: true});
         }

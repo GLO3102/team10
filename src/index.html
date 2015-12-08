@@ -52,14 +52,15 @@
                     <li><a id="navbar-actors">Actors</a></li>
                     <li><a id="navbar-tvshows">TV Shows</a></li>
                     <li><a id="navbar-watchlists">Watchlists</a></li>
+                    <li><a id="navbar-search">Search</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="navbar-form navbar-left" id="search-form" type="search">
                         <div class="form-group">
                             <div class="input-group">
-                                <input class="form-control" placeholder="Search" type="search">
+                                <input class="form-control" placeholder="Search" type="search" id="global-search-text">
                                     <span class="input-group-btn">
-                                        <button type="submit" class="btn"><span class="fui-search"></span></button>
+                                    <button type="submit" class="btn" id="global-search"><span class="fui-search"></span></button>
                                     </span>
                             </div>
                         </div>
@@ -651,6 +652,134 @@
         </div>
 </script>
 
+<script type="text/template" id="search-template">
+    <div id="search-container" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label class="radio-inline">
+                        <input type="radio" name="search-category" value="all" <% if(category === 'all') {%>checked<% } %>>All
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="search-category" value="movie" <% if(category === 'movies') {%>checked<% } %>>Movie
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="search-category" value="tvshow" <% if(category === 'tvshows') {%>checked<% } %>>TV Show
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="search-category" value="actor" <% if(category === 'actors') {%>checked<% } %>>Actor
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="search-category" value="user" <% if(category === 'users') {%>checked<% } %>>User
+                    </label>
+                    <input type="text" class="form-control" placeholder="Search..." id="search-text" value="<%= searchText %>">
+                    <button class="btn btn-lg btn-primary btn-block" id="search-button"><span class="fui-search"></span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <ul class="nav nav-pills">
+                <% if(hasMovies) { %><li role="presentation" class="<% if(activeTab === 'movies'){ %> active <% } %>"> <a href="#movies-results" data-toggle="pill" aria-controls="movies-results" rolf="pill">Movies</a></li> <% } %>
+                <% if(hasTvShows) { %><li role="presentation" class="<% if(activeTab === 'tvshows'){ %> active <% } %>"><a href="#tvshows-results" data-toggle="pill">TV Shows</a></li> <% } %>
+                <% if(hasActors) { %><li role="presentation" class="<% if(activeTab === 'actors'){ %> active <% } %>"><a href="#actors-results" data-toggle="pill">Actors</a></li> <% } %>
+                <% if(hasUsers) { %><li role="presentation" class="<% if(activeTab === 'users'){ %> active <% } %>"><a href="#users-results" data-toggle="pill">Users</a></li> <% } %>
+            </ul>
+        </div>
+
+        <div class="row tab-content">
+            <% if(activeTab === 'none') { %> No results. <% } %>
+            <% if(hasMovies) { %>
+            <div role="tabpanel" id="movies-results" class="tab-pane tab-pane-table <% if(activeTab === 'movies'){ %> active <% } %>">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="main-column">Name</th>
+                        <th>Genre</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(movies, function(movie){ %>
+                    <tr>
+                        <td><img class="img-poster-circle" src="<%- movie.artworkUrl100 %>"><a href="#movies/<%- movie.trackId %>"><%- movie.trackName %></a></td>
+                        <td><%= movie.primaryGenreName %></td>
+                        <td><button class="btn btn-default">Add to watchlists</button></td>
+                    </tr>
+                    <% }); %>
+                    </tbody>
+                </table>
+            </div>
+            <% } %>
+
+            <% if(hasTvShows) { %>
+            <div role="tabpanel" id="tvshows-results" class="tab-pane tab-pane-table <% if(activeTab === 'tvshows'){ %> active <% } %>">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="main-column">Name</th>
+                        <th>Genre</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(tvshows, function(tvshow){ %>
+                    <tr>
+                        <td><img class="img-poster-circle" src="<%- tvshow.artworkUrl100 %>"><a href="#tvshows/<%- tvshow.collectionId %>"><%- tvshow.collectionName %></a></td>
+                        <td><%= tvshow.primaryGenreName %></td>
+                    </tr>
+                    <% }); %>
+                    </tbody>
+                </table>
+            </div>
+            <% } %>
+
+            <% if(hasActors) { %>
+            <div role="tabpanel" id="actors-results" class="tab-pane tab-pane-table <% if(activeTab === 'actors'){ %> active <% } %>">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="main-column">Name</th>
+                        <th>Genre</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(actors, function(actor){ %>
+                    <tr>
+                        <td><img class="img-poster-circle" src="<%- actor.artworkUrl100 %>"><a href="#actors/<%- actor.artistId %>"><%- actor.artistName %></a></td>
+                        <td><%= actor.primaryGenreName %></td>
+                    </tr>
+                    <% }); %>
+                    </tbody>
+                </table>
+            </div>
+            <% } %>
+
+            <% if(hasUsers) { %>
+            <div role="tabpanel" id="users-results" class="tab-pane tab-pane-table <% if(activeTab === 'users'){ %> active <% } %>">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="main-column">Name</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(users, function(user){ %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><button class="btn btn-default">Follow</button></td>
+                    </tr>
+                    <% }); %>
+                    </tbody>
+                </table>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</script>
+
 <script src="app/models/episode.js"></script>
 <script src="app/models/actor.js"></script>
 <script src="app/models/movie.js"></script>
@@ -662,6 +791,8 @@
 <script src="app/collections/movies.js"></script>
 <script src="app/collections/users.js"></script>
 <script src="app/collections/watchlists.js"></script>
+<script src="app/collections/actors.js"></script>
+<script src="app/collections/tvshows.js"></script>
 
 <script src="app/views/header-view.js"></script>
 <script src="app/views/home-view.js"></script>
@@ -680,6 +811,8 @@
 <script src="app/views/watchlist-movie-view.js"></script>
 <script src="app/views/watchlist-view.js"></script>
 <script src="app/views/watchlists-view.js"></script>
+
+<script src="app/views/search-view.js"></script>
 
 <script src="app/views/user-view.js"></script>
 <script src="app/views/user-watchlist-view.js"></script>

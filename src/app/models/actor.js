@@ -5,9 +5,13 @@ var app = app || {};
     app.Actor = Backbone.Model.extend({
         urlRoot: "/actors",
 
-        parse: function(response)
+        parse: function(response, options)
         {
-            return response.results[0];
+            if(options.parseModel === false || !response.results) {
+                return response;
+            } else {
+                return response.results[0];
+            }
         }
     });
 

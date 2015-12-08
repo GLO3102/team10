@@ -20,9 +20,11 @@ var app = app || {};
             "click #navbar-tvshows": "goToTvShows",
             "click #navbar-watchlists": "goToWatchlists",
             "click #navbar-actors": "goToActors",
+            "click #navbar-search": "goToSearch",
 
             "click #profile": "goToProfile",
-            "click #logout": "logoutUser"
+            "click #logout": "logoutUser",
+            "click #global-search": "search"
         },
 
         render: function (currentUser) {
@@ -64,7 +66,18 @@ var app = app || {};
         },
 
         goToProfile: function() {
-            app.Router.navigate("user/" + app.currentUser.attributes.id,  {trigger: true})
+            app.Router.navigate("user/" + app.currentUser.attributes.id,  {trigger: true});
+
+        },
+
+        goToSearch: function() {
+            app.Router.navigate("search", {trigger: true});
+        },
+
+        search: function() {
+            var searchText = this.$('#global-search-text').val();
+            app.Router.navigate("search",  {trigger: true});
+            app.searchView.searchGlobal(searchText);
         }
     });
 

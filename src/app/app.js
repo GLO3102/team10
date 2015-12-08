@@ -99,7 +99,8 @@ var app = app || {};
     app.actorsView = new app.ActorsView({el: '#main-container'});
 
     app.watchlistsView = new app.WatchlistsView({el: '#main-container'});
-    app.userView = new app.UserView({el: '#main-container'})
+    app.searchView = new app.SearchView({el: '#main-container'});
+    app.userView = new app.UserView({el: '#main-container'});
 })();
 
 googleApiClientReady = function() {
