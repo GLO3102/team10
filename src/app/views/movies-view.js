@@ -38,7 +38,7 @@ var app = app || {};
                             }
                         }
                     });
-                    
+
                     that.$el.html(that.template({movie: that.model.toJSON(), watchlists: userWatchlists}));
                 });
 

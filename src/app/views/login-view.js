@@ -39,6 +39,7 @@ var app = app || {};
                             if(!error) {
                                 userModel.attributes.name = data.name;
                                 userModel.attributes.id = data.id;
+                                userModel.attributes.following = data.following;
                                 app.currentUser = userModel;
 
                                 app.Router.navigate("", {trigger: true});

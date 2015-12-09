@@ -3,6 +3,7 @@ $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     if ( !options.beforeSend) {
         options.beforeSend = function (xhr) {
             xhr.setRequestHeader('Authorization', $.cookie("session"));
+            xhr.setRequestHeader('Access-Control-Allow-Origin', "*");
         }
     }
 });
@@ -57,7 +58,7 @@ var app = app || {};
             url : '/tokenInfo',
             type : 'GET'
         }).done(function(data) {
-            app.currentUser = new app.User({name: data.name, email: data.email, id: data.id});
+            app.currentUser = new app.User({name: data.name, email: data.email, id: data.id, following: data.following});
             app.headerView.render(app.currentUser);
         }).fail(function(jqXHR, status) {
             console.log("error while logging out");
