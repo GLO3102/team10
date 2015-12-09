@@ -30,7 +30,7 @@ var app = app || {};
         remove: function()
         {
             var self = this;
-            self.model.destroy({url: "https://umovie.herokuapp.com/watchlists/" + this.watchlistId + "/movies/" + this.model.id}).complete(function()
+            self.model.destroy({url: "/watchlists/" + this.watchlistId + "/movies/" + this.model.id}).complete(function()
             {
                 self.trigger('movieRemoved');
             });

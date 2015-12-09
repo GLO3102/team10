@@ -102,7 +102,7 @@ var app = app || {};
                 else
                 {
                     movieModel.isNew = function(){return true;};
-                    movieModel.save({}, {url: "https://umovie.herokuapp.com/watchlists/" + self.model.id + "/movies"}).complete(function()
+                    movieModel.save({}, {url: "/watchlists/" + self.model.id + "/movies"}).complete(function()
                     {
                         self.render();
                     });

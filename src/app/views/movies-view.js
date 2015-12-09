@@ -90,7 +90,7 @@ var app = app || {};
                     }
                     else
                     {
-                        self.model.save({}, {url: "https://umovie.herokuapp.com/watchlists/" + watchlistId + "/movies"}).complete(function()
+                        self.model.save({}, {url: "/watchlists/" + watchlistId + "/movies"}).complete(function()
                         {
                             watchlist.fetch();
                         });

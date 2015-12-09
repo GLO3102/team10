@@ -54,7 +54,7 @@ var app = app || {};
             var self = this;
 
             $.ajax({
-                url: "https://umovie.herokuapp.com/search?q=" + encodeURIComponent(searchText) + "&limit=20",
+                url: "/search?q=" + encodeURIComponent(searchText) + "&limit=20",
                 type: 'GET'
             }).done(function(data)
             {
@@ -84,7 +84,7 @@ var app = app || {};
         searchMovies: function(searchText) {
             var self = this;
             var movies = new app.Movies();
-            movies.url = "https://umovie.herokuapp.com/search/movies?q=" + encodeURIComponent(searchText) + "&limit=20";
+            movies.url = "/search/movies?q=" + encodeURIComponent(searchText) + "&limit=20";
             movies.fetch({parseModel: false}).success(function() {
                 self.render({movies: movies.toJSON(), category: "movies", searchText: searchText});
             });
@@ -93,7 +93,7 @@ var app = app || {};
         searchTvShows: function(searchText) {
             var self = this;
             var tvshows = new app.TvShows();
-            tvshows.url = "https://umovie.herokuapp.com/search/tvshows/seasons?q=" + encodeURIComponent(searchText) + "&limit=20";
+            tvshows.url = "/search/tvshows/seasons?q=" + encodeURIComponent(searchText) + "&limit=20";
             tvshows.fetch({parseModel: false}).success(function() {
                 self.render({tvshows: tvshows.toJSON(), category: "tvshows", searchText: searchText});
             });
@@ -102,7 +102,7 @@ var app = app || {};
         searchActors: function(searchText) {
             var self = this;
             var actors = new app.Actors();
-            actors.url = "https://umovie.herokuapp.com/search/actors/?q=" + encodeURIComponent(searchText) + "&limit=20";
+            actors.url = "/search/actors/?q=" + encodeURIComponent(searchText) + "&limit=20";
             actors.fetch({parseModel: false}).success(function() {
                 self.render({actors: actors.toJSON(), category: "actors", searchText: searchText});
             });
@@ -111,7 +111,7 @@ var app = app || {};
         searchUsers: function(searchText) {
             var self = this;
             var users = new app.Users();
-            users.url = "https://umovie.herokuapp.com/search/users/?q=" + encodeURIComponent(searchText);
+            users.url = "/search/users/?q=" + encodeURIComponent(searchText);
             users.fetch({parseModel: false}).success(function() {
                 self.render({users: users.toJSON(), category: "users", searchText: searchText});
             });

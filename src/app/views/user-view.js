@@ -55,7 +55,7 @@ var app = app || {};
             var userEmail = e.currentTarget.id;
 
             $.ajax({
-                url: "https://umovie.herokuapp.com/users",
+                url: "/users",
                 type: 'GET',
                 contentType: "application/json"
             }).done(function(data) {

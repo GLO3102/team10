@@ -1,4 +1,5 @@
 $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    options.url = "https://umovie.herokuapp.com" + options.url;
     if ( !options.beforeSend) {
         options.beforeSend = function (xhr) {
             xhr.setRequestHeader('Authorization', $.cookie("session"));
@@ -9,8 +10,6 @@ $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
 var app = app || {};
 
 (function() {
-
-    app.apiURL = "https://umovie.herokuapp.com";
 
     app.htmlEncode =  function(value) {
         return $('<div/>').text(value).html();
@@ -55,7 +54,7 @@ var app = app || {};
 
     app.createUserFromToken = function() {
         $.ajax({
-            url : 'https://umovie.herokuapp.com/tokenInfo',
+            url : '/tokenInfo',
             type : 'GET'
         }).done(function(data) {
             app.currentUser = new app.User({name: data.name, email: data.email, id: data.id});
