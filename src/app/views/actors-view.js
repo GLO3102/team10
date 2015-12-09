@@ -22,8 +22,6 @@ var app = app || {};
             self.model = new app.Actor({id: id});
 
             self.model.fetch().success(function() {
-                self.setImageURL(self.model);
-
                 self.$el.html(self.template({actor: self.model.toJSON(), movies: {}}));
 
                 self.movieCollection = new app.Movies();
@@ -70,10 +68,6 @@ var app = app || {};
             }
             return movieCollection
         },
-
-        setImageURL: function(model) {
-            app.getGoogleImageURLFromActorName(model);
-        }
     });
 
 })(jQuery);

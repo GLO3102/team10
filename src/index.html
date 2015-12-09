@@ -22,7 +22,6 @@
     <script src="http://sugarjs.com/release/current/sugar.min.js"></script>
     <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
     <script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
-    <script src="https://www.google.com/jsapi"></script>
 
     <title>UMovie</title>
 </head>
@@ -222,7 +221,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-md-4">
-                    <img class="poster" src="<%- actor.imageURL %>">
+                    <img class="poster" src="http://www.simondixon.org/wp-content/uploads/2014/06/Mystery-Customer-Person.png">
                 </div>
                 <div class="col-xs-12 col-md-8">
                     <h1 class="page-title"><%- actor.artistName %> <small><%- actor.primaryGenreName %></small></h1>
@@ -628,6 +627,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="panel-heading clearfix">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h6 id="watchlist-title"><%- watchlist.name %></h6>
                     </div>
                 </div>
@@ -678,105 +678,108 @@
             </div>
         </div>
 
-        <div class="row">
-            <ul class="nav nav-pills">
-                <% if(hasMovies) { %><li role="presentation" class="<% if(activeTab === 'movies'){ %> active <% } %>"> <a href="#movies-results" data-toggle="pill" aria-controls="movies-results" rolf="pill">Movies</a></li> <% } %>
-                <% if(hasTvShows) { %><li role="presentation" class="<% if(activeTab === 'tvshows'){ %> active <% } %>"><a href="#tvshows-results" data-toggle="pill">TV Shows</a></li> <% } %>
-                <% if(hasActors) { %><li role="presentation" class="<% if(activeTab === 'actors'){ %> active <% } %>"><a href="#actors-results" data-toggle="pill">Actors</a></li> <% } %>
-                <% if(hasUsers) { %><li role="presentation" class="<% if(activeTab === 'users'){ %> active <% } %>"><a href="#users-results" data-toggle="pill">Users</a></li> <% } %>
-            </ul>
+        <div class="results-list">
+            <div class="row">
+                <ul class="nav nav-pills search-filters">
+                    <% if(hasMovies) { %><li role="presentation" class="<% if(activeTab === 'movies'){ %> active <% } %>"> <a href="#movies-results" data-toggle="pill" aria-controls="movies-results">Movies</a></li> <% } %>
+                    <% if(hasTvShows) { %><li role="presentation" class="<% if(activeTab === 'tvshows'){ %> active <% } %>"><a href="#tvshows-results" data-toggle="pill">TV Shows</a></li> <% } %>
+                    <% if(hasActors) { %><li role="presentation" class="<% if(activeTab === 'actors'){ %> active <% } %>"><a href="#actors-results" data-toggle="pill">Actors</a></li> <% } %>
+                    <% if(hasUsers) { %><li role="presentation" class="<% if(activeTab === 'users'){ %> active <% } %>"><a href="#users-results" data-toggle="pill">Users</a></li> <% } %>
+                </ul>
+            </div>
+
+            <div class="row tab-content">
+                <% if(activeTab === 'none') { %> No result. <% } %>
+                <% if(hasMovies) { %>
+                <div role="tabpanel" id="movies-results" class="tab-pane tab-pane-table <% if(activeTab === 'movies'){ %> active <% } %>">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="main-column">Name</th>
+                            <th>Genre</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(movies, function(movie){ %>
+                        <tr>
+                            <td><img class="img-poster-circle" src="<%- movie.artworkUrl100 %>"><a href="#movies/<%- movie.trackId %>"><%- movie.trackName %></a></td>
+                            <td><%= movie.primaryGenreName %></td>
+                            <td><button class="btn btn-default">Add to watchlists</button></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+
+                <% if(hasTvShows) { %>
+                <div role="tabpanel" id="tvshows-results" class="tab-pane tab-pane-table <% if(activeTab === 'tvshows'){ %> active <% } %>">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="main-column">Name</th>
+                            <th>Genre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(tvshows, function(tvshow){ %>
+                        <tr>
+                            <td><img class="img-poster-circle" src="<%- tvshow.artworkUrl100 %>"><a href="#tvshows/<%- tvshow.collectionId %>"><%- tvshow.collectionName %></a></td>
+                            <td><%= tvshow.primaryGenreName %></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+
+                <% if(hasActors) { %>
+                <div role="tabpanel" id="actors-results" class="tab-pane tab-pane-table <% if(activeTab === 'actors'){ %> active <% } %>">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="main-column">Name</th>
+                            <th>Genre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(actors, function(actor){ %>
+                        <tr>
+                            <td><a href="#actors/<%- actor.artistId %>"><%- actor.artistName %></a></td>
+                            <td><%= actor.primaryGenreName %></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+
+                <% if(hasUsers) { %>
+                <div role="tabpanel" id="users-results" class="tab-pane tab-pane-table <% if(activeTab === 'users'){ %> active <% } %>">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="main-column">Name</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(users, function(user){ %>
+                        <tr>
+                            <td><a href="#user/<%- user.id %>"><%= user.name %></a></td>
+                            <td><%= user.email %></td>
+                            <td><button class="btn btn-default">Follow</button></td>
+                        </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+            </div>
         </div>
 
-        <div class="row tab-content">
-            <% if(activeTab === 'none') { %> No result. <% } %>
-            <% if(hasMovies) { %>
-            <div role="tabpanel" id="movies-results" class="tab-pane tab-pane-table <% if(activeTab === 'movies'){ %> active <% } %>">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th class="main-column">Name</th>
-                        <th>Genre</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% _.each(movies, function(movie){ %>
-                    <tr>
-                        <td><img class="img-poster-circle" src="<%- movie.artworkUrl100 %>"><a href="#movies/<%- movie.trackId %>"><%- movie.trackName %></a></td>
-                        <td><%= movie.primaryGenreName %></td>
-                        <td><button class="btn btn-default">Add to watchlists</button></td>
-                    </tr>
-                    <% }); %>
-                    </tbody>
-                </table>
-            </div>
-            <% } %>
-
-            <% if(hasTvShows) { %>
-            <div role="tabpanel" id="tvshows-results" class="tab-pane tab-pane-table <% if(activeTab === 'tvshows'){ %> active <% } %>">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th class="main-column">Name</th>
-                        <th>Genre</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% _.each(tvshows, function(tvshow){ %>
-                    <tr>
-                        <td><img class="img-poster-circle" src="<%- tvshow.artworkUrl100 %>"><a href="#tvshows/<%- tvshow.collectionId %>"><%- tvshow.collectionName %></a></td>
-                        <td><%= tvshow.primaryGenreName %></td>
-                    </tr>
-                    <% }); %>
-                    </tbody>
-                </table>
-            </div>
-            <% } %>
-
-            <% if(hasActors) { %>
-            <div role="tabpanel" id="actors-results" class="tab-pane tab-pane-table <% if(activeTab === 'actors'){ %> active <% } %>">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th class="main-column">Name</th>
-                        <th>Genre</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% _.each(actors, function(actor){ %>
-                    <tr>
-                        <td><img class="img-poster-circle" src="<%- actor.artworkUrl100 %>"><a href="#actors/<%- actor.artistId %>"><%- actor.artistName %></a></td>
-                        <td><%= actor.primaryGenreName %></td>
-                    </tr>
-                    <% }); %>
-                    </tbody>
-                </table>
-            </div>
-            <% } %>
-
-            <% if(hasUsers) { %>
-            <div role="tabpanel" id="users-results" class="tab-pane tab-pane-table <% if(activeTab === 'users'){ %> active <% } %>">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th class="main-column">Name</th>
-                        <th>Email</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% _.each(users, function(user){ %>
-                    <tr>
-                        <td><a href="#user/<%- user.id %>"><%= user.name %></a></td>
-                        <td><%= user.email %></td>
-                        <td><button class="btn btn-default">Follow</button></td>
-                    </tr>
-                    <% }); %>
-                    </tbody>
-                </table>
-            </div>
-            <% } %>
-        </div>
     </div>
 </script>
 

@@ -15,6 +15,7 @@ var app = app || {};
         },
 
         render: function (searchResults) {
+
             if(!searchResults) searchResults = {};
 
             var data = searchResults;
@@ -53,7 +54,7 @@ var app = app || {};
             var self = this;
 
             $.ajax({
-                url: "/search?q=" + encodeURIComponent(searchText) + "&limit=20",
+                url: "https://umovie.herokuapp.com/search?q=" + encodeURIComponent(searchText) + "&limit=20",
                 type: 'GET'
             }).done(function(data)
             {

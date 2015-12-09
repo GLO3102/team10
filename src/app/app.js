@@ -1,7 +1,8 @@
 $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     if ( !options.beforeSend) {
         options.beforeSend = function (xhr) {
-            xhr.setRequestHeader('Authorization', $.cookie("session"));        }
+            xhr.setRequestHeader('Authorization', $.cookie("session"));
+        }
     }
 });
 
@@ -39,12 +40,6 @@ var app = app || {};
             part: 'snippet',
             type: 'video'
         });
-    };
-
-    app.getGoogleImageURLFromActorName = function(actorModel) {
-        var actorName = actorModel.attributes.artistName;
-
-
     };
 
     app.isAuthenticated = function() {
