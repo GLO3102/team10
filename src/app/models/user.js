@@ -5,8 +5,8 @@ var app = app || {};
 
     app.User = Backbone.Model.extend({
         methodToURL: {
-            'create': '/signup',
-            'read': '/users/'
+            'create': 'https://umovie.herokuapp.com/signup',
+            'read': 'https://umovie.herokuapp.com/users/'
         },
 
         sync: function(method, model, options) {
@@ -23,7 +23,7 @@ var app = app || {};
             var userEmail = this.attributes['email'];
             var userPassword = this.attributes['password'];
             $.ajax({
-                url: "/login",
+                url: "https://umovie.herokuapp.com/login",
                 type: 'POST',
                 contentType: "application/x-www-form-urlencoded",
                 data: {email: userEmail, password: userPassword}
@@ -38,7 +38,7 @@ var app = app || {};
         logout: function(callback) {
             var that = this;
             $.ajax({
-                url : '/logout',
+                url : 'https://umovie.herokuapp.com/logout',
                 type : 'GET'
             }).done(function(response) {
                 $.removeCookie('session');

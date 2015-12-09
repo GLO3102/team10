@@ -3,7 +3,7 @@ var app = app || {};
 (function() {
 
     app.Movie = Backbone.Model.extend({
-        urlRoot: "/movies",
+        urlRoot: "https://umovie.herokuapp.com/movies",
 
         parse: function(response, options)
         {

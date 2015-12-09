@@ -14,7 +14,7 @@ var app = app || {};
 
             if (typeof searchEpisodes === 'undefined') {
                 this.episodeCollection = new app.Episodes();
-                this.episodeCollection.url = "/tvshows/season/" + id + "/episodes";
+                this.episodeCollection.url = "https://umovie.herokuapp.com/tvshows/season/" + id + "/episodes";
 
                 this.episodeCollection.fetch({parseModel: false}).complete(function() {
                     $('#episodes-container').html(that.template({episodes: that.episodeCollection.toJSON()}));

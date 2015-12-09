@@ -27,7 +27,7 @@ var app = app || {};
                 self.$el.html(self.template({actor: self.model.toJSON(), movies: {}}));
 
                 self.movieCollection = new app.Movies();
-                self.movieCollection.url = "/actors/" + self.model.id + "/movies";
+                self.movieCollection.url = "https://umovie.herokuapp.com/actors/" + self.model.id + "/movies";
 
                 self.movieCollection.fetch({parseModel: false}).complete(function() {
                     self.movieCollection = self.formatMoviesDate(self.movieCollection);

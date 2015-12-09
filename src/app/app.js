@@ -1,5 +1,4 @@
 $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-    options.url = "https://umovie.herokuapp.com" + options.url;
     if ( !options.beforeSend) {
         options.beforeSend = function (xhr) {
             xhr.setRequestHeader('Authorization', $.cookie("session"));        }
@@ -10,9 +9,7 @@ var app = app || {};
 
 (function() {
 
-    google.load('search', '1');
-
-    app.googleAPILoaded = false;
+    app.apiURL = "https://umovie.herokuapp.com";
 
     app.htmlEncode =  function(value) {
         return $('<div/>').text(value).html();
@@ -47,13 +44,7 @@ var app = app || {};
     app.getGoogleImageURLFromActorName = function(actorModel) {
         var actorName = actorModel.attributes.artistName;
 
-        var imageSearch = new google.search.ImageSearch();
 
-        imageSearch.setSearchCompleteCallback(this, function() {
-            actorModel.attributes.imageURL = imageSearch.results[0].url;
-        }, null);
-
-        imageSearch.execute(actorName);
     };
 
     app.isAuthenticated = function() {
@@ -69,7 +60,7 @@ var app = app || {};
 
     app.createUserFromToken = function() {
         $.ajax({
-            url : '/tokenInfo',
+            url : 'https://umovie.herokuapp.com/tokenInfo',
             type : 'GET'
         }).done(function(data) {
             app.currentUser = new app.User({name: data.name, email: data.email, id: data.id});
