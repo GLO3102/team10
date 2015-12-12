@@ -101,7 +101,7 @@ var app = app || {};
 
             if (that.isUserFollowed) {
                 $.ajax({
-                    url: "/follow/" + that.model._id,
+                    url: "/follow/" + that.model.id,
                     type: 'DELETE'
                 }).done(function(data) {
                     $("#follow-user").removeClass("followed");
