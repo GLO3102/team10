@@ -15,7 +15,8 @@ var app = app || {};
         events: {
             "click .watchlist-button": "openWatchlist",
             "click .user-button": "openUserPage",
-            "click #follow-user": "followUser"
+            "click #follow-user": "followUser",
+            "click .movie-redirect": "closeModal"
         },
 
         render: function (id) {
@@ -98,16 +99,17 @@ var app = app || {};
 
         followUser: function(e) {
             var that = this;
+            var followUserButton = $("#follow-user");
 
             if (that.isUserFollowed) {
                 $.ajax({
                     url: "/follow/" + that.model.id,
                     type: 'DELETE'
                 }).done(function(data) {
-                    $("#follow-user").removeClass("followed");
-                    $("#follow-user").addClass("not-followed");
-                    $("#follow-user").text("Follow");
-                    $("#follow-user").css('background-color', "#1abc9c");
+                    followUserButton.removeClass("followed");
+                    followUserButton.addClass("not-followed");
+                    followUserButton.text("Follow");
+                    followUserButton.css('background-color', "#1abc9c");
                     that.isUserFollowed = false;
 
                     app.currentUser.attributes.following = data.following;
@@ -127,10 +129,10 @@ var app = app || {};
                     data: JSON.stringify({id: userId})
 
                 }).done(function(data) {
-                    $("#follow-user").removeClass("not-followed");
-                    $("#follow-user").addClass("followed");
-                    $("#follow-user").text("Unfollow");
-                    $("#follow-user").css('background-color', "orangered");
+                    followUserButton.removeClass("not-followed");
+                    followUserButton.addClass("followed");
+                    followUserButton.text("Unfollow");
+                    followUserButton.css('background-color', "orangered");
                     that.isUserFollowed = true;
 
                     app.currentUser.attributes.following = data.following;
@@ -145,6 +147,10 @@ var app = app || {};
                     console.log(status);
                 });
             }
+        },
+
+        closeModal: function() {
+            $('.modal').modal('hide');
         }
     });
 

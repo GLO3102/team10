@@ -642,7 +642,7 @@
                             <% _.each(watchlist.movies, function(movie){ %>
                             <tr>
                                 <td><img class="img-poster-circle-small" src="<%- movie.artworkUrl100 %>"></td>
-                                <td><%= movie.trackName %></td>
+                                <td><a class="movie-redirect" href="#movies/<%= movie.trackId %>"><%= movie.trackName %></a></td>
                             </tr>
                             <% }); %>
                             </tbody>

@@ -117,6 +117,8 @@ var app = app || {};
                 self.render({users: users.toJSON(), category: "users", searchText: searchText});
                 users.forEach(function(user) {
                     var isUserFollowed = false;
+                    var userButton = $("#" + user.id);
+
                     app.currentUser.attributes.following.forEach(function(followedUser) {
                         if (user.id === followedUser.id) {
                             isUserFollowed = true;
@@ -124,13 +126,13 @@ var app = app || {};
                     });
 
                     if (isUserFollowed) {
-                        $("#" + user.id).addClass("followed");
-                        $("#" + user.id).text("Unfollow");
-                        $("#" + user.id).css('background-color', "orangered");
+                        userButton.addClass("followed");
+                        userButton.text("Unfollow");
+                        userButton.css('background-color', "orangered");
                     } else {
-                        $("#" + user.id).addClass("not-followed");
-                        $("#" + user.id).text("Follow");
-                        $("#" + user.id).css('background-color', "#1abc9c");
+                        userButton.addClass("not-followed");
+                        userButton.text("Follow");
+                        userButton.css('background-color', "#1abc9c");
                     }
                 })
             });
