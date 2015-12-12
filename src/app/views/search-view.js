@@ -7,7 +7,8 @@ var app = app || {};
         template: _.template($('#search-template').html()),
 
         events: {
-            "click #search-button": "search"
+            "click #search-button": "search",
+            "click .follow-user": "followUser"
         },
 
         initialize: function () {
@@ -114,7 +115,73 @@ var app = app || {};
             users.url = "/search/users/?q=" + encodeURIComponent(searchText);
             users.fetch({parseModel: false}).success(function() {
                 self.render({users: users.toJSON(), category: "users", searchText: searchText});
+                users.forEach(function(user) {
+                    var isUserFollowed = false;
+                    app.currentUser.attributes.following.forEach(function(followedUser) {
+                        if (user.id === followedUser.id) {
+                            isUserFollowed = true;
+                        }
+                    });
+
+                    if (isUserFollowed) {
+                        $("#" + user.id).addClass("followed");
+                        $("#" + user.id).text("Unfollow");
+                        $("#" + user.id).css('background-color', "orangered");
+                    } else {
+                        $("#" + user.id).addClass("not-followed");
+                        $("#" + user.id).text("Follow");
+                        $("#" + user.id).css('background-color', "#1abc9c");
+                    }
+                })
             });
+        },
+
+        followUser: function(e) {
+            var clickedUserId = e.currentTarget.id;
+
+            var clickedButton = $("#" + clickedUserId);
+
+            var isUserFollowed = false;
+            app.currentUser.attributes.following.forEach(function(followedUser) {
+                if (clickedUserId === followedUser.id) {
+                    isUserFollowed = true;
+                }
+            });
+
+            if (isUserFollowed) {
+                $.ajax({
+                    url: "/follow/" + clickedUserId,
+                    type: 'DELETE'
+                }).done(function(data) {
+                    clickedButton.removeClass("followed");
+                    clickedButton.addClass("not-followed");
+                    clickedButton.text("Follow");
+                    clickedButton.css('background-color', "#1abc9c");
+
+                    app.currentUser.attributes.following = data.following;
+
+                }).fail(function(jqXHR, status) {
+                    console.log(status);
+                });
+            } else {
+                $.ajax({
+                    url: "/follow",
+                    type: 'POST',
+                    contentType: "application/json",
+                    data: JSON.stringify({id: clickedUserId})
+
+                }).done(function(data) {
+                    clickedButton.removeClass("not-followed");
+                    clickedButton.addClass("followed");
+                    clickedButton.text("Unfollow");
+                    clickedButton.css('background-color', "orangered");
+
+                    app.currentUser.attributes.following = data.following;
+
+                }).fail(function(jqXHR, status) {
+                    console.log(status);
+                });
+            }
         }
     });
 
