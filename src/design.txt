@@ -4,8 +4,13 @@ Team 10
 
 How to :
 1. Open index.html in WebStorm
-2. For each tab (movies/actors/tvshows) 6 samples are provided dynamically. If you want a specific sample, you can change the ID in the URL, or choose a movie in an actor's movie list.
+2. For each tab (movies/actors/tvshows) 6 samples are provided dynamically. If you want a specific sample, you can change the ID in the URL, choose a movie in an actor's movie list, or use the search engine to find what you are looking for.
 
+First advanced feature:
+Every user has his associated Gravatar: You can see it when you are logged in (on the header) or on your profile page (Dropdown menu in the header -> Profile)
+
+Second advanced feature:
+Autocompletion using the search engine: on the searchbar in the header, you can start writing text and it will show you results matching what you have written.
 
 Members :
 Olivier Falardeau, OLFAL1, 111 041 153 
