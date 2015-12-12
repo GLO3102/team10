@@ -36,6 +36,24 @@ var app = app || {};
             } else {
                 that.$el.html(that.template({user: ""}));
             }
+
+            var $searchText = $('#global-search-text');
+            $searchText.autocomplete({
+                serviceUrl: '/search',
+                paramName: "q",
+                params: {limit: 5},
+                transformResult: function(response) {
+                    response = JSON.parse(response);
+                    return {
+                        suggestions: response.results.map(function(element) {
+                            return !!element.trackName ? element.trackName :
+                                !!element.collectionName ? element.collectionName :
+                                    !!element.artistName ? element.artistName :
+                                        !!element.name ? element.name : "Unknown";
+                        })
+                    };
+                }
+            });
         },
 
         goToHome: function() {
