@@ -42,6 +42,7 @@ var app = app || {};
                 serviceUrl: '/search',
                 paramName: "q",
                 params: {limit: 10},
+                width: 300,
                 transformResult: function(response) {
                     response = JSON.parse(response);
                     return {
