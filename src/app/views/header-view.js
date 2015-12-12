@@ -41,7 +41,7 @@ var app = app || {};
             $searchText.autocomplete({
                 serviceUrl: '/search',
                 paramName: "q",
-                params: {limit: 5},
+                params: {limit: 10},
                 transformResult: function(response) {
                     response = JSON.parse(response);
                     return {
