@@ -43,6 +43,7 @@ var app = app || {};
                 paramName: "q",
                 params: {limit: 10},
                 width: 300,
+                triggerSelectOnValidInput: false,
                 transformResult: function(response) {
                     response = JSON.parse(response);
                     return {
@@ -53,6 +54,9 @@ var app = app || {};
                                         !!element.name ? element.name : "Unknown";
                         })
                     };
+                },
+                onSelect: function(suggestion) {
+
                 }
             });
         },

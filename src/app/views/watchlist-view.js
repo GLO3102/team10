@@ -50,6 +50,7 @@ var app = app || {};
                     serviceUrl: '/search/movies',
                     paramName: "q",
                     params: {limit: 10},
+                    triggerSelectOnValidInput: false,
                     transformResult: function(response) {
                         response = JSON.parse(response);
                         return {

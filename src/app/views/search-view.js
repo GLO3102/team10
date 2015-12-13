@@ -11,7 +11,8 @@ var app = app || {};
             "click .follow-user": "followUser",
             "click .genre-filter": "genreFilter",
             "click .add-movie-to-watchlists-search": "openWatchlistsPopup",
-            "click #btn-add-to-watchlists-search": "addToWatchlists"
+            "click #btn-add-to-watchlists-search": "addToWatchlists",
+            "click input:radio[name=search-category]": "changeCategory"
         },
 
         initialize: function () {
@@ -41,6 +42,13 @@ var app = app || {};
             self.lastSearchText = data.searchText;
             self.lastCategory = data.category;
 
+            var autocompleteUrl = data.category === 'all' ? '/search' :
+                                  data.category === 'movies' ? '/search/movies' :
+                                  data.category === 'tvshows' ? '/search/tvshows/seasons' :
+                                  data.category === 'actors' ? '/search/actors' :
+                                  data.category === 'users' ? '/search/users' :
+                                  '/search';
+
             if(data.hasMovies){
                 self.watchlists = new app.Watchlists();
                 self.watchlists.fetch().complete(function(){
@@ -56,26 +64,40 @@ var app = app || {};
 
                     data.watchlists = userWatchlists;
                     self.$el.html(self.template(data));
-                    self.autocomplete();
+                    self.autocomplete(self.getAutoCompleteURL(data.category));
                 });
             }
             else {
                 self.$el.html(self.template(data));
-                self.autocomplete();
+                self.autocomplete(self.getAutoCompleteURL(data.category));
             }
         },
 
-        autocomplete: function()
+        getAutoCompleteURL: function(category) {
+            return category === 'all' ? '/search' :
+                   category === 'movies' ? '/search/movies' :
+                   category === 'tvshows' ? '/search/tvshows/seasons' :
+                   category === 'actors' ? '/search/actors' :
+                   category === 'users' ? '/search/users' :
+                   '/search';
+        },
+
+        changeCategory: function(event){
+            this.autocomplete(this.getAutoCompleteURL($(event.target).val()), true);
+        },
+
+        autocomplete: function(url, update)
         {
-            var $searchText = $('#search-text');
-            $searchText.autocomplete({
-                serviceUrl: '/search',
+            var options = {
+                serviceUrl: url,
                 paramName: "q",
-                params: {limit: 10},
-                transformResult: function(response) {
+                params: {limit: 50},
+                triggerSelectOnValidInput: false,
+                transformResult: function (response) {
                     response = JSON.parse(response);
+                    var data = !!response.results ? response.results : response;
                     return {
-                        suggestions: response.results.map(function(element) {
+                        suggestions: data.map(function (element) {
                             return !!element.trackName ? element.trackName :
                                 !!element.collectionName ? element.collectionName :
                                     !!element.artistName ? element.artistName :
@@ -83,7 +105,11 @@ var app = app || {};
                         })
                     };
                 }
-            });
+            };
+
+            console.log(update + " : " + url);
+            if(update) { $('#search-text').autocomplete().setOptions(options);}
+            else {$('#search-text').autocomplete(options);}
         },
 
         search: function() {
@@ -92,10 +118,10 @@ var app = app || {};
 
             switch(checkedCategory){
                 case "all": this.searchGlobal(searchText); break;
-                case "movie": this.searchMovies(searchText); break;
-                case "tvshow": this.searchTvShows(searchText); break;
-                case "actor": this.searchActors(searchText); break;
-                case "user": this.searchUsers(searchText); break;
+                case "movies": this.searchMovies(searchText); break;
+                case "tvshows": this.searchTvShows(searchText); break;
+                case "actors": this.searchActors(searchText); break;
+                case "users": this.searchUsers(searchText); break;
             }
         },
 
