@@ -67,7 +67,7 @@ var app = app || {};
                 movieCollection.models[i].attributes.releaseDate = date.format("MMM Do YYYY");
             }
             return movieCollection
-        },
+        }
     });
 
 })(jQuery);

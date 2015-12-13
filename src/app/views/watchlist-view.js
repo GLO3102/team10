@@ -45,6 +45,41 @@ var app = app || {};
                     $movieList.html($('<tr>').html(cell));
                 }
 
+                var $movieTitle = $('.movie-title');
+                $movieTitle.autocomplete({
+                    serviceUrl: '/search/movies',
+                    paramName: "q",
+                    params: {limit: 10},
+                    transformResult: function(response) {
+                        response = JSON.parse(response);
+                        return {
+                            suggestions: response.results.map(function(element) {
+                                var value = element.trackName;
+                                var id = element.trackId;
+                                return {value: value, data: id};
+                            })
+                        };
+                    },
+                    onSelect: function(suggestion) {
+                        var movieModel = new app.Movie({id: suggestion.data});
+
+                        movieModel.fetch().complete(function()
+                        {
+                            if(self.model.containsMovie(movieModel))
+                            {
+                                alert("A watchlist can't have the same movie twice.");
+                            }
+                            else
+                            {
+                                movieModel.isNew = function(){return true;};
+                                movieModel.save({}, {url: "/watchlists/" + self.model.id + "/movies"}).complete(function()
+                                {
+                                    self.render();
+                                });
+                            }
+                        });
+                    }
+                });
             });
 
             return this;
@@ -84,30 +119,6 @@ var app = app || {};
                 });
                 $modal.modal('hide');
             }
-        },
-
-        addMovie: function()
-        {
-            var self = this;
-
-            var movieId = self.$('.movie-id').val();
-            var movieModel = new app.Movie({id: movieId});
-
-            movieModel.fetch().complete(function()
-            {
-                if(self.model.containsMovie(movieModel))
-                {
-                    alert("A watchlist can't have the same movie twice.");
-                }
-                else
-                {
-                    movieModel.isNew = function(){return true;};
-                    movieModel.save({}, {url: "/watchlists/" + self.model.id + "/movies"}).complete(function()
-                    {
-                        self.render();
-                    });
-                }
-            });
         }
     });
 

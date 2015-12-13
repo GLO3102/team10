@@ -8,7 +8,10 @@ var app = app || {};
 
         events: {
             "click #search-button": "search",
-            "click .follow-user": "followUser"
+            "click .follow-user": "followUser",
+            "click .genre-filter": "genreFilter",
+            "click .add-movie-to-watchlists-search": "openWatchlistsPopup",
+            "click #btn-add-to-watchlists-search": "addToWatchlists"
         },
 
         initialize: function () {
@@ -19,6 +22,7 @@ var app = app || {};
 
             if(!searchResults) searchResults = {};
 
+            var self = this;
             var data = searchResults;
 
             data.hasMovies = !!data.movies && data.movies.length > 0;
@@ -34,8 +38,52 @@ var app = app || {};
 
             data.category = !!data.category ? data.category : 'all';
             data.searchText = !!data.searchText ? data.searchText : '';
+            self.lastSearchText = data.searchText;
+            self.lastCategory = data.category;
 
-            this.$el.html(this.template(data));
+            if(data.hasMovies){
+                self.watchlists = new app.Watchlists();
+                self.watchlists.fetch().complete(function(){
+                    var userWatchlists = [];
+
+                    self.watchlists.toJSON().forEach(function(watchlist) {
+                        if (watchlist.owner) {
+                            if (watchlist.owner.id === app.currentUser.attributes.id) {
+                                userWatchlists.push(watchlist);
+                            }
+                        }
+                    });
+
+                    data.watchlists = userWatchlists;
+                    self.$el.html(self.template(data));
+                    self.autocomplete();
+                });
+            }
+            else {
+                self.$el.html(self.template(data));
+                self.autocomplete();
+            }
+        },
+
+        autocomplete: function()
+        {
+            var $searchText = $('#search-text');
+            $searchText.autocomplete({
+                serviceUrl: '/search',
+                paramName: "q",
+                params: {limit: 10},
+                transformResult: function(response) {
+                    response = JSON.parse(response);
+                    return {
+                        suggestions: response.results.map(function(element) {
+                            return !!element.trackName ? element.trackName :
+                                !!element.collectionName ? element.collectionName :
+                                    !!element.artistName ? element.artistName :
+                                        !!element.name ? element.name : "Unknown";
+                        })
+                    };
+                }
+            });
         },
 
         search: function() {
@@ -55,7 +103,7 @@ var app = app || {};
             var self = this;
 
             $.ajax({
-                url: "/search?q=" + encodeURIComponent(searchText) + "&limit=20",
+                url: "/search?q=" + encodeURIComponent(searchText) + "&limit=60",
                 type: 'GET'
             }).done(function(data)
             {
@@ -138,6 +186,47 @@ var app = app || {};
             });
         },
 
+        genreFilter: function(event) {
+            var self = this;
+            var element = $(event.target);
+            var genre = element.html();
+
+            $.when($.ajax({url: "/genres/movies", type: 'GET'}),
+                   $.ajax({url: "/genres/tvshows", type: 'GET'}))
+            .then(function(movieResponse, tvshowResponse){
+                var predicate = function(element) {return element.name === genre};
+                var movieGenre = _.find(movieResponse[0], predicate);
+                var tvshowGenre = _.find(tvshowResponse[0], predicate);
+
+                var movies;
+                var tvshows;
+                var promises = [];
+                if(movieGenre.id && (self.lastCategory === 'movies' || self.lastCategory === 'all')) {
+                    movies = new app.Movies();
+                    movies.url = "/search/movies?q=" + encodeURIComponent(self.lastSearchText) + "&limit=20&genre=" + movieGenre.id;
+                    promises.push(movies.fetch({parseModel: false}));
+                }
+
+                if(tvshowGenre.id && (self.lastCategory === 'tvshows' || self.lastCategory === 'all')) {
+                    tvshows = new app.TvShows();
+                    tvshows.url = "/search/tvshows/seasons?q=" + encodeURIComponent(self.lastSearchText) + "&limit=20&genre=" + tvshowGenre.id;
+                    promises.push(tvshows.fetch({parseModel: false}));
+                }
+
+                $.when.apply($, promises).then(function()
+                {
+                    self.render({movies: (!!movies ? movies.toJSON() : undefined),
+                        tvshows: (!!tvshows ? tvshows.toJSON() : undefined),
+                        searchText: self.lastSearchText,
+                        category: self.lastCategory});
+                }, function(jqXHR, status){
+                    console.log("oupselaille po de search pou toé loool");
+                });
+            }, function(jqXHR, status) {
+                console.log("lé genres sont pas trouvables où ece quils se cachent? ;)");
+            });
+        },
+
         followUser: function(e) {
             var clickedUserId = e.currentTarget.id;
 
@@ -184,6 +273,46 @@ var app = app || {};
                     console.log(status);
                 });
             }
+        },
+
+        openWatchlistsPopup: function(event) {
+            this.currentMovie = new app.Movie({id: $(event.target).attr("data-movieid")});
+        },
+
+        addToWatchlists: function() {
+            var self = this;
+
+            var $modal = self.$('#add-movie-to-watchlist-modal-search');
+            var checkboxes = $modal.find('input[type="checkbox"]');
+
+            var isValid = true;
+            self.currentMovie.fetch().success(function()
+            {
+                checkboxes.each(function(index, checkbox) {
+                    if($(checkbox).is(':checked')) {
+                        var watchlistId = $(checkbox).attr("data-watchlist-id");
+                        var watchlist = _.find(self.watchlists.models, function(watchlist) {
+                            return watchlist.id === watchlistId;
+                        });
+                        console.log(watchlist);
+
+                        if(watchlist.containsMovie(self.currentMovie)) {
+                            alert("The watchlist " + watchlist.attributes.name + " already contains this movie.");
+                            isValid = false;
+                            return false;
+                        }
+                        else {
+                            console.log(self.currentMovie);
+                            self.currentMovie.isNew = function(){return true;};
+                            self.currentMovie.save({}, {url: "/watchlists/" + watchlistId + "/movies"}).complete(function() {
+                                watchlist.fetch();
+                            });
+                        }
+                    }
+                });
+
+                if(isValid) $modal.modal('hide');
+            });
         }
     });
 

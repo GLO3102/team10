@@ -1,6 +1,6 @@
-$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+$.ajaxPrefilter(function (options, originalOptions, jqXHR) {
     options.url = "https://umovie.herokuapp.com" + options.url;
-    if ( !options.beforeSend) {
+    if (!options.beforeSend) {
         options.beforeSend = function (xhr) {
             xhr.setRequestHeader('Authorization', $.cookie("session"));
             xhr.setRequestHeader('Access-Control-Allow-Origin', "*");
@@ -10,13 +10,13 @@ $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
 
 var app = app || {};
 
-(function() {
+(function () {
 
-    app.htmlEncode =  function(value) {
+    app.htmlEncode = function (value) {
         return $('<div/>').text(value).html();
     };
 
-    app.setActiveMenuButtonWithId = function(buttonID) {
+    app.setActiveMenuButtonWithId = function (buttonID) {
         var buttons = document.getElementById("navbar-body").getElementsByTagName("a");
         for (var i = 0; i < buttons.length; ++i) {
             if (buttons[i].id == buttonID) {
@@ -29,11 +29,11 @@ var app = app || {};
         }
     };
 
-    app.setActiveLoginMenuButton = function() {
+    app.setActiveLoginMenuButton = function () {
         $("#navbar-login-button").addClass("active");
     };
 
-    app.getYoutubeRequestFromTitle = function(title) {
+    app.getYoutubeRequestFromTitle = function (title) {
         return gapi.client.youtube.search.list({
             q: title + " trailer",
             maxResults: 1,
@@ -42,32 +42,51 @@ var app = app || {};
         });
     };
 
-    app.isAuthenticated = function() {
+    app.checkAuthentication = function (callback) {
         var token = $.cookie('session');
 
-        return !!token;
+        if (!token) {
+            callback(false)
+        } else {
+            $.ajax({
+                url: '/tokenInfo',
+                type: 'GET'
+            }).done(function (data) {
+                callback(true);
+            }).fail(function (jqXHR, status) {
+                $.removeCookie('session');
+                callback(false);
+            });
+        }
     };
 
-    app.getGravatarFromEmail = function(email) {
+    app.getGravatarFromEmail = function (email) {
         var hashedEmail = CryptoJS.MD5(email);
         return "http://www.gravatar.com/avatar/" + hashedEmail + "?d=identicon";
     };
 
-    app.createUserFromToken = function() {
+    app.createUserFromToken = function () {
         $.ajax({
-            url : '/tokenInfo',
-            type : 'GET'
-        }).done(function(data) {
-            app.currentUser = new app.User({name: data.name, email: data.email, id: data.id, following: data.following});
+            url: '/tokenInfo',
+            type: 'GET'
+        }).done(function (data) {
+            app.currentUser = new app.User({
+                name: data.name,
+                email: data.email,
+                id: data.id,
+                following: data.following
+            });
             app.headerView.render(app.currentUser);
-        }).fail(function(jqXHR, status) {
-            console.log("error while logging out");
+        }).fail(function (jqXHR, status) {
+            console.log("error while getting token info");
         });
     };
 
-    if(app.isAuthenticated()) { //on app load, if token is still saved, create user associated with it
-        app.createUserFromToken();
-    }
+    app.checkAuthentication(function (isAuthenticated) {
+        if (isAuthenticated) {
+            app.createUserFromToken();
+        }
+    });
 
     app.headerView = new app.HeaderView();
 
@@ -89,6 +108,6 @@ var app = app || {};
     app.userView = new app.UserView({el: '#main-container'});
 })();
 
-googleApiClientReady = function() {
+googleApiClientReady = function () {
     app.googleAPILoaded = true;
 };

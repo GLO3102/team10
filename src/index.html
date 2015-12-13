@@ -460,9 +460,8 @@
                         <td colspan="100%">
                             <div class="form-group">
                                 <label>Add a movie</label>
-                                <input type="text" class="form-control movie-id" placeholder="Enter the movie's ID">
+                                <input type="text" class="form-control movie-title" placeholder="Enter the movie's title">
                             </div>
-                            <button class="btn-add-movie btn btn-primary btn-block"><i class="octicon octicon-plus"></i></button>
                         </td>
                     </tr>
                 </tfoot>
@@ -709,8 +708,8 @@
                         <% _.each(movies, function(movie){ %>
                         <tr>
                             <td><img class="img-poster-circle" src="<%- movie.artworkUrl100 %>"><a href="#movies/<%- movie.trackId %>"><%- movie.trackName %></a></td>
-                            <td><%= movie.primaryGenreName %></td>
-                            <td><button class="btn btn-default">Add to watchlists</button></td>
+                            <td><a class="genre-filter"><%= movie.primaryGenreName %></a></td>
+                            <td><button class="btn btn-default add-movie-to-watchlists-search" data-movieId="<%- movie.trackId %>" data-toggle="modal" data-target="#add-movie-to-watchlist-modal-search">Add to watchlists</button></td>
                         </tr>
                         <% }); %>
                         </tbody>
@@ -731,7 +730,7 @@
                         <% _.each(tvshows, function(tvshow){ %>
                         <tr>
                             <td><img class="img-poster-circle" src="<%- tvshow.artworkUrl100 %>"><a href="#tvshows/<%- tvshow.collectionId %>"><%- tvshow.collectionName %></a></td>
-                            <td><%= tvshow.primaryGenreName %></td>
+                            <td><a class="genre-filter"><%= tvshow.primaryGenreName %></a></td>
                         </tr>
                         <% }); %>
                         </tbody>
@@ -752,7 +751,7 @@
                         <% _.each(actors, function(actor){ %>
                         <tr>
                             <td><a href="#actors/<%- actor.artistId %>"><%- actor.artistName %></a></td>
-                            <td><%= actor.primaryGenreName %></td>
+                            <td><a class="genre-filter"><%= actor.primaryGenreName %></a></td>
                         </tr>
                         <% }); %>
                         </tbody>
@@ -785,8 +784,36 @@
             </div>
         </div>
 
+        <% if(hasMovies) { %>
+        <div id="add-movie-to-watchlist-modal-search" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Add movie to watchlists</h4>
+                    </div>
+                    <div class="modal-body">
+                        <% _.each(watchlists, function(watchlist){ %>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" data-watchlist-id="<%- watchlist.id %>">
+                                <%- watchlist.name %>
+                            </label>
+                        </div>
+                        <% }); %>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn-add-to-watchlists-search" class="btn btn-primary">Add</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <% } %>
     </div>
 </script>
+
+<script src="vendors/jquery.autocomplete.min.js"></script>
 
 <script src="app/models/episode.js"></script>
 <script src="app/models/actor.js"></script>
