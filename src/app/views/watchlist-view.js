@@ -46,8 +46,6 @@ var app = app || {};
                 }
 
                 var $movieTitle = self.$el.find('.movie-title');
-                console.log($movieTitle);
-                console.log($('.movie-title'));
                 $movieTitle.autocomplete({
                     serviceUrl: '/search/movies',
                     preventBadQueries: false,
