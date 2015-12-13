@@ -10,7 +10,7 @@ First advanced feature:
 Every user has his associated Gravatar: You can see it when you are logged in (on the header) or on your profile page (Dropdown menu in the header -> Profile)
 
 Second advanced feature:
-Autocompletion using the search engine: on the search bar in the header, you can start writing text and it will show you results matching what you have written. It also works for the search bar in the Search page.
+Autocompletion using the search engine: on the search bar in the header, you can start writing text and it will show you results matching what you have written. It also works for the search bar in the Search page and in the Watchlists page.
 
 Members :
 Olivier Falardeau, OLFAL1, 111 041 153 
