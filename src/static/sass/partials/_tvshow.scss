@@ -16,16 +16,20 @@
   }
 }
 
-#tvShowEpisodeModalHeader, #tvShowEpisodeModalBody, #tvShowEpisodeModalFooter {
+#tvshow-episode-modal-header, #tvshow-episode-modal-body, #tvshow-episode-modal-footer {
   background-color: rgba(0, 0, 0, 0.6);
   color: #ffffff;
 }
 
-#tvShowEpisodeModalContent {
+#tvshow-episode-modal-content {
   background-size: cover;
   background: no-repeat center top;
 }
 
 #search-episodes-container {
   padding-top: 20px;
+}
+
+#modal-tvshow-episode-preview {
+  padding-top: 25px;
 }
