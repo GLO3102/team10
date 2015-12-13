@@ -52,6 +52,7 @@ var app = app || {};
                     }
                 }
             });
+            return false;
         },
 
         goToLogin: function () {
