@@ -107,7 +107,6 @@ var app = app || {};
                 }
             };
 
-            console.log(update + " : " + url);
             if(update) { $('#search-text').autocomplete().setOptions(options);}
             else {$('#search-text').autocomplete(options);}
         },
@@ -320,7 +319,6 @@ var app = app || {};
                         var watchlist = _.find(self.watchlists.models, function(watchlist) {
                             return watchlist.id === watchlistId;
                         });
-                        console.log(watchlist);
 
                         if(watchlist.containsMovie(self.currentMovie)) {
                             alert("The watchlist " + watchlist.attributes.name + " already contains this movie.");
@@ -328,7 +326,6 @@ var app = app || {};
                             return false;
                         }
                         else {
-                            console.log(self.currentMovie);
                             self.currentMovie.isNew = function(){return true;};
                             self.currentMovie.save({}, {url: "/watchlists/" + watchlistId + "/movies"}).complete(function() {
                                 watchlist.fetch();

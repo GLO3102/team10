@@ -101,6 +101,7 @@ var app = app || {};
             var searchText = this.$('#global-search-text').val();
             app.Router.navigate("search",  {trigger: true});
             app.searchView.searchGlobal(searchText);
+            $("#global-search-text").val("")
         }
     });
 
