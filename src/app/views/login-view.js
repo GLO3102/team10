@@ -15,6 +15,10 @@ var app = app || {};
 
         initialize: function () {
             _.bindAll(this, 'render');
+            $("#login-form").submit(function() {
+                return false;
+            })
+
         },
 
         render: function () {
