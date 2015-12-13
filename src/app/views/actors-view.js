@@ -2,12 +2,64 @@ var app = app || {};
 
 (function ($) {
 
+    var PreviewView = Backbone.View.extend({
+        template: _.template($('#preview-template').html()),
+
+        initialize: function () {
+            _.bindAll(this, 'render');
+        },
+
+        render: function (el, url) {
+            el.html(this.template({ url: url }));
+        }
+    });
+
+    var MovieModalView = Backbone.View.extend({
+        template: _.template($('#actor-movie-template').html()),
+
+        initialize: function () {
+            _.bindAll(this, 'render');
+
+            this.preview = new PreviewView();
+        },
+
+        render: function (movieTitle) {
+            $('#actor-movie-modal').html(this.template());
+
+            $('#actor-movie-modal').on('hidden.bs.modal', function () {
+                $('#actor-movie-modal').empty();
+            });
+
+            var timer = setInterval(checkGoogleLoaded, 300);
+
+            function checkGoogleLoaded() {
+                if (app.googleAPILoaded) {
+                    clearTimeout(timer);
+                    gapi.client.setApiKey('AIzaSyB9-JmSKNRx3j6Rtenbxoc0aqw3-I0z8Tk');
+                    gapi.client.load('youtube', 'v3', searchOnYoutube)
+                }
+            }
+
+            var self = this;
+
+            var searchOnYoutube = function() {
+                var request = app.getYoutubeRequestFromTitle(movieTitle);
+                request.execute(function(response) {
+                    var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
+                    self.preview.render($('#modal-actor-movie-preview'), videoURL);
+                });
+            };
+        }
+    });
+
     app.ActorsView = Backbone.View.extend({
 
         template: _.template($("#actors-template").html()),
 
         initialize: function () {
             _.bindAll(this, 'render');
+
+            this.movieModal = new MovieModalView();
         },
 
         events: {
@@ -36,24 +88,7 @@ var app = app || {};
         },
 
         showPreview: function(event) {
-            var timer = setInterval(checkGoogleLoaded, 100);
-
-            function checkGoogleLoaded() {
-                if (app.googleAPILoaded) {
-                    clearTimeout(timer);
-                    gapi.client.setApiKey('AIzaSyB9-JmSKNRx3j6Rtenbxoc0aqw3-I0z8Tk');
-                    gapi.client.load('youtube', 'v3', searchOnYoutube)
-                }
-            }
-
-            function searchOnYoutube() {
-                var movieTitle = $(event.currentTarget).data('trackname');
-                var request = app.getYoutubeRequestFromTitle(movieTitle);
-                request.execute(function(response) {
-                    var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
-                    $('#preview-modal-container').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
-                });
-            }
+            this.movieModal.render($(event.currentTarget).data('trackname'));
         },
 
         closePreview: function() {

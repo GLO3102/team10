@@ -243,7 +243,7 @@
                                     <tr>
                                         <td><img class="img-poster-circle" src="<%- movie.artworkUrl100 %>"><a href="#movies/<%- movie.trackId %>"><%- movie.trackName %></a></td>
                                         <td><%- movie.releaseDate %></td>
-                                        <td><a class="btn btn-block btn-lg btn-primary" id="previewButton" data-trackName="<%- movie.trackName %>" data-toggle="modal" data-target="#previewModal">Preview</a></td>
+                                        <td><a class="btn btn-block btn-lg btn-primary" id="previewButton" data-trackName="<%- movie.trackName %>" data-toggle="modal" data-target="#actor-movie-modal">Preview</a></td>
                                     </tr>
                                 <% }); %>
                                 </tbody>
@@ -255,28 +255,28 @@
                 </div>
             </div>
         </div>
-    </div>
 
-        <!-- Modal -->
-        <div id="previewModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
-            <div class="modal-dialog">
+        <div id="actor-movie-modal" class="modal fade"></div>
+</script>
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close closePreview" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Preview</h4>
-                    </div>
-                    <div id="preview-modal-container" class="modal-body">
-                        <!-- insert youtube preview here -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-block btn-lg btn-primary closePreview" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+<script type="text/template" id="actor-movie-template">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close closePreview" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Preview</h4>
+            </div>
+
+            <div id="modal-actor-movie-preview" class="modal-body"></div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-block btn-lg btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
+
+    </div>
 </script>
 
 <script type="text/template" id="browse-tvshows-template">
@@ -395,7 +395,7 @@
     </div>
 </script>
 
-<script type="text/template" id="tvshow-preview-template">
+<script type="text/template" id="preview-template">
     <iframe class='preview' width='560' height='315' src='<%= url %>' frameborder='0' allowfullscreen></iframe>
 </script>
 

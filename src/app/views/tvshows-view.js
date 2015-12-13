@@ -32,7 +32,7 @@ var app = app || {};
     });
 
     var PreviewView = Backbone.View.extend({
-        template: _.template($('#tvshow-preview-template').html()),
+        template: _.template($('#preview-template').html()),
 
         initialize: function () {
             _.bindAll(this, 'render');
