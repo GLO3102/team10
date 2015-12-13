@@ -45,9 +45,12 @@ var app = app || {};
                     $movieList.html($('<tr>').html(cell));
                 }
 
-                var $movieTitle = $('.movie-title');
+                var $movieTitle = self.$el.find('.movie-title');
+                console.log($movieTitle);
+                console.log($('.movie-title'));
                 $movieTitle.autocomplete({
                     serviceUrl: '/search/movies',
+                    preventBadQueries: false,
                     paramName: "q",
                     params: {limit: 10},
                     triggerSelectOnValidInput: false,

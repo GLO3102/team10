@@ -92,6 +92,7 @@ var app = app || {};
                 serviceUrl: url,
                 paramName: "q",
                 params: {limit: 50},
+                preventBadQueries: false,
                 triggerSelectOnValidInput: false,
                 transformResult: function (response) {
                     response = JSON.parse(response);

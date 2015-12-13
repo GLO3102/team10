@@ -43,6 +43,7 @@ var app = app || {};
                 paramName: "q",
                 params: {limit: 10},
                 width: 300,
+                preventBadQueries: false,
                 triggerSelectOnValidInput: false,
                 transformResult: function(response) {
                     response = JSON.parse(response);
