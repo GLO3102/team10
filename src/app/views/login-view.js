@@ -9,7 +9,7 @@ var app = app || {};
         template: _.template($("#login-template").html()),
 
         events: {
-            "click #btn-login-confirm": "login",
+            "submit #login-form": "login",
             "click #subscribe-link": "goToSubscription"
         },
 
@@ -22,43 +22,33 @@ var app = app || {};
             this.$el.html(this.template());
         },
 
-        login: function() {
-            $("#login-form").submit(function(e) {
-                var htmlForm = $('#login-form');
+        login: function () {
 
-                if(htmlForm.length > 0) {
-                    var form = htmlForm.parsley();
+            var userEmail = $("#input-email").val();
+            var userPassword = $("#input-password").val();
 
-                    if(form.isValid()) {
-                        var userEmail = $("#input-email").val();
-                        var userPassword = $("#input-password").val();
+            var userModel = new app.User({email: userEmail, password: userPassword});
 
-                        var userModel = new app.User({email: userEmail, password: userPassword});
+            userModel.login(function (data, error) {
+                if (!error) {
+                    userModel.attributes.name = data.name;
+                    userModel.attributes.id = data.id;
+                    userModel.attributes.following = data.following;
+                    app.currentUser = userModel;
 
-                        userModel.login(function(data, error) {
-                            if(!error) {
-                                userModel.attributes.name = data.name;
-                                userModel.attributes.id = data.id;
-                                userModel.attributes.following = data.following;
-                                app.currentUser = userModel;
-
-                                app.Router.navigate("", {trigger: true});
-                                app.headerView.render(userModel);
-                            } else {
-                                if(data.status === 401) {
-                                    $('#error-message').text("Bad credentials").fadeOut(4000, function() {
-                                        $('#error-message').text('').show();
-                                    });
-                                }
-                            }
-                        })
+                    app.Router.navigate("", {trigger: true});
+                    app.headerView.render(userModel);
+                } else {
+                    if (data.status === 401) {
+                        $('#error-message').text("Bad credentials").fadeOut(4000, function () {
+                            $('#error-message').text('').show();
+                        });
                     }
                 }
-                return false; // prevents default POST on submit
-            });
+            })
         },
 
-        goToSubscription: function() {
+        goToSubscription: function () {
             app.Router.navigate("subscribe", {trigger: true});
         }
     });
