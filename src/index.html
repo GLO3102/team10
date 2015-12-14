@@ -69,7 +69,7 @@
                     <% } else { %>
                         <li class="dropdown">
                             <a href="#" id="navbar-current-user" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span><img class="img-poster-circle-small" src="<%= user.gravatar %>">  <%= user.name %></span> <span class="caret"></span></a>
+                                <span><img class="img-poster-circle-small" src="<%- user.gravatar %>">  <%- user.name %></span> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li id="profile"><a>Profile</a></li>
                                 <li type="separator" class="divider"></li>
@@ -128,25 +128,25 @@
 </script>
 
 <script type="text/template" id="movies-template">
-    <div id='<%= movie.id %>' class="container-fluid">
+    <div id='<%- movie.id %>' class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-md-4">
-                <img class="poster" src='<%= movie.artworkUrl100 %>'>
+                <img class="poster" src='<%- movie.artworkUrl100 %>'>
             </div>
             <div class="col-xs-12 col-md-8">
-                <h1 class="page-title"><%= movie.trackName %></h1>
+                <h1 class="page-title"><%- movie.trackName %></h1>
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
                     <li><a id="preview-tab" href="#preview" data-toggle="tab">Preview</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="description" class="tab-pane fade in active">
-                        <p class="lead"><%= movie.longDescription %></p>
+                        <p class="lead"><%- movie.longDescription %></p>
                         <button id="add-movie-to-watchlists" class="btn btn-primary" data-toggle="modal" data-target="#add-movie-to-watchlist-modal">Add to watchlists</button>
-                        <p><strong>Rating:</strong> <%= movie.contentAdvisoryRating %></p>
-                        <p><strong>Genre:</strong> <%= movie.primaryGenreName %></p>
-                        <p><strong>Release date:</strong> <%= movie.releaseDate %></p>
-                        <a class="itunes-button" href='<%= movie.trackViewUrl %>'></a>
+                        <p><strong>Rating:</strong> <%- movie.contentAdvisoryRating %></p>
+                        <p><strong>Genre:</strong> <%- movie.primaryGenreName %></p>
+                        <p><strong>Release date:</strong> <%- movie.releaseDate %></p>
+                        <a class="itunes-button" href='<%- movie.trackViewUrl %>'></a>
                     </div>
                     <div id="preview" class="tab-pane fade">
                         <div class="row">
@@ -314,10 +314,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-md-4">
-                <img class="poster" src="<%= tvshow.artworkUrl100 %>">
+                <img class="poster" src="<%- tvshow.artworkUrl100 %>">
             </div>
             <div class="col-xs-12 col-md-8">
-                <h1 class="page-title"><%= tvshow.collectionName %> <small>(<%= tvshow.releaseDate %>)</small></h1>
+                <h1 class="page-title"><%- tvshow.collectionName %> <small>(<%- tvshow.releaseDate %>)</small></h1>
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
                     <li><a href="#episodes" data-toggle="tab">Episodes</a></li>
@@ -325,10 +325,10 @@
                 </ul>
                 <div class="tab-content">
                     <div id="description" class="tab-pane fade in active">
-                        <p class="lead"><%= tvshow.longDescription %></p>
-                        <p><strong>Genre:</strong> <%= tvshow.primaryGenreName %></p>
+                        <p class="lead"><%- tvshow.longDescription %></p>
+                        <p><strong>Genre:</strong> <%- tvshow.primaryGenreName %></p>
                         <p><strong>First episode:</strong> <span id="first-episode"></span></p>
-                        <a class="itunes-button" href="<%= tvshow.collectionViewUrl %>"></a>
+                        <a class="itunes-button" href="<%- tvshow.collectionViewUrl %>"></a>
                     </div>
 
                     <div id="episodes" class="tab-pane fade">
@@ -379,12 +379,12 @@
         <div class="modal-content" id="tvshow-episode-modal-content">
             <div class="modal-header" id="tvshow-episode-modal-header">
                 <button type="button" class="close closePreview" data-dismiss="modal">&times;</button>
-                <h3 id="modal-tvshow-title"><%= episode.collectionName %></h3>
-                <h4 id="modal-tvshow-episode-title"><%= episode.trackName %></h4>
-                <div id="modal-tvshow-episode-time"><%= episode.trackTimeMin %></div>
+                <h3 id="modal-tvshow-title"><%- episode.collectionName %></h3>
+                <h4 id="modal-tvshow-episode-title"><%- episode.trackName %></h4>
+                <div id="modal-tvshow-episode-time"><%- episode.trackTimeMin %></div>
             </div>
             <div class="modal-body" id="tvshow-episode-modal-body">
-                <div id="modal-tvshow-episode-description"><%= episode.longDescription %></div>
+                <div id="modal-tvshow-episode-description"><%- episode.longDescription %></div>
                 <div id="modal-tvshow-episode-preview"></div>
             </div>
             <div class="modal-footer" id="tvshow-episode-modal-footer">
@@ -396,7 +396,7 @@
 </script>
 
 <script type="text/template" id="preview-template">
-    <iframe class='preview' width='560' height='315' src='<%= url %>' frameborder='0' allowfullscreen></iframe>
+    <iframe class='preview' width='560' height='315' src='<%- url %>' frameborder='0' allowfullscreen></iframe>
 </script>
 
 <script type="text/template" id="watchlists-template">
@@ -554,15 +554,15 @@
         <div class="row">
             <div class="col-xs-12">
                 <span>
-                    <img class="user-page-gravatar-img" src="<%= user.gravatar %>">
-                    <h1><%= user.name %> </h1>
+                    <img class="user-page-gravatar-img" src="<%- user.gravatar %>">
+                    <h1><%- user.name %> </h1>
                 </span>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
                 <span>
-                    <h3 id="user-email"><small>(<%= user.email %>)</small></h3>
+                    <h3 id="user-email"><small>(<%- user.email %>)</small></h3>
                     <button id="follow-user" class="btn btn-primary">Follow user</button>
                 </span>
             </div>
@@ -584,9 +584,9 @@
                         <tbody>
                         <% _.each(user.following, function(following){ %>
                         <tr>
-                            <td><%= following.name %></td>
-                            <td><%= following.email %></td>
-                            <td><a class="btn btn-block btn-lg btn-primary user-button" id="<%= following.email %>">More info</a></td>
+                            <td><%- following.name %></td>
+                            <td><%- following.email %></td>
+                            <td><a class="btn btn-block btn-lg btn-primary user-button" id="<%- following.email %>">More info</a></td>
                         </tr>
                         <% }); %>
                         </tbody>
@@ -610,7 +610,7 @@
                         <tbody>
                         <% _.each(watchlists, function(watchlist){ %>
                         <tr>
-                            <td><%= watchlist.name %></td>
+                            <td><%- watchlist.name %></td>
                             <td><a class="btn btn-block btn-lg btn-primary watchlist-button" id="<%- watchlist.id %>" data-trackId="<%- watchlist.id %>" data-toggle="modal" data-target="#watchlist-modal">See movies</a></td>
                         </tr>
                         <% }); %>
@@ -643,7 +643,7 @@
                             <% _.each(watchlist.movies, function(movie){ %>
                             <tr>
                                 <td><img class="img-poster-circle-small" src="<%- movie.artworkUrl100 %>"></td>
-                                <td><a class="movie-redirect" href="#movies/<%= movie.trackId %>"><%= movie.trackName %></a></td>
+                                <td><a class="movie-redirect" href="#movies/<%- movie.trackId %>"><%- movie.trackName %></a></td>
                             </tr>
                             <% }); %>
                             </tbody>
