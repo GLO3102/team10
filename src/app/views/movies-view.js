@@ -2,12 +2,26 @@ var app = app || {};
 
 (function ($) {
 
+    var PreviewView = Backbone.View.extend({
+        template: _.template($('#preview-template').html()),
+
+        initialize: function () {
+            _.bindAll(this, 'render');
+        },
+
+        render: function (el, url) {
+            el.html(this.template({ url: url }));
+        }
+    });
+
     app.MoviesView = Backbone.View.extend({
 
         template: _.template($('#movies-template').html()),
 
         initialize: function () {
             _.bindAll(this, 'render');
+
+            this.preview = new PreviewView();
         },
 
         events: {
@@ -56,7 +70,7 @@ var app = app || {};
                     var request = app.getYoutubeRequestFromTitle(that.model.attributes.trackName);
                     request.execute(function(response) {
                         var videoURL = "http://youtube.com/embed/" + response.items[0].id.videoId;
-                        $('#preview-container').html("<iframe class='preview' width='560' height='315' src='"+ videoURL +"' frameborder='0' allowfullscreen></iframe>");
+                        that.preview.render($('#movie-preview-container'), videoURL);
                     });
                 };
             });
