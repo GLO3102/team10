@@ -674,7 +674,7 @@
                     <label class="radio-inline">
                         <input type="radio" name="search-category" value="users" <% if(category === 'users') {%>checked<% } %>>User
                     </label>
-                    <input type="text" class="form-control" placeholder="Search..." id="search-text" value="<%= searchText %>">
+                    <input type="text" class="form-control" placeholder="Search..." id="search-text" value="<%- searchText %>">
                     <button class="btn btn-lg btn-primary btn-block" id="search-button"><span class="fui-search"></span></button>
                 </div>
             </div>
@@ -706,7 +706,7 @@
                         <% _.each(movies, function(movie){ %>
                         <tr>
                             <td><img class="img-poster-circle" src="<%- movie.artworkUrl100 %>"><a href="#movies/<%- movie.trackId %>"><%- movie.trackName %></a></td>
-                            <td><a class="genre-filter"><%= movie.primaryGenreName %></a></td>
+                            <td><a class="genre-filter"><%- movie.primaryGenreName %></a></td>
                             <td><button class="btn btn-default add-movie-to-watchlists-search" data-movieId="<%- movie.trackId %>" data-toggle="modal" data-target="#add-movie-to-watchlist-modal-search">Add to watchlists</button></td>
                         </tr>
                         <% }); %>
@@ -728,7 +728,7 @@
                         <% _.each(tvshows, function(tvshow){ %>
                         <tr>
                             <td><img class="img-poster-circle" src="<%- tvshow.artworkUrl100 %>"><a href="#tvshows/<%- tvshow.collectionId %>"><%- tvshow.collectionName %></a></td>
-                            <td><a class="genre-filter"><%= tvshow.primaryGenreName %></a></td>
+                            <td><a class="genre-filter"><%- tvshow.primaryGenreName %></a></td>
                         </tr>
                         <% }); %>
                         </tbody>
@@ -749,7 +749,7 @@
                         <% _.each(actors, function(actor){ %>
                         <tr>
                             <td><a href="#actors/<%- actor.artistId %>"><%- actor.artistName %></a></td>
-                            <td><a class="genre-filter"><%= actor.primaryGenreName %></a></td>
+                            <td><a class="genre-filter"><%- actor.primaryGenreName %></a></td>
                         </tr>
                         <% }); %>
                         </tbody>
@@ -770,8 +770,8 @@
                         <tbody>
                         <% _.each(users, function(user){ %>
                         <tr>
-                            <td><a href="#user/<%- user.id %>"><%= user.name %></a></td>
-                            <td><%= user.email %></td>
+                            <td><a href="#user/<%- user.id %>"><%- user.name %></a></td>
+                            <td><%- user.email %></td>
                             <td><button class="btn btn-default follow-user" id="<%- user.id %>">Follow</button></td>
                         </tr>
                         <% }); %>
