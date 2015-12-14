@@ -35,5 +35,15 @@
 {
   #search-container {
     margin: 5px;
+    table {
+      overflow-x: auto;
+      display: block;
+    }
+  }
+}
+
+#search-container {
+  table {
+    overflow: auto;
   }
 }
